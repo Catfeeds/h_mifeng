@@ -1,0 +1,214 @@
+<div class="comment">
+    <div class="yh_pl">
+      <div class="pl_hd">
+        <span>评论<em class="comment_count">{$comment_count}</em></span>
+        <span>点赞<em class="praise_count">{$praise_count}</em></span>
+      </div>
+      <div class="pl_bd">
+        <div class="pl_box pl_1">
+          <ul>
+            <include file='Information:comment_list'/>
+          </ul>
+          <if condition="count($comment_list) egt $listRows">
+            <div class="pl_more" data-p="1">
+              <a>查看更多</a>
+            </div>
+          </if>
+        </div>
+        <div class="pl_box pl_2">
+          <ul class="clearfix">
+            <foreach name="praise_list" item="item">
+            <li>
+              <i style="background-image: url(/{$item.pic});"></i>
+            </li>
+            </foreach>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="yh_nav">
+      <div>
+        <span class="na_1"><i class="iconfont">&#xe60b;</i><em>评论</em></span>
+        <span class="na_2 <if condition="!empty($is_praise)">on</if>" id="praise"><i class="iconfont">&#xe609;</i><em>点赞</em></span>
+      </div>
+    </div>
+    <div class="yh_form">
+      <i class="form_bg"></i>
+      <form method="post" action="{:U('Information/comment_save')}" id="submitForm" name="submitForm" enctype="multipart/form-data">
+        <textarea placeholder="评论" name="content"></textarea>
+        <div class="input">
+          <span>取消</span>
+          <input type="hidden" name="relatively_id" value="{$relatively_id}">
+          <input type="hidden" name="type" value="{$comment_type}">
+          <input type="hidden" name="parent_id" value="0">
+          <input type="button" class="comment_save" value="回复" />
+        </div>
+      </form>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+        $Tab('.pl_hd>span','.pl_bd .pl_box','.yh_pl');
+        $('.yh_nav .na_1').on('click',function(){
+          $('.yh_form').fadeIn(500);
+          $(".yh_form input[name='parent_id']").val('0');
+          $(".yh_form textarea").val('');
+          $(".yh_form textarea").attr('placeholder',"评论");
+        })
+        $('.yh_form .form_bg,.yh_form .input>span').on('click',function(){
+          $('.yh_form').fadeOut(300);
+        })
+        $(".pl_bd .pl_1 ul").on('click',".comment_info",function(){
+          $('.yh_form').fadeIn(500);
+          $(".yh_form input[name='parent_id']").val($(this).attr('data-id'));
+          $(".yh_form textarea").val('');
+          $(".yh_form textarea").attr('placeholder',"回复："+$(this).attr('data-name'));
+        })
+
+        $('.comment_save').on('click',function(){
+            //评论提交
+          var formData=$(this).parents("form").serialize();
+          var form_url=$(this).parents("form").attr('action');
+          var _this = $(this);
+          if(_this.attr('is')!='false'){
+            _this.attr("is",false);
+            $.ajax({
+              type: "POST",
+              url:form_url,
+              data:formData,
+              success:function(data){
+                _this.attr("is",true);
+                if(data.status==0){
+                  //登陆显示
+                  layer.open({
+                    content: data.info
+                    ,skin: 'msg'
+                    ,time: 2
+                  });
+                  if(data.url!=''){
+                    location.href=data.url;
+                  }
+                }else if(data.status==500){
+                  layer.open({
+                    content: data.info
+                    ,skin: 'msg'
+                    ,time: 2
+                  });
+                }else if(data.status==200){
+                  $(".pl_bd .pl_1 ul").prepend(data.data);
+                  $(".yh_form").hide();
+                  $(".yh_form textarea[name='content']").val('');
+                  $(".yh_form input[name='parent_id']").val('0');
+                  $(".comment_count").html(parseInt($(".comment_count").html())+1);
+                }
+              },
+            });
+          }
+        })
+        $('.yh_nav .na_2').on('click',function(){
+            //点赞提交
+          var _this = $(this);
+          if(_this.attr('is')!='false'){
+            _this.attr("is",false);
+            $.ajax({
+              type: "POST",
+              url:"{:U('Information/praise_save')}",
+              data:"relatively_id={$relatively_id}&type={$comment_type}",
+              success:function(data){
+                _this.attr("is",true);
+                if(data.status==0){
+                  //登陆显示
+                  layer.open({
+                    content: data.info
+                    ,skin: 'msg'
+                    ,time: 2
+                  });
+                  if(data.url!=''){
+                    location.href=data.url;
+                  }
+                }else if(data.status==500){
+                  layer.open({
+                    content: data.info
+                    ,skin: 'msg'
+                    ,time: 2
+                  });
+                }else if(data.status==200){
+                  _this.addClass('on')
+                  $(".praise_count").html(parseInt($(".praise_count").html())+1);
+                }else if(data.status==201){
+                  _this.removeClass('on')
+                  $(".praise_count").html(parseInt($(".praise_count").html())-1);
+                }
+              },
+            });
+          }
+        })
+        $(window).scroll(function() {  
+            var scrollTop = $(this).scrollTop(),scrollHeight = $(document).height(),windowHeight = $(this).height();  
+            var positionValue = (scrollTop + windowHeight) - scrollHeight;  
+            if(positionValue>=-400){
+                var _this = $('.pl_more');
+                if(!_this.length){
+                  return false;
+                }
+                var p = parseInt(_this.attr('data-p'))+1;
+                if(_this.attr('is')!='false'){
+                    _this.attr("is",false);
+                    $.ajax({
+                      type: "GET",
+                      url:"{:U('Information/comment_list')}",
+                      data:"id={$relatively_id}&type={$comment_type}&p="+p,
+                      success:function(data){
+                        if(data.status==500){
+                          //完结
+                          _this.hide();
+                        }else{
+                            _this.attr("is",true);
+                        }
+                        _this.attr('data-p',p);
+                        $(".pl_bd .pl_1 ul").append(data.data);
+                      },
+                    });
+                }
+            }  
+        });
+
+        $(".collect").on("click",function(){
+          var _this = $(this);
+          if(_this.attr('is')!='false'){
+            _this.attr("is",false);
+            $.ajax({
+              type: "POST",
+              url:"{:U('Information/collect_save')}",
+              data:"relatively_id={$relatively_id}&type={$comment_type}",
+              success:function(data){
+                _this.attr("is",true);
+                if(data.status==200){
+                  _this.addClass("on");
+                  _this.html("已收藏");
+                }else if(data.status==201){
+                  _this.removeClass("on");
+                  _this.html("收藏");
+                }else if(data.status==0){
+                  //登陆显示
+                  layer.open({
+                    content: data.info
+                    ,skin: 'msg'
+                    ,time: 2
+                  });
+                  if(data.url!=''){
+                    location.href=data.url;
+                  }
+                }else{
+                  layer.open({
+                    content: data.info
+                    ,skin: 'msg'
+                    ,time: 2
+                  });
+                }
+              },
+            });
+          }
+        })
+    })
+</script>

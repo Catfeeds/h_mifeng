@@ -1,0 +1,77 @@
+<include file='Public:pageHeader'/>
+<body data-psd-width="750" class="f3f3f3">
+  <div class="Position_x">
+    <div class="Posx_1">
+      <h4>{$info.title}</h4>
+      <h5>
+        <em>{$info.add_time|date='Y-m-d',###}</em>
+        <em>浏览量:{$info.view_count}</em>
+        <a>{$info.company.company_name}</a>
+      </h5>
+      <h6>
+        <span style="width:100%;">
+          <i>地点:</i>
+          <em>{$info.city_name} {$info.district_name} {$info.address}</em>
+        </span>
+      </h6>
+    </div>
+    <div class="Posx_2">
+      <div class="Posx_hd">
+        <span style="width:100%;">园区描述</span>
+        <!-- <span>单位简介</span> -->
+      </div>
+      <div class="Posx_bd">
+        <div class="Posx_box">
+          <p>
+            {$info.text|nl2br}
+          </p>
+        </div>
+      </div>
+    </div>
+    <form method="post" action="{:U('Recruitment/kindergarten_signup')}" id="submitForm" name="submitForm" enctype="multipart/form-data">
+    <div class="Posx_3">
+      <div>
+          <if condition="$info['status'] eq 1">
+            <a class="submit">发送意向</a>
+          <else/>
+            <a class="no">已结束</a>
+          </if>
+          <input type="hidden" name="kindergarten_id" value="{$info.id}">
+        <!-- <i></i> -->
+      </div>
+    </div>
+    <div class="address_bg"></div>
+    <div class="address_fix">
+      <h3 style="background-color: #ef8875; color:#fff;">意向提交</h3>
+      <div class="box">
+        <div class="ybm_text">
+          <div class="clearfix">
+            <span>联系人</span>
+            <input type="text" placeholder="请填写" name="name">
+          </div>
+          <div class="clearfix">
+            <span>手机号</span>
+            <input type="text" placeholder="请填写" name="phone">
+          </div>
+        </div>
+        <div class="text-right">
+          <span class="hide">取消</span>
+          <input type="submit" value="提交" class="submit">
+        </div>
+      </div>
+    </div>
+    </form>
+  </div>
+</body>
+<include file='Public:pageFooter'/>
+<script>
+  $(".submit").click(function(){
+    $(".address_bg").show();
+    $(".address_fix").show();
+  })
+  $(".hide").click(function(){
+    $(".address_bg").hide();
+    $(".address_fix").hide();
+  })
+  // $Tab('.Posx_hd span','.Posx_bd .Posx_box','.Posx_2');
+</script>

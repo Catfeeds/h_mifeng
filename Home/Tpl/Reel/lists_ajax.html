@@ -1,0 +1,16 @@
+<foreach name="list" item="item">
+<li class="clearfix" style="background-color: <if condition="$item['end_time'] lt time() or $item['is_use'] eq 1">#ccc;<elseif condition="$item['type'] eq 1"/> #fdd284; <elseif condition="$item['type'] eq 2"/> #ef8874; <elseif condition="$item['is_use'] eq 0"/>#f57468;</if>">
+  <a href="{:U("Reel/info",array('id'=>$item['id']))}">
+    <div class="fl"><i style="background-image: url(__IMG__/icon_1.png);"></i></div>
+    <div class="fr">
+      <h4>{$item.title}</h4>
+      <h6 class="clearfix">
+      <span>{$item.price}<if condition="$item['type'] eq 1">积分<else/>元</if></span>
+        <em>
+          <i>有效期至{$item.end_time|date='Y/m/d',###}</i>
+        </em>
+      </h6>
+    </div>
+  </a>
+</li>
+</foreach>

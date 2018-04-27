@@ -1,0 +1,127 @@
+<include file='Public:pageHeader'/>
+<body data-psd-width="750" class="f3f3f3">
+  <div class="Resume_Exh">
+    <div class="Resume_1">
+      <if condition="empty($info['pic'])">
+      <h4><i style="background-image: url(/Uploads/user/avatar.png);"></i></h4>
+      <else/>
+      <h4><i style="background-image: url(/{$info.pic});"></i></h4>
+      </if>
+      <h5>{$info.name}</h5>
+      <h6>
+        <span><i>{$info.age}岁</i> | <i>{$info.height}cm</i> | <i>{$info.marriage}</i></span>
+        <if condition="empty($info['last_login_time'])">
+        <span>最近登录时间：<em>{:date("Y-m-d")}</em></span>
+        <else/>
+        <span>最近登录时间：<em>{$info.last_login_time|date='Y-m-d',###}</em></span>
+        </if>
+      </h6>
+    </div>
+    <div class="Resume_2">
+      <span>
+        <i>学历</i>
+        <em>{$info.education}</em>
+      </span>
+      <span>
+        <i>工作经验</i>
+        <em>{$info.working_age}</em>
+      </span>
+      <span>
+        <i>专业</i>
+        <em>{$info.profession}</em>
+      </span>
+    </div>
+    <div class="Resume_3">
+      <h4><span>基本信息</span></h4>
+      <div>
+        <h6>期望职位:</h6>
+        <p>{$info.position}</p>
+      </div>
+      <div>
+        <if condition="!empty($info.experience)">
+        <h6>工作经验:</h6>
+        <p>
+          {$info.experience|nl2br}
+        </p>
+        <br /><br />
+        </if>
+        <if condition="!empty($info.education_information)">
+        <h6>教育信息:</h6>
+        <p>
+          {$info.education_information|nl2br}
+        </p>
+        <br /><br />
+        </if>
+        <if condition="!empty($info.talent)">
+        <h6>技能专长:</h6>
+        <p>
+          {$info.talent|nl2br}
+        </p>
+        <br /><br />
+        </if>
+        <if condition="!empty($info.self_evaluation)">
+        <h6>自我评价:</h6>
+        <p>
+          {$info.self_evaluation|nl2br}
+        </p>
+        <br /><br />
+        </if>
+        <if condition="!empty($info.ResumeImg)">
+        <h6>相关资质:</h6>
+        <foreach name="info.ResumeImg" item="item">
+        <p><img src="/{$item.thumb_img}" style="max-width: 100%;"></p>
+        </foreach>
+        </if>
+      </div>
+    </div>
+    <form method="post" action="{:U('Recruitment/cast_resume2')}" id="submitForm" name="submitForm" enctype="multipart/form-data">
+    <div class="Resume_4">
+      <div>
+          <if condition="$info['is_open'] eq 1">
+            <a id="submit">发送邀请</a>
+          <else/>
+            <a class="no">已结束</a>
+          </if>
+          <input type="hidden" name="resume_id" value="{$info.id}">
+        <!-- <i></i> -->
+      </div>
+    </div>
+    <div class="address_bg"></div>
+    <div class="address_fix">
+      <h3 style="background-color: #ef8875; color:#fff;">请选择邀请岗位</h3>
+      <div class="box">
+        <ul id="address_list">
+          <foreach name="recruitment_list" item="item">
+            <li>
+              <label><input type="radio" name="recruitment_id" value="{$item.id}">{$item.position}</label>
+            </li>
+          </foreach>
+        </ul>
+        <div class="text-right">
+          <span class="hide">取消</span>
+          <a id="add_address" href="{:U('Recruitment/my_info')}">添加新岗位</a>
+          <input type="submit" value="确定" class="submit">
+        </div>
+      </div>
+    </div>
+    </form>
+
+    <!-- <div class="Resume_4">
+      <div>
+        <a href="">发送邀请</a>
+        <i></i>
+      </div>
+    </div>   -->
+  </div>
+</body>
+<include file='Public:pageFooter'/>
+<script type="text/javascript">
+  $("#submit").click(function(){
+    $(".address_bg").show();
+    $(".address_fix").show();
+  })
+  $(".hide").click(function(){
+    $(".address_bg").hide();
+    $(".address_fix").hide();
+  })
+</script>

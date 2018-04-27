@@ -1,0 +1,90 @@
+<include file='Public:pageHeader'/>
+<body data-psd-width="750" class="f3f3f3">
+  <div class="MY_Follow">
+    <ul>
+      <include file='Member:ajax_attention_lists'/>
+    </ul>
+    <if condition="count($list) egt $listRows">
+      <i class="list_more" data-p='1'>加载更多了</i>
+    </if>
+  </div>
+  <include file='Public:page_nav'/>
+  <include file='Public:login'/>
+</body>
+<include file='Public:pageFooter'/>
+<script type="text/javascript">
+  $(".MY_Follow").on("click",".attention",function(){
+    var _this = $(this);
+    if(_this.attr('is')!='false'){
+      _this.attr("is",false);
+      $.ajax({
+        type: "POST",
+        url:"{:U('Member/attention_save')}",
+        data:"attention_id="+_this.attr('data-id'),
+        success:function(data){
+          _this.attr("is",true);
+          if(data.status==200){
+            _this.addClass("on");
+          }else if(data.status==201){
+            _this.removeClass("on");
+          }else{
+            layer.open({
+              content: data.info
+              ,skin: 'msg'
+              ,time: 2
+            });
+          }
+        },
+      });
+    }
+  })
+  $(window).scroll(function() {  
+      var scrollTop = $(this).scrollTop(),scrollHeight = $(document).height(),windowHeight = $(this).height();  
+      var positionValue = (scrollTop + windowHeight) - scrollHeight;  
+      if(positionValue>=-400){
+          var _this = $('.list_more');
+          if(!_this.length){
+            return false;
+          }
+          var p = parseInt(_this.attr('data-p'))+1;
+          if(_this.attr('is')!='false'){
+              _this.attr("is",false);
+              $.ajax({
+                type: "GET",
+                url:"{:U('Member/attention_lists')}",
+                data:"uid={$uid}&p="+p,
+                success:function(data){
+                  _this.attr("is",true);
+                  if(data.status==500){
+                    //完结
+                    _this.hide();
+                  }
+                  _this.attr('data-p',p);
+                  $(".MY_Follow ul").append(data.data);
+                },
+              });
+          }
+      }  
+  });
+  // $('.list_more').on('click',function(){
+  //   var _this = $(this);
+  //   var p = parseInt(_this.attr('data-p'))+1;
+  //   if(_this.attr('is')!='false'){
+  //     _this.attr("is",false);
+  //     $.ajax({
+  //       type: "GET",
+  //       url:"{:U('Member/attention_lists')}",
+  //       data:"uid={$uid}&p="+p,
+  //       success:function(data){
+  //         _this.attr("is",true);
+  //         if(data.status==500){
+  //           //完结
+  //           _this.hide();
+  //         }
+  //         _this.attr('data-p',p);
+  //         $(".MY_Follow ul").append(data.data);
+  //       },
+  //     });
+  //   }
+  // })
+</script>

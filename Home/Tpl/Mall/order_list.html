@@ -1,0 +1,44 @@
+<include file='Public:pageHeader'/>
+<body data-psd-width="750">
+  <div class="Exchange">
+    <div class="cl_hd">
+      <div>
+      <a href="{:U('Mall/order_list',['type'=>1])}" <if condition="$type==1"> class="on" </if> >我的兑换</a>
+        <a href="{:U('Mall/order_list',['type'=>2])}" <if condition="$type==2"> class="on" </if> >我的奖品</a>
+      </div>
+    </div>
+    <div class="Popular" style="margin-top: 0;">
+      <ul class="clearfix ul_more">
+        <include file='Mall:order_list_ajax'/>
+      </ul>
+      <if condition="count($list) egt $listRows">
+        <i class="list_more" data-p='1'>加载更多了</i>
+      </if>
+    </div>
+  </div>
+  <include file='Public:page_nav'/>
+</body>
+<include file='Public:pageFooter'/>
+<script type="text/javascript">
+  $('.list_more').on('click',function(){
+    var _this = $(this);
+    var p = parseInt(_this.attr('data-p'))+1;
+    if(_this.attr('is')!='false'){
+      _this.attr("is",false);
+      $.ajax({
+        type: "GET",
+        url:"{:U('Mall/order_list')}",
+        data:"type={$type}&p="+p,
+        success:function(data){
+          _this.attr("is",true);
+          if(data.status==500){
+            //完结
+            _this.hide();
+          }
+          _this.attr('data-p',p);
+          $(".ul_more").append(data.data);
+        },
+      });
+    }
+  })
+</script>

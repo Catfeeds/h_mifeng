@@ -1,0 +1,154 @@
+<include file="Index:pageHeader" />
+<script type="text/javascript">
+$(function(){
+	autoHeight(jQuery('.autoHeight'));
+	jQuery(".column_Box").each(function () {
+		var t = jQuery(this);
+		if (t.length < 1) return;
+		Tab_click(t.find('.tab ul li'), t.find(".wrapBox .body"));
+	});
+});
+// KindEditor.ready(function(K) {
+// 	K.create('#content', {
+// 		allowFileManager : false,
+// 		pasteType : 2,
+// 		newlineTag : 'p',
+// 		filterMode : false, // true:开启过滤模式, false:关闭过滤模式
+// 		urlType : 'absolute'
+// 	});
+// });
+</script>
+<style type="text/css">
+	.file_fr a{color:#333;}
+	.file_fr .re_more{display: inline-block;
+	    position: relative;
+	    width:80px;
+	    height:80px;
+	    border: 1px solid #eee;
+	    border-radius: ;
+	    margin-top:50px;
+	    background: #fff url(/Public/Home/images/icon_9.png) no-repeat center/30px;
+	    box-sizing: border-box;
+	    vertical-align: top;}
+	.file_fr a{
+	    margin-right: 10px;
+	    margin-bottom:40px;
+	    display: inline-block;
+	    position: relative;
+	    width:160px;
+	    height:160px;
+	    border: 1px solid #eee;
+	    background: #fff url(/Public/Home/images/icon_9.png) no-repeat center/150px;
+	    box-sizing: border-box;
+	    vertical-align: top;
+	}
+	.file_fr a i{
+	    display: block;
+	    position: absolute;
+	    top: -10px;
+	    left: -10px;
+	    width: 20px;
+	    height: 20px;
+	    background: url(/Public/Home/images/icon_8.png) no-repeat center/cover;
+	    z-index: 99;
+	}
+	.file_fr a input{
+	    position: absolute;
+	    bottom:-30px;
+	    left: 0;
+	    z-index: 2;
+		}
+</style>
+<div class="column_Box mainAutoHeight">
+	<div class="tab">
+		<ul>
+			<li class="current"><a href="javascript:">属性</a></li>
+		</ul>
+	</div>
+	<div class="column_Box mainAutoHeight wrapBox">
+    <div class="body">
+			<form method="post" action="{:U('Recruitment/save')}" id="submitForm" name="submitForm" enctype="multipart/form-data">
+				<table border="0" cellpadding="0" cellspacing="0">
+					<tbody>
+						<tr>
+							<td style="text-align:right;">姓名：</td>
+							<td style="text-align:left;">{$info.name}</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">工作地点：：</td>
+							<td style="text-align:left;">
+								<foreach name="info.province" item="item" key="k">
+									<if condition="$k lt 0">,</if>{$info['province_name'][$k]} {$info['city_name'][$k]}
+								</foreach>
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">年龄：</td>
+							<td style="text-align:left;">{$info.age}</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">学历：</td>
+							<td style="text-align:left;">{$info.education}</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">专业：</td>
+							<td style="text-align:left;">{$info.profession}</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">期望职位：</td>
+							<td style="text-align:left;">{$info.position}</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">工作年龄：</td>
+							<td style="text-align:left;">{$info.working_age}</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">身高：</td>
+							<td style="text-align:left;">{$info.height}</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">婚姻状况：</td>
+							<td style="text-align:left;">{$info.marriage}</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">手机：</td>
+							<td style="text-align:left;">{$info.phone}</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">邮箱：</td>
+							<td style="text-align:left;">{$info.email}</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">工作经验：</td>
+							<td style="text-align:left;">{$info.experience|nl2br}</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">教育信息：</td>
+							<td style="text-align:left;">{$info.education_information|nl2br}</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">技能专长：</td>
+							<td style="text-align:left;">{$info.talent|nl2br}</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">自我评价：</td>
+							<td style="text-align:left;">{$info.self_evaluation|nl2br}</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">相关资质：</td>
+							<td style="text-align:left;">
+								<div class="file_fr " id="file_box">
+									<foreach name="info.ResumeImg" item="item">
+										<a style="background-image: url(/{$item.thumb_img});" href="/{$item.thumb_img}" target="_blank"></a>
+									</foreach>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+    </div>
+  </div>
+</div>
+</body>
+</html>

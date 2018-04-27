@@ -1,0 +1,68 @@
+<div class="Header">
+	<!-- <a class="logo" href="javascript:" onclick="document.location.reload();"></a> -->
+	<div class="MenuDiv current_click">
+		<ul class="c">
+			<if condition="admin_priv2('Article')">
+				<li><a href="{:U('Articlecat/index')}" target="main" class="show_a">蜜蜂精选</a></li>
+			</if>
+			<if condition="admin_priv2('Information')">
+				<li><a href="{:U('Information/lists')}" target="main" class="show_b">幼儿干货</a></li>
+			</if>
+
+			<if condition="admin_priv2('Meeting')">
+				<li><a href="{:U('Meeting/meeting_list')}" target="main" class="show_c">蜂会管理</a></li>
+			</if>
+
+			<if condition="admin_priv2('Course')">
+				<li><a href="{:U('Course/lists')}" target="main" class="show_f">课堂管理</a></li>
+			</if>
+			
+			<if condition="admin_priv2('Mall')">
+				<li><a href="{:U('Mall/lists')}" target="main" class="show_g">积分商品</a></li>
+			</if>
+			
+			<if condition="admin_priv2('User')">
+				<li><a href="{:U('User/lists')}" target="main" class="show_h">会员管理</a></li>
+			</if>
+			
+			<if condition="admin_priv2('Reel')">
+				<li><a href="{:U('Reel/lists')}" target="main" class="show_i">卡卷管理</a></li>
+			</if>
+
+			<if condition="admin_priv2('Recruitment')">
+				<li><a href="{:U('Recruitment/lists')}" target="main" class="show_j">猎聘管理</a></li>
+			</if>
+
+			<if condition="admin_priv2('Images')">
+				<li><a href="{:U('Ads/lists',array('cat_id'=>1,'width'=>750,'height'=>300))}" target="main" class="show_e">图片管理</a></li>
+			</if>
+		
+			<if condition="admin_priv2('ContactUs')">
+				<li><a href="{:U('ContactUs/lists')}" target="main" class="show_k">留言列表</a></li>
+			</if>
+
+			<!-- <li><a href="{:U('Feedback/index')}" target="main" class="show_h">留言管理</a></li> -->
+
+			<!-- <li><a href="{:U('Survey/index')}" target="main" class="show_i">在线调查</a></li> -->
+
+			<!-- <li><a href="{:U('User/index')}" target="main" class="show_j">会员管理</a></li> -->
+
+			<if condition="admin_priv2('Systems')">
+				<li><a href="{:U('Webinfo/index')}" target="main" class="show_y">系统设置</a></li>
+			</if>
+			
+			<if condition="admin_priv2('Privilege')">
+				<li><a href="{:U('Privilege/index')}" target="main" class="show_z">管理员设置</a></li>
+			</if>
+		</ul>
+	</div>
+	<div class="itemBar">
+		<ul>
+			<li><a href="{:U('Privilege/edit',array('id'=>$_SESSION['admin_id']))}" class="name" target="main">{$Think.session.admin_name} </a>，您好！</li>
+			<li><a href="/" target="_blank" class="about">网站首页</a></li>
+			
+			<li><a href="{:U('Index/clearCache')}">清除缓存</a></li>
+			<li><a href="{:U('Public/loginOut')}" class="out">退出</a></li>
+		</ul>
+	</div>
+</div>

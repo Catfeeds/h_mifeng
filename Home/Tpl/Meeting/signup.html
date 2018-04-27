@@ -1,0 +1,50 @@
+<include file='Public:pageHeader'/>
+<body data-psd-width="750">
+  <div class="yrfh_bm">
+    <h4>请确认详情</h4>
+    <form method="post" action="{:U('Meeting/signup_save')}" id="submitForm" name="submitForm" enctype="multipart/form-data">
+      <div class="ybm_mian">
+        <div>
+          <span>主题</span>
+          <em>{$info.title}</em>
+        </div>
+        <div>
+          <span>时间</span>
+          <em>{$info.meeting_time|date='Y-m-d H:i',###}</em>
+        </div>
+        <div>
+          <span>地点</span>
+          <em>{$info.meeting_address}</em>
+        </div>
+      </div>
+      <div class="ybm_text">
+        <div class="clearfix">
+          <span>联系人</span>
+          <input type="text" placeholder="请填写" name="name" />
+        </div>
+        <div class="clearfix">
+          <span>手机号</span>
+          <input type="text" placeholder="请填写" name="phone" />
+        </div>
+      </div>
+      <div class="ybm_submit">
+        <input type="submit" value="确认报名" />
+        <input type="hidden" name="meeting_id" value="{$info.id}">
+      </div>
+      <div class="ybm_checkbox">
+        <label for="gg_1">
+          <input type="checkbox" name="gg_1" checked="checked" id="gg_1"/>
+          <span>已阅读并同意</span>
+        </label>
+        <a class="xieyi">《{$xieyi_list.256.title}》</a>
+      </div>
+    </form>
+  </div>
+  <div class="xieyi_bg"></div>
+  <div class="xieyi_fix">
+    <h3>{$xieyi_list.256.title}</h3>
+    {$xieyi_list.256.content}
+  </div>
+  <include file='Public:page_nav'/>
+</body>
+<include file='Public:pageFooter'/>

@@ -1,0 +1,23 @@
+<include file='Public:pageHeader'/>
+<body data-psd-width="750" class="f3f3f3">
+  <div class="Join">
+    <div class="JO_6">
+      <h6 style="padding-top:0.2rem;">已发需求</h6>
+      <ul>
+        <foreach name="list" item="item">
+        <li class="clearfix">
+          <div class="fl">
+            <a href="{:U('Recruitment/my_kindergarten_xuqiu_info',array('id'=>$item['id']))}" class="clearfix"><i style="background-color: #f19ec2;">{$key+1}</i>{$item.title}</a>
+          </div>
+        </li>
+        </foreach>
+      </ul>
+    </div>
+    <div class="JO_7">
+      <div>
+        <a href="{:U("Recruitment/my_kindergarten_xuqiu_info")}">发布需求</a>
+      </div>
+    </div>  
+  </div>
+</body>
+<include file='Public:pageFooter'/>

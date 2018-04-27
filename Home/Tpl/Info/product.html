@@ -1,0 +1,26 @@
+<include file='Public:pageHeader'/>
+<div class="head-height"></div>
+<include file='Public:location'/>
+<div class="sub-box">
+    <div class="subnov">
+        <foreach name='article_cat' item='item'>
+        <a href="{:U('Info/Product',array('cat_id'=>$item['cat_id']))}">{$item.cat_name}</a>
+        </foreach>
+    </div>
+    <div class="products-list wrap">
+        <ul class="clearfix list">
+            <foreach name='article_list' item='item'>
+            <li>
+                <h4><a href="{:U('Info/ProductDetail',array('id'=>$item['article_id']))}">
+                    <if condition="$item['original_img'] neq ''">
+                        <img src="/{$item.original_img.0}" alt="" width="225" height="159">
+                    </if>
+                <span><img src="__IMG__/pro_bg.png"  /></span></a></h4>
+                <p><a href="">{$item.title|mySubstr=###,16}</a></p>
+            </li>
+            </foreach>
+        </ul>
+        <include file='Public:pager'/>
+    </div>
+</div>
+<include file='Public:pageFooter'/>

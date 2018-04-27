@@ -1,0 +1,319 @@
+[11-Oct-2017 01:12:40 PRC] PHP Parse error:  syntax error, unexpected ''articlecat'' (T_CONSTANT_ENCAPSED_STRING), expecting variable (T_VARIABLE) in D:\phpStudy\WWW\mifeng\Admin\Lib\Model\ArticlecatModel.class.php on line 9
+[11-Oct-2017 01:16:06 PRC] PHP Parse error:  syntax error, unexpected '$articlecat' (T_VARIABLE) in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\ArticlecatAction.class.php on line 18
+[11-Oct-2017 01:16:26 PRC] PHP Parse error:  syntax error, unexpected ''articlecat'' (T_CONSTANT_ENCAPSED_STRING), expecting variable (T_VARIABLE) in D:\phpStudy\WWW\mifeng\Admin\Lib\Model\ArticlecatModel.class.php on line 9
+[11-Oct-2017 01:17:19 PRC] PHP Parse error:  syntax error, unexpected ''articlecat'' (T_CONSTANT_ENCAPSED_STRING), expecting variable (T_VARIABLE) in D:\phpStudy\WWW\mifeng\Admin\Lib\Model\ArticlecatModel.class.php on line 9
+[11-Oct-2017 01:17:26 PRC] PHP Parse error:  syntax error, unexpected ''articlecat'' (T_CONSTANT_ENCAPSED_STRING), expecting variable (T_VARIABLE) in D:\phpStudy\WWW\mifeng\Admin\Lib\Model\ArticlecatModel.class.php on line 9
+[11-Oct-2017 01:20:05 Asia/Shanghai] PHP Parse error:  syntax error, unexpected 'protected' (T_PROTECTED) in D:\phpStudy\WWW\mifeng\Common\Functions\common.php on line 27
+[11-Oct-2017 01:20:06 Asia/Shanghai] PHP Parse error:  syntax error, unexpected 'protected' (T_PROTECTED) in D:\phpStudy\WWW\mifeng\Common\Functions\common.php on line 27
+[11-Oct-2017 23:22:40 PRC] PHP Parse error:  syntax error, unexpected ')', expecting '(' in D:\phpStudy\WWW\mifeng\Cache\Runtime\Admin\Cache\ffda74836f77fd7b39f68eb01fb47883.php on line 23
+[11-Oct-2017 23:23:04 PRC] PHP Parse error:  syntax error, unexpected ')', expecting '(' in D:\phpStudy\WWW\mifeng\Cache\Runtime\Admin\Cache\ffda74836f77fd7b39f68eb01fb47883.php on line 23
+[11-Oct-2017 23:23:04 PRC] PHP Parse error:  syntax error, unexpected ')', expecting '(' in D:\phpStudy\WWW\mifeng\Cache\Runtime\Admin\Cache\ffda74836f77fd7b39f68eb01fb47883.php on line 23
+[11-Oct-2017 23:23:17 PRC] PHP Parse error:  syntax error, unexpected ')', expecting '(' in D:\phpStudy\WWW\mifeng\Cache\Runtime\Admin\Cache\ffda74836f77fd7b39f68eb01fb47883.php on line 23
+[11-Oct-2017 23:23:23 PRC] PHP Parse error:  syntax error, unexpected ')', expecting '(' in D:\phpStudy\WWW\mifeng\Cache\Runtime\Admin\Cache\ffda74836f77fd7b39f68eb01fb47883.php on line 23
+[11-Oct-2017 23:29:56 PRC] PHP Parse error:  syntax error, unexpected '<', expecting variable (T_VARIABLE) or '$' in D:\phpStudy\WWW\mifeng\Cache\Runtime\Admin\Cache\ffda74836f77fd7b39f68eb01fb47883.php on line 23
+[12-Oct-2017 22:06:38 Asia/Shanghai] PHP Parse error:  syntax error, unexpected ')', expecting variable (T_VARIABLE) in D:\phpStudy\WWW\mifeng\Common\Functions\common.php on line 32
+[12-Oct-2017 22:06:39 Asia/Shanghai] PHP Parse error:  syntax error, unexpected ')', expecting variable (T_VARIABLE) in D:\phpStudy\WWW\mifeng\Common\Functions\common.php on line 32
+[12-Oct-2017 22:23:17 Asia/Shanghai] PHP Parse error:  syntax error, unexpected '}' in D:\phpStudy\WWW\mifeng\Common\Functions\common.php on line 47
+[12-Oct-2017 22:29:50 Asia/Shanghai] PHP Parse error:  syntax error, unexpected '{' in D:\phpStudy\WWW\mifeng\Common\Functions\common.php on line 41
+[12-Oct-2017 22:29:50 Asia/Shanghai] PHP Parse error:  syntax error, unexpected '{' in D:\phpStudy\WWW\mifeng\Common\Functions\common.php on line 41
+[12-Oct-2017 22:30:19 Asia/Shanghai] PHP Parse error:  syntax error, unexpected '{' in D:\phpStudy\WWW\mifeng\Common\Functions\common.php on line 41
+[12-Oct-2017 22:30:19 Asia/Shanghai] PHP Parse error:  syntax error, unexpected '{' in D:\phpStudy\WWW\mifeng\Common\Functions\common.php on line 41
+[13-Oct-2017 00:43:19 PRC] PHP Fatal error:  Cannot redeclare ArticleAction::index() in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\ArticleAction.class.php on line 20
+[13-Oct-2017 00:43:45 PRC] PHP Fatal error:  Cannot redeclare ArticleAction::index() in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\ArticleAction.class.php on line 20
+[13-Oct-2017 00:43:47 PRC] PHP Fatal error:  Cannot redeclare ArticleAction::index() in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\ArticleAction.class.php on line 20
+[13-Oct-2017 00:43:57 PRC] PHP Parse error:  syntax error, unexpected 'list' (T_LIST), expecting identifier (T_STRING) in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\ArticleAction.class.php on line 20
+[13-Oct-2017 00:43:58 PRC] PHP Parse error:  syntax error, unexpected 'list' (T_LIST), expecting identifier (T_STRING) in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\ArticleAction.class.php on line 20
+[13-Oct-2017 00:44:13 PRC] PHP Parse error:  syntax error, unexpected 'list' (T_LIST), expecting identifier (T_STRING) in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\ArticleAction.class.php on line 20
+[13-Oct-2017 00:44:14 PRC] PHP Parse error:  syntax error, unexpected 'list' (T_LIST), expecting identifier (T_STRING) in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\ArticleAction.class.php on line 20
+[13-Oct-2017 00:44:40 PRC] PHP Parse error:  syntax error, unexpected 'list' (T_LIST), expecting identifier (T_STRING) in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\ArticleAction.class.php on line 20
+[13-Oct-2017 00:44:41 PRC] PHP Parse error:  syntax error, unexpected 'list' (T_LIST), expecting identifier (T_STRING) in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\ArticleAction.class.php on line 20
+[13-Oct-2017 00:45:19 PRC] PHP Parse error:  syntax error, unexpected 'list' (T_LIST), expecting identifier (T_STRING) in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\ArticleAction.class.php on line 20
+[13-Oct-2017 00:45:19 PRC] PHP Parse error:  syntax error, unexpected 'list' (T_LIST), expecting identifier (T_STRING) in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\ArticleAction.class.php on line 20
+[13-Oct-2017 00:45:43 PRC] PHP Parse error:  syntax error, unexpected 'list' (T_LIST), expecting identifier (T_STRING) in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\ArticleAction.class.php on line 20
+[13-Oct-2017 00:45:44 PRC] PHP Parse error:  syntax error, unexpected 'list' (T_LIST), expecting identifier (T_STRING) in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\ArticleAction.class.php on line 20
+[13-Oct-2017 00:46:22 PRC] PHP Parse error:  syntax error, unexpected 'list' (T_LIST), expecting identifier (T_STRING) in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\ArticleAction.class.php on line 20
+[13-Oct-2017 00:46:24 PRC] PHP Parse error:  syntax error, unexpected 'list' (T_LIST), expecting identifier (T_STRING) in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\ArticleAction.class.php on line 20
+[13-Oct-2017 00:46:24 PRC] PHP Parse error:  syntax error, unexpected 'list' (T_LIST), expecting identifier (T_STRING) in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\ArticleAction.class.php on line 20
+[13-Oct-2017 00:46:25 PRC] PHP Parse error:  syntax error, unexpected 'list' (T_LIST), expecting identifier (T_STRING) in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\ArticleAction.class.php on line 20
+[13-Oct-2017 00:47:01 PRC] PHP Parse error:  syntax error, unexpected 'list' (T_LIST), expecting identifier (T_STRING) in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\ArticleAction.class.php on line 20
+[13-Oct-2017 00:52:52 PRC] PHP Parse error:  syntax error, unexpected 'select' (T_STRING) in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\ArticleAction.class.php on line 21
+[13-Oct-2017 00:54:36 PRC] PHP Fatal error:  Class 'RelationModel' not found in D:\phpStudy\WWW\mifeng\Admin\Lib\Model\ArticleModel.class.php on line 3
+[13-Oct-2017 00:55:26 PRC] PHP Fatal error:  Class 'RelationModel' not found in D:\phpStudy\WWW\mifeng\Admin\Lib\Model\ArticleModel.class.php on line 3
+[13-Oct-2017 00:57:26 PRC] PHP Fatal error:  Class 'RelationModel' not found in D:\phpStudy\WWW\mifeng\Admin\Lib\Model\ArticleModel.class.php on line 2
+[13-Oct-2017 01:00:49 PRC] PHP Fatal error:  Class 'Think\Model\RelationModel' not found in D:\phpStudy\WWW\mifeng\Admin\Lib\Model\ArticleModel.class.php on line 4
+[13-Oct-2017 01:03:26 PRC] PHP Fatal error:  Class 'Think\Model\RelationModel' not found in D:\phpStudy\WWW\mifeng\Admin\Lib\Model\ArticleModel.class.php on line 3
+[13-Oct-2017 20:49:31 PRC] PHP Fatal error:  Call to a member function assign() on null in D:\phpStudy\WWW\mifeng\ThinkPHP\Lib\Core\Action.class.php on line 165
+[13-Oct-2017 21:01:47 PRC] PHP Fatal error:  Class 'RelationModel' not found in D:\phpStudy\WWW\mifeng\Admin\Lib\Model\ArticleModel.class.php on line 2
+[13-Oct-2017 21:01:49 PRC] PHP Fatal error:  Class 'RelationModel' not found in D:\phpStudy\WWW\mifeng\Admin\Lib\Model\ArticleModel.class.php on line 2
+[13-Oct-2017 21:31:03 PRC] PHP Fatal error:  Class 'RelationModel' not found in D:\phpStudy\WWW\mifeng\Admin\Lib\Model\ArticleModel.class.php on line 2
+[13-Oct-2017 21:31:04 PRC] PHP Fatal error:  Class 'RelationModel' not found in D:\phpStudy\WWW\mifeng\Admin\Lib\Model\ArticleModel.class.php on line 2
+[13-Oct-2017 21:31:11 PRC] PHP Fatal error:  Class 'RelationModel' not found in D:\phpStudy\WWW\mifeng\Admin\Lib\Model\ArticleModel.class.php on line 2
+[13-Oct-2017 23:57:02 PRC] PHP Parse error:  syntax error, unexpected ';', expecting ')' in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\CommonAction.class.php on line 81
+[14-Oct-2017 00:32:05 PRC] PHP Parse error:  syntax error, unexpected '{', expecting '(' in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\ArticleAction.class.php on line 86
+[14-Oct-2017 00:32:06 PRC] PHP Parse error:  syntax error, unexpected '{', expecting '(' in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\ArticleAction.class.php on line 86
+[14-Oct-2017 00:42:38 PRC] PHP Fatal error:  Cannot redeclare ArticleAction::del() in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\ArticleAction.class.php on line 504
+[14-Oct-2017 00:42:39 PRC] PHP Fatal error:  Cannot redeclare ArticleAction::del() in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\ArticleAction.class.php on line 504
+[14-Oct-2017 00:43:24 PRC] PHP Parse error:  syntax error, unexpected end of file, expecting function (T_FUNCTION) in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\ArticleAction.class.php on line 721
+[14-Oct-2017 00:48:00 PRC] PHP Parse error:  syntax error, unexpected ';' in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\ArticleAction.class.php on line 140
+[14-Oct-2017 00:48:41 PRC] PHP Fatal error:  Cannot use isset() on the result of a function call (you can use "null !== func()" instead) in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\ArticleAction.class.php on line 141
+[14-Oct-2017 00:49:09 PRC] PHP Fatal error:  Cannot use isset() on the result of a function call (you can use "null !== func()" instead) in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\ArticleAction.class.php on line 142
+[14-Oct-2017 00:54:38 PRC] PHP Fatal error:  Cannot use isset() on the result of a function call (you can use "null !== func()" instead) in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\ArticleAction.class.php on line 140
+[14-Oct-2017 00:55:01 PRC] PHP Fatal error:  Cannot use isset() on the result of a function call (you can use "null !== func()" instead) in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\ArticleAction.class.php on line 140
+[14-Oct-2017 00:55:03 PRC] PHP Fatal error:  Cannot use isset() on the result of a function call (you can use "null !== func()" instead) in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\ArticleAction.class.php on line 140
+[14-Oct-2017 00:59:33 PRC] PHP Parse error:  syntax error, unexpected end of file, expecting function (T_FUNCTION) in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\ArticleAction.class.php on line 709
+[14-Oct-2017 00:59:34 PRC] PHP Parse error:  syntax error, unexpected end of file, expecting function (T_FUNCTION) in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\ArticleAction.class.php on line 709
+[14-Oct-2017 00:59:35 PRC] PHP Parse error:  syntax error, unexpected end of file, expecting function (T_FUNCTION) in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\ArticleAction.class.php on line 709
+[14-Oct-2017 01:01:12 PRC] PHP Parse error:  syntax error, unexpected end of file, expecting function (T_FUNCTION) in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\ArticleAction.class.php on line 185
+[14-Oct-2017 01:01:17 PRC] PHP Parse error:  syntax error, unexpected end of file, expecting function (T_FUNCTION) in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\ArticleAction.class.php on line 185
+[15-Oct-2017 12:00:30 PRC] PHP Parse error:  syntax error, unexpected '}' in D:\phpStudy\WWW\mifeng\Home\Lib\Action\MemberAction.class.php on line 6
+[15-Oct-2017 12:00:47 PRC] PHP Fatal error:  Call to undefined function check_login() in D:\phpStudy\WWW\mifeng\Home\Lib\Action\MemberAction.class.php on line 5
+[15-Oct-2017 20:14:04 Asia/Shanghai] PHP Parse error:  syntax error, unexpected ';', expecting ')' in D:\phpStudy\WWW\mifeng\Home\Conf\config.php on line 16
+[15-Oct-2017 20:14:04 Asia/Shanghai] PHP Parse error:  syntax error, unexpected ';', expecting ')' in D:\phpStudy\WWW\mifeng\Home\Conf\config.php on line 16
+[16-Oct-2017 00:41:03 PRC] PHP Fatal error:  Call to a member function assign() on null in D:\phpStudy\WWW\mifeng\ThinkPHP\Lib\Core\Action.class.php on line 165
+[16-Oct-2017 00:41:23 PRC] PHP Fatal error:  Call to a member function assign() on null in D:\phpStudy\WWW\mifeng\ThinkPHP\Lib\Core\Action.class.php on line 165
+[16-Oct-2017 00:41:23 PRC] PHP Fatal error:  Call to a member function assign() on null in D:\phpStudy\WWW\mifeng\ThinkPHP\Lib\Core\Action.class.php on line 165
+[16-Oct-2017 00:41:41 PRC] PHP Fatal error:  Call to undefined function isfun() in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\IndexAction.class.php on line 35
+[16-Oct-2017 00:41:41 PRC] PHP Fatal error:  Call to a member function assign() on null in D:\phpStudy\WWW\mifeng\ThinkPHP\Lib\Core\Action.class.php on line 165
+[16-Oct-2017 00:41:44 PRC] PHP Fatal error:  Call to undefined function optionsDate() in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\ArticlecatAction.class.php on line 30
+[16-Oct-2017 00:41:45 PRC] PHP Fatal error:  Call to undefined function optionsDate() in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\InformationAgeAction.class.php on line 30
+[16-Oct-2017 00:41:46 PRC] PHP Fatal error:  Call to undefined function optionsDate() in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\ArticlecatAction.class.php on line 30
+[16-Oct-2017 00:42:26 PRC] PHP Fatal error:  Call to undefined function optionsDate() in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\ArticlecatAction.class.php on line 30
+[16-Oct-2017 00:42:32 PRC] PHP Fatal error:  Call to undefined function optionsDate() in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\InformationAgeAction.class.php on line 30
+[16-Oct-2017 00:42:33 PRC] PHP Fatal error:  Call to undefined function optionsDate() in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\InformationAgeAction.class.php on line 30
+[16-Oct-2017 00:42:34 PRC] PHP Fatal error:  Call to undefined function optionsDate() in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\InformationAgeAction.class.php on line 30
+[16-Oct-2017 00:42:34 PRC] PHP Fatal error:  Call to undefined function optionsDate() in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\InformationAgeAction.class.php on line 30
+[16-Oct-2017 00:42:35 PRC] PHP Fatal error:  Call to undefined function optionsDate() in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\InformationAgeAction.class.php on line 30
+[16-Oct-2017 00:42:35 PRC] PHP Fatal error:  Call to undefined function optionsDate() in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\InformationAgeAction.class.php on line 30
+[16-Oct-2017 00:42:36 PRC] PHP Fatal error:  Call to undefined function optionsDate() in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\InformationAgeAction.class.php on line 30
+[16-Oct-2017 00:42:38 PRC] PHP Fatal error:  Call to undefined function isfun() in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\IndexAction.class.php on line 35
+[16-Oct-2017 00:42:39 PRC] PHP Fatal error:  Call to undefined function optionsDate() in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\ArticlecatAction.class.php on line 30
+[16-Oct-2017 00:42:40 PRC] PHP Fatal error:  Call to undefined function optionsDate() in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\InformationAgeAction.class.php on line 30
+[16-Oct-2017 00:42:41 PRC] PHP Fatal error:  Call to undefined function optionsDate() in D:\phpStudy\WWW\mifeng\Admin\Lib\Action\InformationAgeAction.class.php on line 30
+[16-Oct-2017 20:24:00 PRC] PHP Fatal error:  Call to a member function add() on array in D:\phpStudy\WWW\mifeng\Home\Lib\Action\MemberAction.class.php on line 44
+[16-Oct-2017 23:20:10 PRC] PHP Parse error:  syntax error, unexpected 'list' (T_LIST), expecting identifier (T_STRING) in D:\phpStudy\WWW\mifeng\Home\Lib\Model\CollectCatModel.class.php on line 3
+[16-Oct-2017 23:20:14 PRC] PHP Parse error:  syntax error, unexpected 'list' (T_LIST), expecting identifier (T_STRING) in D:\phpStudy\WWW\mifeng\Home\Lib\Model\CollectCatModel.class.php on line 3
+[17-Oct-2017 00:01:12 PRC] PHP Parse error:  syntax error, unexpected 'list' (T_LIST), expecting identifier (T_STRING) in D:\phpStudy\WWW\mifeng\Home\Lib\Model\CollectCatModel.class.php on line 3
+[17-Oct-2017 00:05:03 PRC] PHP Fatal error:  Call to a member function validate() on null in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\MemberAction.class.php on line 99
+[17-Oct-2017 00:05:20 PRC] PHP Fatal error:  Call to a member function data() on null in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\MemberAction.class.php on line 108
+[17-Oct-2017 00:08:57 PRC] PHP Fatal error:  Call to a member function where() on array in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Model\InformationModel.class.php on line 25
+[17-Oct-2017 00:10:05 PRC] PHP Fatal error:  Call to a member function where() on array in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Model\InformationModel.class.php on line 25
+[17-Oct-2017 00:41:11 PRC] PHP Parse error:  syntax error, unexpected 'var' (T_VAR) in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\MemberAction.class.php on line 61
+[18-Oct-2017 00:02:32 Asia/Shanghai] PHP Parse error:  syntax error, unexpected 'public' (T_PUBLIC) in D:\phpStudy\WWW\mifeng\mifeng\Common\Functions\common.php on line 134
+[18-Oct-2017 00:02:32 Asia/Shanghai] PHP Parse error:  syntax error, unexpected 'public' (T_PUBLIC) in D:\phpStudy\WWW\mifeng\mifeng\Common\Functions\common.php on line 134
+[18-Oct-2017 00:58:04 PRC] PHP Parse error:  syntax error, unexpected ')' in D:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Admin\Cache\8c31ee4447fb98984913f6fb34110b64.php on line 110
+[18-Oct-2017 00:58:53 PRC] PHP Parse error:  syntax error, unexpected ')' in D:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Admin\Cache\8c31ee4447fb98984913f6fb34110b64.php on line 110
+[18-Oct-2017 00:59:49 PRC] PHP Fatal error:  Call to a member function join() on null in D:\phpStudy\WWW\mifeng\mifeng\Admin\Lib\Model\InformationModel.class.php on line 52
+[18-Oct-2017 01:00:03 PRC] PHP Parse error:  syntax error, unexpected ')' in D:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Admin\Cache\8c31ee4447fb98984913f6fb34110b64.php on line 110
+[18-Oct-2017 01:27:43 PRC] PHP Parse error:  syntax error, unexpected '}' in D:\phpStudy\WWW\mifeng\mifeng\Admin\Lib\Action\InformationAction.class.php on line 109
+[18-Oct-2017 21:21:49 PRC] PHP Parse error:  syntax error, unexpected 'foreach' (T_FOREACH) in D:\phpStudy\WWW\mifeng\mifeng\Admin\Lib\Action\InformationAction.class.php on line 164
+[18-Oct-2017 21:22:34 PRC] PHP Parse error:  syntax error, unexpected 'foreach' (T_FOREACH) in D:\phpStudy\WWW\mifeng\mifeng\Admin\Lib\Action\InformationAction.class.php on line 164
+[18-Oct-2017 22:51:00 PRC] PHP Parse error:  syntax error, unexpected '}' in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\MemberAction.class.php on line 75
+[18-Oct-2017 23:13:31 PRC] PHP Parse error:  syntax error, unexpected ')' in D:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Home\Cache\1e48e4fae9dc537c1f42816ecc659ee9.php on line 19
+[18-Oct-2017 23:13:35 PRC] PHP Parse error:  syntax error, unexpected ')' in D:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Home\Cache\1e48e4fae9dc537c1f42816ecc659ee9.php on line 19
+[18-Oct-2017 23:27:02 PRC] PHP Parse error:  syntax error, unexpected ')' in D:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Home\Cache\b1bf4265c10afa27853faeb2f64a896c.php on line 21
+[21-Oct-2017 00:44:27 PRC] PHP Fatal error:  Call to a member function create() on null in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\MemberAction.class.php on line 268
+[21-Oct-2017 22:19:17 PRC] PHP Parse error:  syntax error, unexpected '}' in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\ArticleAction.class.php on line 16
+[21-Oct-2017 22:54:31 PRC] PHP Parse error:  syntax error, unexpected 'cat_id' (T_STRING) in D:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Home\Cache\830945088b421e7a9afb1f657c47a4d3.php on line 21
+[21-Oct-2017 22:57:51 PRC] PHP Parse error:  syntax error, unexpected '=', expecting ']' in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\InformationAction.class.php on line 9
+[22-Oct-2017 00:06:32 PRC] PHP Fatal error:  Call to a member function comment_count() on null in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\InformationAction.class.php on line 26
+[22-Oct-2017 00:07:16 PRC] PHP Fatal error:  Call to a member function comment_count() on null in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\InformationAction.class.php on line 26
+[22-Oct-2017 00:08:40 PRC] PHP Parse error:  syntax error, unexpected ')', expecting variable (T_VARIABLE) or '$' in D:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Home\Cache\859967af94f971544fd8daae363fa5dc.php on line 56
+[22-Oct-2017 09:51:00 PRC] PHP Fatal error:  Call to undefined function data() in D:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Home\Cache\859967af94f971544fd8daae363fa5dc.php on line 62
+[22-Oct-2017 09:51:14 PRC] PHP Fatal error:  Call to undefined function data() in D:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Home\Cache\859967af94f971544fd8daae363fa5dc.php on line 62
+[22-Oct-2017 09:52:34 PRC] PHP Fatal error:  Call to undefined function data() in D:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Home\Cache\859967af94f971544fd8daae363fa5dc.php on line 62
+[22-Oct-2017 09:54:28 PRC] PHP Fatal error:  Call to undefined function data() in D:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Home\Cache\859967af94f971544fd8daae363fa5dc.php on line 62
+[22-Oct-2017 10:28:23 PRC] PHP Fatal error:  Call to a member function create() on null in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\InformationAction.class.php on line 87
+[22-Oct-2017 13:55:51 PRC] PHP Parse error:  syntax error, unexpected '<' in D:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Home\Cache\9ab878c24b3bb27676df22f5ebfdfbb2.php on line 49
+[22-Oct-2017 13:56:19 PRC] PHP Parse error:  syntax error, unexpected '<' in D:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Home\Cache\9ab878c24b3bb27676df22f5ebfdfbb2.php on line 49
+[22-Oct-2017 13:56:57 PRC] PHP Parse error:  syntax error, unexpected '<' in D:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Home\Cache\9ab878c24b3bb27676df22f5ebfdfbb2.php on line 49
+[22-Oct-2017 13:58:09 PRC] PHP Parse error:  syntax error, unexpected ';' in D:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Home\Cache\9ab878c24b3bb27676df22f5ebfdfbb2.php on line 49
+[22-Oct-2017 13:58:28 PRC] PHP Parse error:  syntax error, unexpected '<' in D:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Home\Cache\9ab878c24b3bb27676df22f5ebfdfbb2.php on line 49
+[22-Oct-2017 14:20:47 PRC] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\InformationAction.class.php on line 40
+[22-Oct-2017 15:12:48 PRC] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\MemberAction.class.php on line 113
+[22-Oct-2017 15:13:11 PRC] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\MemberAction.class.php on line 114
+[22-Oct-2017 15:13:21 PRC] PHP Fatal error:  Call to undefined function field() in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Model\AttentionModel.class.php on line 39
+[22-Oct-2017 15:22:24 PRC] PHP Fatal error:  Call to undefined function is_attention() in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Model\AttentionModel.class.php on line 43
+[22-Oct-2017 15:37:28 PRC] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\InformationAction.class.php on line 65
+[22-Oct-2017 15:45:46 PRC] PHP Fatal error:  Call to undefined method Page::totalPages() in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\InformationAction.class.php on line 64
+[22-Oct-2017 15:46:10 PRC] PHP Fatal error:  Cannot access protected property Page::$totalPages in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\InformationAction.class.php on line 64
+[22-Oct-2017 15:46:20 PRC] PHP Fatal error:  Cannot use object of type Page as array in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\InformationAction.class.php on line 64
+[22-Oct-2017 15:47:23 PRC] PHP Fatal error:  Call to undefined method Page::totalPages() in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\InformationAction.class.php on line 65
+[22-Oct-2017 15:47:48 PRC] PHP Fatal error:  Cannot access protected property Page::$totalPages in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\InformationAction.class.php on line 65
+[22-Oct-2017 16:22:47 PRC] PHP Fatal error:  Cannot use object of type Page as array in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\MemberAction.class.php on line 117
+[22-Oct-2017 17:09:23 PRC] PHP Parse error:  syntax error, unexpected ',' in D:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Home\Cache\8630110991eec29bfba089e1e17bebad.php on line 124
+[22-Oct-2017 17:37:44 PRC] PHP Parse error:  syntax error, unexpected 'public' (T_PUBLIC) in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\MemberAction.class.php on line 185
+[22-Oct-2017 17:38:51 PRC] PHP Parse error:  syntax error, unexpected ';' in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\MemberAction.class.php on line 169
+[22-Oct-2017 18:13:50 PRC] PHP Parse error:  syntax error, unexpected ']' in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\MemberAction.class.php on line 193
+[22-Oct-2017 18:13:51 PRC] PHP Parse error:  syntax error, unexpected ']' in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\MemberAction.class.php on line 193
+[22-Oct-2017 18:14:08 PRC] PHP Parse error:  syntax error, unexpected ']' in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\MemberAction.class.php on line 193
+[22-Oct-2017 18:15:02 PRC] PHP Parse error:  syntax error, unexpected ']' in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\MemberAction.class.php on line 193
+[23-Oct-2017 01:27:52 PRC] PHP Fatal error:  Call to a member function where() on null in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\MemberAction.class.php on line 206
+[23-Oct-2017 01:28:07 PRC] PHP Fatal error:  Call to a member function where() on null in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\MemberAction.class.php on line 206
+[23-Oct-2017 01:28:20 PRC] PHP Fatal error:  Call to a member function where() on null in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\MemberAction.class.php on line 206
+[23-Oct-2017 01:28:47 PRC] PHP Fatal error:  Call to undefined function find() in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\MemberAction.class.php on line 206
+[23-Oct-2017 01:29:06 PRC] PHP Fatal error:  Call to undefined function select() in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\MemberAction.class.php on line 206
+[23-Oct-2017 01:29:26 PRC] PHP Fatal error:  Call to undefined function select() in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\MemberAction.class.php on line 206
+[23-Oct-2017 01:30:00 PRC] PHP Fatal error:  Call to undefined function sum() in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\MemberAction.class.php on line 206
+[23-Oct-2017 01:30:36 PRC] PHP Fatal error:  Call to undefined function um() in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\MemberAction.class.php on line 206
+[23-Oct-2017 01:51:37 PRC] PHP Fatal error:  Cannot use object of type Page as array in D:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Home\Cache\0bb0a7ad009b7a1a23545c6e86886262.php on line 49
+[23-Oct-2017 01:51:46 PRC] PHP Fatal error:  Cannot use object of type Page as array in D:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Home\Cache\0bb0a7ad009b7a1a23545c6e86886262.php on line 49
+[23-Oct-2017 01:52:38 PRC] PHP Fatal error:  Cannot use object of type Page as array in D:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Home\Cache\0bb0a7ad009b7a1a23545c6e86886262.php on line 49
+[23-Oct-2017 10:16:47 PRC] PHP Fatal error:  Call to undefined function find() in E:\phpStudy\WWW\mifeng\mifeng\Admin\Lib\Action\InformationAction.class.php on line 105
+[23-Oct-2017 11:46:25 Asia/Shanghai] PHP Warning:  fopen(/Uploads/user/): failed to open stream: No such file or directory in E:\phpStudy\WWW\mifeng\mifeng\index2.php on line 4
+[23-Oct-2017 11:46:25 Asia/Shanghai] PHP Warning:  curl_setopt(): supplied argument is not a valid File-Handle resource in E:\phpStudy\WWW\mifeng\mifeng\index2.php on line 6
+[23-Oct-2017 11:46:25 Asia/Shanghai] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\phpStudy\WWW\mifeng\mifeng\index2.php on line 11
+[23-Oct-2017 11:46:37 Asia/Shanghai] PHP Warning:  fopen(Uploads/user/): failed to open stream: No such file or directory in E:\phpStudy\WWW\mifeng\mifeng\index2.php on line 4
+[23-Oct-2017 11:46:37 Asia/Shanghai] PHP Warning:  curl_setopt(): supplied argument is not a valid File-Handle resource in E:\phpStudy\WWW\mifeng\mifeng\index2.php on line 6
+[23-Oct-2017 11:46:38 Asia/Shanghai] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\phpStudy\WWW\mifeng\mifeng\index2.php on line 11
+[23-Oct-2017 11:47:10 Asia/Shanghai] PHP Warning:  fopen(Uploads/user): failed to open stream: Permission denied in E:\phpStudy\WWW\mifeng\mifeng\index2.php on line 4
+[23-Oct-2017 11:47:10 Asia/Shanghai] PHP Warning:  curl_setopt(): supplied argument is not a valid File-Handle resource in E:\phpStudy\WWW\mifeng\mifeng\index2.php on line 6
+[23-Oct-2017 11:47:11 Asia/Shanghai] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\phpStudy\WWW\mifeng\mifeng\index2.php on line 11
+[23-Oct-2017 11:47:50 Asia/Shanghai] PHP Warning:  fopen(/Uploads/user/): failed to open stream: No such file or directory in E:\phpStudy\WWW\mifeng\mifeng\index2.php on line 18
+[23-Oct-2017 11:47:50 Asia/Shanghai] PHP Warning:  curl_setopt(): supplied argument is not a valid File-Handle resource in E:\phpStudy\WWW\mifeng\mifeng\index2.php on line 20
+[23-Oct-2017 11:47:50 Asia/Shanghai] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\phpStudy\WWW\mifeng\mifeng\index2.php on line 24
+[23-Oct-2017 11:47:50 Asia/Shanghai] PHP Fatal error:  Class 'PubCommon' not found in E:\phpStudy\WWW\mifeng\mifeng\index2.php on line 25
+[25-Oct-2017 00:29:00 PRC] PHP Fatal error:  Call to undefined function imagecopymerge_alpha() in D:\phpStudy\WWW\mifeng\mifeng\ThinkPHP\Extend\Library\ORG\Util\Image.class.php on line 83
+[25-Oct-2017 00:29:41 PRC] PHP Fatal error:  Using $this when not in object context in D:\phpStudy\WWW\mifeng\mifeng\ThinkPHP\Extend\Library\ORG\Util\Image.class.php on line 83
+[25-Oct-2017 20:48:53 PRC] PHP Fatal error:  Cannot access protected property Page::$totalPages in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\MemberAction.class.php on line 313
+[25-Oct-2017 20:49:01 PRC] PHP Fatal error:  Cannot use object of type Page as array in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\MemberAction.class.php on line 313
+[25-Oct-2017 20:49:20 PRC] PHP Fatal error:  Cannot access protected property Page::$totalPages in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\MemberAction.class.php on line 313
+[25-Oct-2017 20:51:52 PRC] PHP Fatal error:  Cannot use object of type Page as array in D:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Home\Cache\1e48e4fae9dc537c1f42816ecc659ee9.php on line 45
+[25-Oct-2017 23:54:07 PRC] PHP Parse error:  syntax error, unexpected '$file_url' (T_VARIABLE) in D:\phpStudy\WWW\mifeng\mifeng\Admin\Lib\Action\ArticleAction.class.php on line 76
+[25-Oct-2017 23:55:06 PRC] PHP Parse error:  syntax error, unexpected '$file_url' (T_VARIABLE) in D:\phpStudy\WWW\mifeng\mifeng\Admin\Lib\Action\ArticleAction.class.php on line 77
+[25-Oct-2017 23:55:24 PRC] PHP Parse error:  syntax error, unexpected '$file_url' (T_VARIABLE) in D:\phpStudy\WWW\mifeng\mifeng\Admin\Lib\Action\ArticleAction.class.php on line 77
+[29-Oct-2017 10:21:11 PRC] PHP Fatal error:  Call to a member function is_pay() on null in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\CourseAction.class.php on line 30
+[29-Oct-2017 10:24:08 PRC] PHP Fatal error:  Call to a member function is_pay() on null in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\CourseAction.class.php on line 102
+[29-Oct-2017 17:16:29 PRC] PHP Fatal error:  Call to undefined method File::make_dir() in D:\phpStudy\WWW\mifeng\mifeng\Admin\Lib\Action\CourseAction.class.php on line 198
+[29-Oct-2017 17:39:21 PRC] PHP Fatal error:  Cannot redeclare CourseAction::del() in D:\phpStudy\WWW\mifeng\mifeng\Admin\Lib\Action\CourseAction.class.php on line 285
+[01-Nov-2017 23:27:07 PRC] PHP Fatal error:  Cannot redeclare MallModel::count() in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Model\MallModel.class.php on line 38
+[01-Nov-2017 23:27:09 PRC] PHP Fatal error:  Cannot redeclare MallModel::count() in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Model\MallModel.class.php on line 38
+[02-Nov-2017 22:57:11 PRC] PHP Parse error:  syntax error, unexpected '=', expecting ')' in D:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Home\Cache\e33521610f42429f48a9a96b592f7f2f.php on line 37
+[02-Nov-2017 22:58:06 PRC] PHP Parse error:  syntax error, unexpected '=', expecting ')' in D:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Home\Cache\e33521610f42429f48a9a96b592f7f2f.php on line 37
+[04-Nov-2017 01:37:00 PRC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in D:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Home\Cache\a2155dce706e49c7e02989d5643c1425.php on line 50
+[04-Nov-2017 01:37:21 PRC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in D:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Home\Cache\a2155dce706e49c7e02989d5643c1425.php on line 50
+[04-Nov-2017 19:16:21 PRC] PHP Fatal error:  Class 'IpLocation' not found in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\RecruitmentAction.class.php on line 11
+[04-Nov-2017 19:30:15 PRC] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\RecruitmentAction.class.php on line 26
+[04-Nov-2017 19:30:37 PRC] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\RecruitmentAction.class.php on line 26
+[04-Nov-2017 23:19:31 PRC] PHP Parse error:  syntax error, unexpected '}', expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\RecruitmentAction.class.php on line 68
+[05-Nov-2017 02:17:19 PRC] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\RecruitmentAction.class.php on line 74
+[05-Nov-2017 02:17:22 PRC] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\RecruitmentAction.class.php on line 74
+[05-Nov-2017 12:36:08 PRC] PHP Parse error:  syntax error, unexpected 'M' (T_STRING) in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\RecruitmentAction.class.php on line 174
+[05-Nov-2017 12:36:51 PRC] PHP Parse error:  syntax error, unexpected 'M' (T_STRING) in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\RecruitmentAction.class.php on line 174
+[05-Nov-2017 12:36:52 PRC] PHP Parse error:  syntax error, unexpected 'M' (T_STRING) in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\RecruitmentAction.class.php on line 174
+[05-Nov-2017 12:37:05 PRC] PHP Parse error:  syntax error, unexpected 'M' (T_STRING) in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\RecruitmentAction.class.php on line 174
+[05-Nov-2017 12:37:17 PRC] PHP Parse error:  syntax error, unexpected '}' in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Model\RecruitmentModel.class.php on line 94
+[05-Nov-2017 13:06:12 PRC] PHP Parse error:  syntax error, unexpected 'var' (T_VAR) in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Model\RecruitmentModel.class.php on line 94
+[05-Nov-2017 21:17:13 PRC] PHP Parse error:  syntax error, unexpected 'M' (T_STRING) in D:\phpStudy\WWW\mifeng\mifeng\Admin\Lib\Action\MallAction.class.php on line 227
+[05-Nov-2017 22:44:09 PRC] PHP Parse error:  syntax error, unexpected '；' (T_STRING) in D:\phpStudy\WWW\mifeng\mifeng\Admin\Lib\Action\UserAction.class.php on line 102
+[05-Nov-2017 22:44:09 PRC] PHP Parse error:  syntax error, unexpected '；' (T_STRING) in D:\phpStudy\WWW\mifeng\mifeng\Admin\Lib\Action\UserAction.class.php on line 102
+[05-Nov-2017 22:44:10 PRC] PHP Parse error:  syntax error, unexpected '；' (T_STRING) in D:\phpStudy\WWW\mifeng\mifeng\Admin\Lib\Action\UserAction.class.php on line 102
+[06-Nov-2017 01:16:48 PRC] PHP Fatal error:  Cannot redeclare RecruitmentAction::cast_info() in D:\phpStudy\WWW\mifeng\mifeng\Admin\Lib\Action\RecruitmentAction.class.php on line 135
+[06-Nov-2017 01:17:08 PRC] PHP Parse error:  syntax error, unexpected 'where' (T_STRING) in D:\phpStudy\WWW\mifeng\mifeng\Admin\Lib\Model\RecruitmentModel.class.php on line 58
+[06-Nov-2017 23:51:26 PRC] PHP Fatal error:  Call to a member function where() on null in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\CommonAction.class.php on line 64
+[06-Nov-2017 23:51:27 PRC] PHP Fatal error:  Call to a member function where() on null in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\CommonAction.class.php on line 64
+[06-Nov-2017 23:51:29 PRC] PHP Fatal error:  Call to a member function where() on null in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\CommonAction.class.php on line 64
+[06-Nov-2017 23:51:33 PRC] PHP Fatal error:  Call to a member function where() on null in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\CommonAction.class.php on line 64
+[07-Nov-2017 01:05:13 PRC] PHP Fatal error:  Cannot use isset() on the result of a function call (you can use "null !== func()" instead) in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\UserAction.class.php on line 40
+[15-Nov-2017 01:03:54 PRC] PHP Parse error:  syntax error, unexpected ')' in D:\phpStudy\WWW\mifeng\mifeng\Admin\Lib\Action\ReelAction.class.php on line 92
+[15-Nov-2017 01:53:12 PRC] PHP Fatal error:  Call to a member function where() on null in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\ReelAction.class.php on line 57
+[15-Nov-2017 02:00:21 PRC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in D:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Home\Cache\72956172d4416b37d73d95cdf54ec44a.php on line 60
+[15-Nov-2017 02:00:47 PRC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in D:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Home\Cache\72956172d4416b37d73d95cdf54ec44a.php on line 60
+[15-Nov-2017 02:02:07 PRC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in D:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Home\Cache\72956172d4416b37d73d95cdf54ec44a.php on line 60
+[15-Nov-2017 02:02:43 PRC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in D:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Home\Cache\72956172d4416b37d73d95cdf54ec44a.php on line 60
+[15-Nov-2017 02:03:23 PRC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in D:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Home\Cache\72956172d4416b37d73d95cdf54ec44a.php on line 60
+[15-Nov-2017 02:03:48 PRC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in D:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Home\Cache\72956172d4416b37d73d95cdf54ec44a.php on line 60
+[15-Nov-2017 02:04:02 PRC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in D:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Home\Cache\72956172d4416b37d73d95cdf54ec44a.php on line 60
+[15-Nov-2017 02:04:34 PRC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in D:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Home\Cache\72956172d4416b37d73d95cdf54ec44a.php on line 60
+[15-Nov-2017 02:05:01 PRC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in D:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Home\Cache\72956172d4416b37d73d95cdf54ec44a.php on line 60
+[15-Nov-2017 02:05:55 PRC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in D:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Home\Cache\72956172d4416b37d73d95cdf54ec44a.php on line 60
+[18-Nov-2017 14:08:50 PRC] PHP Parse error:  syntax error, unexpected ';' in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\CommonAction.class.php on line 97
+[18-Nov-2017 16:21:07 PRC] PHP Parse error:  syntax error, unexpected ':' in D:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Home\Cache\e8bf90f56948bd6fc4e4e4cb801e550c.php on line 57
+[18-Nov-2017 17:48:34 PRC] PHP Fatal error:  Call to a member function data() on null in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\RecruitmentAction.class.php on line 452
+[18-Nov-2017 17:48:43 PRC] PHP Fatal error:  Call to a member function data() on null in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\RecruitmentAction.class.php on line 452
+[18-Nov-2017 17:48:55 PRC] PHP Fatal error:  Call to a member function data() on null in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\RecruitmentAction.class.php on line 452
+[18-Nov-2017 17:49:21 PRC] PHP Fatal error:  Call to a member function data() on null in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\RecruitmentAction.class.php on line 452
+[18-Nov-2017 18:06:16 PRC] PHP Fatal error:  Cannot redeclare RecruitmentAction::del() in D:\phpStudy\WWW\mifeng\mifeng\Admin\Lib\Action\RecruitmentAction.class.php on line 236
+[19-Nov-2017 18:18:40 PRC] PHP Fatal error:  Call to undefined function service() in D:\phpStudy\WWW\mifeng\mifeng\Admin\Lib\Action\UserAction.class.php on line 132
+[19-Nov-2017 18:19:15 PRC] PHP Fatal error:  Call to undefined function service() in D:\phpStudy\WWW\mifeng\mifeng\Admin\Lib\Action\UserAction.class.php on line 133
+[19-Nov-2017 18:19:45 PRC] PHP Fatal error:  Call to undefined function service() in D:\phpStudy\WWW\mifeng\mifeng\Admin\Lib\Action\UserAction.class.php on line 133
+[19-Nov-2017 18:21:28 PRC] PHP Parse error:  syntax error, unexpected ',' in D:\phpStudy\WWW\mifeng\mifeng\Admin\Lib\Action\UserAction.class.php on line 115
+[19-Nov-2017 18:21:46 PRC] PHP Parse error:  syntax error, unexpected ',' in D:\phpStudy\WWW\mifeng\mifeng\Admin\Lib\Action\UserAction.class.php on line 115
+[26-Nov-2017 23:34:03 PRC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in D:\phpStudy\WWW\mifeng\mifeng\ThinkPHP\Common\functions.php on line 552
+[26-Nov-2017 23:34:03 PRC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in D:\phpStudy\WWW\mifeng\mifeng\ThinkPHP\Common\functions.php on line 552
+[26-Nov-2017 23:34:03 PRC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in D:\phpStudy\WWW\mifeng\mifeng\ThinkPHP\Common\functions.php on line 552
+[27-Nov-2017 00:36:42 PRC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in D:\phpStudy\WWW\mifeng\mifeng\ThinkPHP\Common\functions.php on line 552
+[27-Nov-2017 00:37:03 PRC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in D:\phpStudy\WWW\mifeng\mifeng\ThinkPHP\Common\functions.php on line 552
+[27-Nov-2017 00:37:03 PRC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in D:\phpStudy\WWW\mifeng\mifeng\ThinkPHP\Common\functions.php on line 552
+[27-Nov-2017 00:37:03 PRC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in D:\phpStudy\WWW\mifeng\mifeng\ThinkPHP\Common\functions.php on line 552
+[27-Nov-2017 00:37:24 PRC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in D:\phpStudy\WWW\mifeng\mifeng\ThinkPHP\Common\functions.php on line 552
+[27-Nov-2017 00:51:24 PRC] PHP Fatal error:  Cannot redeclare RecruitmentModel::lists2() in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Model\RecruitmentModel.class.php on line 235
+[27-Nov-2017 00:51:26 PRC] PHP Fatal error:  Cannot redeclare RecruitmentModel::lists2() in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Model\RecruitmentModel.class.php on line 235
+[03-Dec-2017 20:43:49 PRC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in D:\phpStudy\WWW\mifeng\mifeng\ThinkPHP\Common\functions.php on line 552
+[03-Dec-2017 20:43:49 PRC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in D:\phpStudy\WWW\mifeng\mifeng\ThinkPHP\Common\functions.php on line 552
+[03-Dec-2017 20:43:49 PRC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in D:\phpStudy\WWW\mifeng\mifeng\ThinkPHP\Common\functions.php on line 552
+[03-Dec-2017 20:43:49 PRC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in D:\phpStudy\WWW\mifeng\mifeng\ThinkPHP\Common\functions.php on line 552
+[03-Dec-2017 20:43:49 PRC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in D:\phpStudy\WWW\mifeng\mifeng\ThinkPHP\Common\functions.php on line 552
+[03-Dec-2017 20:43:49 PRC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in D:\phpStudy\WWW\mifeng\mifeng\ThinkPHP\Common\functions.php on line 552
+[03-Dec-2017 20:43:49 PRC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in D:\phpStudy\WWW\mifeng\mifeng\ThinkPHP\Common\functions.php on line 552
+[03-Dec-2017 20:43:49 PRC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in D:\phpStudy\WWW\mifeng\mifeng\ThinkPHP\Common\functions.php on line 552
+[03-Dec-2017 20:43:49 PRC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in D:\phpStudy\WWW\mifeng\mifeng\ThinkPHP\Common\functions.php on line 552
+[03-Dec-2017 21:46:46 PRC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in D:\phpStudy\WWW\mifeng\mifeng\ThinkPHP\Common\functions.php on line 552
+[06-Dec-2017 01:07:49 PRC] PHP Parse error:  syntax error, unexpected '$data' (T_VARIABLE) in D:\phpStudy\WWW\mifeng\mifeng\Admin\Lib\Action\InformationAction.class.php on line 298
+[06-Dec-2017 01:11:44 PRC] PHP Parse error:  syntax error, unexpected ';' in D:\phpStudy\WWW\mifeng\mifeng\Admin\Lib\Action\InformationAction.class.php on line 311
+[19-Jan-2018 00:53:43 PRC] PHP Parse error:  syntax error, unexpected ')' in D:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Home\Cache\16b57a314dd92288f3bd36bc0391e376.php on line 127
+[19-Jan-2018 01:19:53 PRC] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\RecruitmentAction.class.php on line 123
+[19-Jan-2018 15:03:08 PRC] PHP Fatal error:  require_once(): Failed opening required '../lib/WxPay.Api.php' (include_path='.;C:\php\pear;./ThinkPHP/Extend/Vendor/') in E:\phpStudy\WWW\mifeng\mifeng\wx\example\WxPay.JsApiPay.php on line 2
+[19-Jan-2018 15:05:14 PRC] PHP Fatal error:  require_once(): Failed opening required '../lib/WxPay.Api.php' (include_path='.;C:\php\pear;./ThinkPHP/Extend/Vendor/') in E:\phpStudy\WWW\mifeng\mifeng\wx\example\WxPay.JsApiPay.php on line 2
+[19-Jan-2018 15:05:50 PRC] PHP Fatal error:  require_once(): Failed opening required '../WxPay.Exception.php' (include_path='.;C:\php\pear;./ThinkPHP/Extend/Vendor/') in E:\phpStudy\WWW\mifeng\mifeng\wx\lib\WxPay.Api.php on line 2
+[19-Jan-2018 15:09:26 PRC] PHP Fatal error:  require_once(): Failed opening required '../lib/WxPay.Api.php' (include_path='.;C:\php\pear;./ThinkPHP/Extend/Vendor/') in E:\phpStudy\WWW\mifeng\mifeng\wx\example\WxPay.JsApiPay.php on line 2
+[19-Jan-2018 15:10:04 PRC] PHP Fatal error:  require_once(): Failed opening required '../lib/WxPay.Api.php' (include_path='.;C:\php\pear;./ThinkPHP/Extend/Vendor/') in E:\phpStudy\WWW\mifeng\mifeng\wx\example\WxPay.JsApiPay.php on line 2
+[19-Jan-2018 15:11:53 PRC] PHP Fatal error:  require_once(): Failed opening required '../lib/WxPay.Api.php' (include_path='.;C:\php\pear;./ThinkPHP/Extend/Vendor/') in E:\phpStudy\WWW\mifeng\mifeng\wx\example\WxPay.JsApiPay.php on line 2
+[19-Jan-2018 15:12:33 PRC] PHP Fatal error:  Cannot redeclare class Log in E:\phpStudy\WWW\mifeng\mifeng\wx\example\log.php on line 31
+[19-Jan-2018 17:24:31 PRC] PHP Fatal error:  Call to a member function validate() on null in E:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\MemberAction.class.php on line 537
+[19-Jan-2018 17:24:47 PRC] PHP Fatal error:  Call to a member function validate() on null in E:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\MemberAction.class.php on line 537
+[19-Jan-2018 17:36:12 PRC] PHP Fatal error:  Call to a member function validate() on null in E:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\MemberAction.class.php on line 537
+[19-Jan-2018 17:38:30 PRC] PHP Fatal error:  Call to a member function validate() on null in E:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\MemberAction.class.php on line 537
+[20-Jan-2018 00:41:44 PRC] PHP Parse error:  syntax error, unexpected 'return' (T_RETURN), expecting function (T_FUNCTION) in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Model\RecruitmentModel.class.php on line 166
+[20-Jan-2018 00:43:14 PRC] PHP Parse error:  syntax error, unexpected 'return' (T_RETURN), expecting function (T_FUNCTION) in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Model\RecruitmentModel.class.php on line 168
+[20-Jan-2018 00:43:21 PRC] PHP Parse error:  syntax error, unexpected 'return' (T_RETURN), expecting function (T_FUNCTION) in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Model\RecruitmentModel.class.php on line 168
+[20-Jan-2018 00:43:34 PRC] PHP Parse error:  syntax error, unexpected 'var_dump' (T_STRING), expecting function (T_FUNCTION) in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Model\RecruitmentModel.class.php on line 167
+[20-Jan-2018 00:44:08 PRC] PHP Parse error:  syntax error, unexpected 'var_dump' (T_STRING), expecting function (T_FUNCTION) in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Model\RecruitmentModel.class.php on line 168
+[22-Jan-2018 14:04:45 PRC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in E:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Admin\Cache\876879825021ba87695721edfb82583f.php on line 67
+[22-Jan-2018 14:05:29 PRC] PHP Parse error:  syntax error, unexpected '<' in E:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Admin\Cache\876879825021ba87695721edfb82583f.php on line 59
+[22-Jan-2018 14:05:41 PRC] PHP Parse error:  syntax error, unexpected '<' in E:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Admin\Cache\876879825021ba87695721edfb82583f.php on line 59
+[10-Mar-2018 01:54:00 PRC] PHP Parse error:  syntax error, unexpected ';' in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\InformationAction.class.php on line 79
+[12-Mar-2018 00:08:47 PRC] PHP Parse error:  syntax error, unexpected '(', expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Model\RecruitmentModel.class.php on line 82
+[12-Mar-2018 23:54:27 PRC] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\MemberAction.class.php on line 262
+[12-Mar-2018 23:54:39 PRC] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\MemberAction.class.php on line 262
+[12-Mar-2018 23:54:40 PRC] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\MemberAction.class.php on line 262
+[12-Mar-2018 23:54:48 PRC] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\MemberAction.class.php on line 262
+[13-Mar-2018 01:24:13 PRC] PHP Parse error:  syntax error, unexpected 'explode' (T_STRING) in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\RecruitmentAction.class.php on line 479
+[13-Mar-2018 01:24:42 PRC] PHP Parse error:  syntax error, unexpected 'implode' (T_STRING) in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\RecruitmentAction.class.php on line 479
+[13-Mar-2018 01:24:43 PRC] PHP Parse error:  syntax error, unexpected 'implode' (T_STRING) in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\RecruitmentAction.class.php on line 479
+[13-Mar-2018 01:24:48 PRC] PHP Parse error:  syntax error, unexpected 'implode' (T_STRING) in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\RecruitmentAction.class.php on line 479
+[13-Mar-2018 01:24:50 PRC] PHP Parse error:  syntax error, unexpected 'implode' (T_STRING) in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\RecruitmentAction.class.php on line 479
+[13-Mar-2018 01:24:52 PRC] PHP Parse error:  syntax error, unexpected 'implode' (T_STRING) in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\RecruitmentAction.class.php on line 479
+[13-Mar-2018 01:24:53 PRC] PHP Parse error:  syntax error, unexpected 'implode' (T_STRING) in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\RecruitmentAction.class.php on line 479
+[13-Mar-2018 01:24:54 PRC] PHP Parse error:  syntax error, unexpected 'implode' (T_STRING) in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\RecruitmentAction.class.php on line 479
+[13-Mar-2018 01:24:55 PRC] PHP Parse error:  syntax error, unexpected 'implode' (T_STRING) in D:\phpStudy\WWW\mifeng\mifeng\Home\Lib\Action\RecruitmentAction.class.php on line 479
+[21-Mar-2018 22:44:29 PRC] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR), expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in E:\phpStudy\WWW\mifeng\mifeng\Admin\Lib\Model\MeetingModel.class.php on line 19
+[25-Mar-2018 19:36:25 PRC] PHP Fatal error:  Class 'MySQLReback' not found in E:\phpStudy\WWW\mifeng\mifeng\Admin\Lib\Action\WebinfoAction.class.php on line 87
+[25-Mar-2018 21:58:21 PRC] PHP Fatal error:  Class 'MySQLReback' not found in E:\phpStudy\WWW\mifeng\mifeng\Admin\Lib\Action\WebinfoAction.class.php on line 99
+[25-Mar-2018 21:58:39 PRC] PHP Fatal error:  Class 'MySQLReback' not found in E:\phpStudy\WWW\mifeng\mifeng\Admin\Lib\Action\WebinfoAction.class.php on line 100
+[25-Mar-2018 21:59:04 PRC] PHP Fatal error:  Class 'Admin\Controller\MySQLReback' not found in E:\phpStudy\WWW\mifeng\mifeng\Admin\Lib\Action\WebinfoAction.class.php on line 99
+[25-Mar-2018 22:01:32 PRC] PHP Fatal error:  Class 'Admin\Controller\MySQLReback' not found in E:\phpStudy\WWW\mifeng\mifeng\Admin\Lib\Action\WebinfoAction.class.php on line 99
+[25-Mar-2018 22:03:03 PRC] PHP Fatal error:  require_once(): Failed opening required 'mysql/MySQLReback.php' (include_path='.;C:\php\pear;./ThinkPHP/Extend/Vendor/') in E:\phpStudy\WWW\mifeng\mifeng\Admin\Lib\Action\WebinfoAction.class.php on line 87
+[25-Mar-2018 22:17:28 PRC] PHP Fatal error:  Call to undefined function getfiletime() in E:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Admin\Cache\0fa7937d254a8505789d1e6c5b11089c.php on line 61
+[25-Mar-2018 22:17:47 PRC] PHP Fatal error:  Call to undefined function getfiletime() in E:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Admin\Cache\0fa7937d254a8505789d1e6c5b11089c.php on line 61
+[25-Mar-2018 22:17:51 PRC] PHP Fatal error:  Call to undefined function getfiletime() in E:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Admin\Cache\0fa7937d254a8505789d1e6c5b11089c.php on line 61
+[25-Mar-2018 22:18:31 PRC] PHP Fatal error:  Call to undefined function getfiletime() in E:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Admin\Cache\0fa7937d254a8505789d1e6c5b11089c.php on line 61
+[25-Mar-2018 22:19:52 PRC] PHP Fatal error:  Call to undefined function getfiletime() in E:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Admin\Cache\0fa7937d254a8505789d1e6c5b11089c.php on line 61
+[25-Mar-2018 22:20:16 PRC] PHP Fatal error:  Call to undefined function getfiletime() in E:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Admin\Cache\0fa7937d254a8505789d1e6c5b11089c.php on line 61
+[25-Mar-2018 22:21:30 PRC] PHP Fatal error:  Class 'Admin\Controller\Exception' not found in E:\phpStudy\WWW\mifeng\mifeng\mysql\MySQLReback.class.php on line 230
+[25-Mar-2018 22:26:03 PRC] PHP Fatal error:  Call to undefined method Admin\Controller\MySQLReback::error() in E:\phpStudy\WWW\mifeng\mifeng\mysql\MySQLReback.class.php on line 230
+[26-Mar-2018 00:25:55 PRC] PHP Fatal error:  Call to undefined function getRegion() in E:\phpStudy\WWW\mifeng\mifeng\Admin\Lib\Action\RecruitmentAction.class.php on line 24
+[26-Mar-2018 00:26:56 PRC] PHP Fatal error:  Class 'Control' not found in E:\phpStudy\WWW\mifeng\mifeng\Admin\Lib\Action\RecruitmentAction.class.php on line 24
+[26-Mar-2018 00:28:40 PRC] PHP Parse error:  syntax error, unexpected 'public' (T_PUBLIC) in E:\phpStudy\WWW\mifeng\mifeng\Admin\Lib\Action\CommonAction.class.php on line 200
+[26-Mar-2018 00:29:24 PRC] PHP Fatal error:  Call to undefined function getRegion() in E:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Admin\Cache\f5fa2aa1235d562e416d03a6c7498de2.php on line 47
+[26-Mar-2018 00:47:41 PRC] PHP Parse error:  syntax error, unexpected '<' in E:\phpStudy\WWW\mifeng\mifeng\Cache\Runtime\Admin\Cache\f5fa2aa1235d562e416d03a6c7498de2.php on line 54
+[28-Mar-2018 00:35:40 PRC] PHP Parse error:  syntax error, unexpected ''.sql'' (T_CONSTANT_ENCAPSED_STRING) in E:\phpStudy\WWW\mifeng\mifeng\mysql\MySQLReback.class.php on line 68

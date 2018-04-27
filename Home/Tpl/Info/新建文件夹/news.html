@@ -1,0 +1,42 @@
+<include file='Public:pageHeader'/>
+<div class="head-height"></div>
+<include file='Public:location'/>
+<div class="box">
+    <div class="subnov">
+        <foreach name='article_cat' item='item'>
+        <a href="{:U('Info/News',array('cat_id'=>$item['cat_id']))}">{$item.cat_name}</a>
+        </foreach>
+    </div>
+    <div class="news-list wrap clearfix">
+        <div class="fl celan">
+            <ul>
+                <foreach name='article_cat' item='item'>
+                <li><a href="{:U('Info/News',array('cat_id'=>$item['cat_id']))}">{$item.cat_name}</a></li>
+                </foreach>
+            </ul>
+        </div>
+        <div class="fr">
+            <ul class="clearfix">
+                <foreach name='article_list' item='item'>
+                <li>
+                    <a href="{:U('Info/NewsDetail',array('id'=>$item['article_id']))}" class="clearfix">
+                        <div class="a1">
+                            <p>
+                                <if condition="$item['original_img'] neq ''">
+                                    <img src="/{$item.original_img.0}" alt="">
+                                </if>
+                            </p>
+                        </div>
+                        <div class="a2">
+                            <p>{$item.title|mySubstr=###,38}</p>
+                            <h6>{$item.add_time|date='Y-m-d',###}</h6>
+                        </div>
+                    </a>
+                </li>
+                </foreach>
+            </ul>
+            <include file='Public:pager'/>
+        </div>
+    </div>
+</div>
+<include file='Public:pageFooter'/>

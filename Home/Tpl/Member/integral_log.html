@@ -1,0 +1,64 @@
+<include file='Public:pageHeader'/>
+<body data-psd-width="750" class="f3f3f3">
+  <div class="My_points">
+    <div class="Mypo_1">
+      <div class="Mypo_mian" style="background-image: url(__IMG__/home_bg.jpg);">
+        <div class="po_1">
+          <i style="background-image: url(/{$user_info.pic});"></i>
+        </div>
+        <div class="po_2">
+          <span>{$user_info['integral']}</span>
+        </div>
+        <div class="po_3 clearfix">
+          <a href="{:U('Member/integral_type')}" class="fl">赚积分</a>
+          <a href="{:U('Mall/index')}" class="fr">积分兑换</a>
+        </div>
+      </div>
+    </div>
+    <div class="Mypo_2">
+      <h4 class="clearfix">
+        <span class="fl">积分明细</span>
+        <em class="fr">今日已获得{$day_integral|default='0'}分</em>
+      </h4>
+      <ul id="lists">
+        <include file='Member:integral_log_list'/>
+      </ul>
+      <if condition="count($list) egt $listRows">
+        <i class="list_more" data-p='1'>加载更多了</i>
+      </if>
+    </div>
+  </div>
+  <include file='Public:page_nav'/>
+  <include file='Public:login'/>
+</body>
+<include file='Public:pageFooter'/>
+<script type="text/javascript">
+  $(window).scroll(function() {  
+      var scrollTop = $(this).scrollTop(),scrollHeight = $(document).height(),windowHeight = $(this).height();  
+      var positionValue = (scrollTop + windowHeight) - scrollHeight;  
+      if(positionValue>=-400){
+          var _this = $('.list_more');
+          if(!_this.length){
+            return false;
+          }
+          var p = parseInt(_this.attr('data-p'))+1;
+          if(_this.attr('is')!='false'){
+              _this.attr("is",false);
+              $.ajax({
+                type: "GET",
+                url:"{:U('Member/integral_log')}",
+                data:"p="+p,
+                success:function(data){
+                  _this.attr("is",true);
+                  if(data.status==500){
+                    //完结
+                    _this.hide();
+                  }
+                  _this.attr('data-p',p);
+                  $("#lists").append(data.data);
+                },
+              });
+          }
+      }  
+  });
+</script>

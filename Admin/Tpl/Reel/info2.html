@@ -1,0 +1,147 @@
+<include file="Index:pageHeader" />
+<script type="text/javascript">
+$(function(){
+	autoHeight(jQuery('.autoHeight'));
+	jQuery(".column_Box").each(function () {
+		var t = jQuery(this);
+		if (t.length < 1) return;
+		Tab_click(t.find('.tab ul li'), t.find(".wrapBox .body"));
+	});
+});
+KindEditor.ready(function(K) {
+	K.create('#content', {
+		allowFileManager : false,
+		pasteType : 2,
+		newlineTag : 'p',
+		filterMode : false, // true:开启过滤模式, false:关闭过滤模式
+		urlType : 'absolute'
+	});
+});
+</script>
+<div class="column_Box mainAutoHeight">
+	<div class="tab">
+		<ul>
+			<li class="current"><a href="javascript:">属性</a></li>
+		</ul>
+	</div>
+	<div class="column_Box mainAutoHeight wrapBox">
+    <div class="body">
+			<form method="post" action="{:U('Reel/save2')}" id="submitForm" name="submitForm" enctype="multipart/form-data">
+				<table border="0" cellpadding="0" cellspacing="0">
+					<tbody>
+						<tr>
+							<td style="text-align:right;">模版：</td>
+							<td style="text-align:left;">
+								<select name="template">
+									<option value="">请选择</option>
+									<foreach name="template" item="item">
+										<option value="{$item.article_id}" <if condition="$item['article_id'] eq $info['template']">selected="selected"</if>>{$item.title}</option>
+									</foreach>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">类型：</td>
+							<td style="text-align:left;">
+						      <input type="radio" name="type" value="1" <if condition="empty($info)||$info['type']==1">checked</if>/>购物卡&nbsp;&nbsp;
+						      <input type="radio" name="type" value="2" <eq name='info.type' value='2'>checked</eq>/>充值卡
+						      <input type="radio" name="type" value="3" <eq name='info.type' value='3'>checked</eq>/>学堂积分卡
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">所属会员：</td>
+							<td style="text-align:left;">{$info.user_name}</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">是否使用：</td>
+							<td style="text-align:left;">
+						      <input type="radio" name="is_use" value="1" <if condition="$info['is_use']==1">checked</if>/>是&nbsp;&nbsp;
+						      <input type="radio" name="is_use" value="0" <if condition="empty($info)||$info['is_use']==0">checked</if>/>否
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">有效期：</td>
+							<td style="text-align:left;">
+								<input type="text" name='end_time' value="{$info.end_time|date='Y-m-d',###}" onclick="WdatePicker();">&nbsp;<font color='red'></font>
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">添加时间：</td>
+							<td style="text-align:left;">
+								<input type="text" name='add_time' value="{$info.add_time|date='Y-m-d',###}" onclick="WdatePicker();">&nbsp;<font color='red'>留空为当前时间</font>
+							</td>
+						</tr>
+
+						<!-- <if condition="!empty($info['receive_time'])">
+						<tr>
+							<td style="text-align:right;">领取时间：</td>
+							<td style="text-align:left;">
+								<input type="text" name='receive_time' value="{$info.receive_time|date='Y-m-d',###}" onclick="WdatePicker();">&nbsp;<font color='red'></font>
+							</td>
+						</tr>
+						</if> -->
+						<!-- <tr>
+							<td style="text-align:right;">兑换码：</td>
+							<td style="text-align:left;">{$info.serial_no}</td>
+						</tr> -->
+						<tr>
+							<td style="text-align:right;">价值：</td>
+							<td style="text-align:left;"><input type="text" class="txt" value="{$info.price}" name="price"  /></td>
+						</tr>
+						<!-- <tr>
+							<td style="text-align:right;">卡号：</td>
+							<td style="text-align:left;"><input type="text" class="txt" value="{$info.card_number}" name="card_number"  /></td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">卡密：</td>
+							<td style="text-align:left;"><input type="text" class="txt" value="{$info.card_density}" name="card_density"  /></td>
+						</tr> -->
+						<if condition="$info['type'] eq 2 AND !empty($info['mobile'])">
+						<tr>
+							<td style="text-align:right;">充值手机号：</td>
+							<td style="text-align:left;">{$info['mobile']}</td>
+						</tr>
+						<elseif condition="$info['type'] eq 1 AND !empty($info['address'])"/>
+							<tr>
+								<td style="text-align:right;">收货人：</td>
+								<td style="text-align:left;">{$info.address_name}</td>
+							</tr>
+							<tr>
+								<td style="text-align:right;">详细地址：</td>
+								<td style="text-align:left;">{$info.province}{$info.city}{$info.district}{$info.address}</td>
+							</tr>
+							<tr>
+								<td style="text-align:right;">手机号码：</td>
+								<td style="text-align:left;">{$info.mobile}</td>
+							</tr>
+							<tr>
+								<td style="text-align:right;">快递公司：</td>
+								<td style="text-align:left;"><input type="text" class="txt" value="{$info.delivery_firm}" name="delivery_firm"/></td>
+							</tr>
+							<tr>
+								<td style="text-align:right;">快递单号：</td>
+								<td style="text-align:left;"><input type="text" class="txt" value="{$info.delivery}" name="delivery"/></td>
+							</tr>
+						</if>
+						<tr>
+							<td style="text-align:right;">兑现：</td>
+							<td style="text-align:left;">
+						      <input type="radio" name="status" value="1" <if condition="$info['status']==1">checked</if>/>是&nbsp;&nbsp;
+						      <input type="radio" name="status" value="0" <if condition="empty($info)||$info['status']==0">checked</if>/>否
+							</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td style="text-align:left;" >
+								<input type="hidden" name="id" value="{$info.id}"/>
+								<input type="submit" value="提交"/>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+    </div>
+  </div>
+</div>
+</body>
+</html>

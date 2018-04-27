@@ -1,0 +1,75 @@
+<include file='Public:pageHeader'/>
+<body data-psd-width="750" class="f3f3f3">
+	<div class="MY_Release">
+		<ul class="ul_more">
+			<include file='Member:praise_list_ajax'/>
+		</ul>
+		<if condition="count($list) egt $listRows">
+		<i class="list_more" data-p='1'>加载更多了</i>
+		</if>
+	</div>
+	<include file='Public:page_nav'/>
+	<include file='Public:login'/>
+</body>
+<include file='Public:pageFooter'/>
+<script type="text/javascript">
+	$(window).scroll(function() {  
+	    var scrollTop = $(this).scrollTop(),scrollHeight = $(document).height(),windowHeight = $(this).height();  
+	    var positionValue = (scrollTop + windowHeight) - scrollHeight;  
+	    if(positionValue>=-400){
+	        var _this = $('.list_more');
+	        if(!_this.length){
+	          return false;
+	        }
+	        var p = parseInt(_this.attr('data-p'))+1;
+	        if(_this.attr('is')!='false'){
+	            _this.attr("is",false);
+	            $.ajax({
+	              type: "GET",
+	              url:"{:U('Member/praise_list')}",
+	              data:"uid={$uid}&p="+p,
+	              success:function(data){
+	                _this.attr("is",true);
+	                if(data.status==500){
+	                  //完结
+	                  _this.hide();
+	                }
+	                _this.attr('data-p',p);
+	                $(".ul_more").append(data.data);
+	              },
+	            });
+	        }
+	    }  
+	});
+	// $('.list_more').on('click',function(){
+	//   var _this = $(this);
+	//   var p = parseInt(_this.attr('data-p'))+1;
+	//   if(_this.attr('is')!='false'){
+	//     _this.attr("is",false);
+	//     $.ajax({
+	//       type: "GET",
+	//       url:"{:U('Member/praise_list')}",
+	//       data:"uid={$uid}&p="+p,
+	//       success:function(data){
+	//         _this.attr("is",true);
+	//         if(data.status==500){
+	//           //完结
+	//           _this.hide();
+	//         }
+	//         _this.attr('data-p',p);
+	//         $(".ul_more").append(data.data);
+	//       },
+	//     });
+	//   }
+	// })
+	$(".MY_Release").on('click',".del",function(){
+			var url = $(this).attr('del-href');
+			layer.open({
+		    content: '您确定删除吗？'
+		    ,btn: ['删除','否']
+		    ,yes: function(index){
+		    	location.href=url;
+		    }
+		  });
+	})
+</script>

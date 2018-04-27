@@ -1,0 +1,11 @@
+<foreach name="list" item="item">
+<li class="clearfix">
+  <a href="{:U('Recruitment/my_cast_info',array('id'=>$item['id']))}">
+      <div class="fl" style="background-image: url(/{$item.pic});"></div>
+      <div class="fr">
+        <h4 class="clearfix"><span>{$item.name}</span></h4>
+        <p>{$item.education} | {$item.profession} | 工作经验{$item.working_age}</p>
+      </div>
+  </a>
+</li>
+</foreach>

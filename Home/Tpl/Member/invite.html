@@ -1,0 +1,84 @@
+<include file='Public:pageHeader'/>
+<body data-psd-width="750" style="background-color: #fff9db;">
+  <div class="invite">
+    <div class="inv_logo"><img src="__IMG__/logo_2.png"/></div>
+    <div class="inv_ewm" style="background-image: url(__IMG__/icon_5.png);">
+      <span id="ewm">
+        <!-- <img src="__IMG__/ewm.jpg"/> -->
+      </span>
+    </div>
+    <div class="inv_button">
+      <div class="bdsharebuttonbox" data-tag="share_1">
+        <!-- <a class="fx_more" >发送邀请</a> -->
+        {$site_info.integral_description|nl2br}
+      </div>
+      
+    </div>
+    <div class="inv_ul">
+      <h4><span>已邀请好友</span></h4>
+      <ul>
+        <foreach name="invite_list" item="item">
+        <li class="clearfix">
+          <div class="fl"><i style="background-image: url(/{$item['pic']});"></i></div>
+          <div class="fr">
+            <span class="clearfix">
+              <em>{$item.user_name}</em>
+              <!-- <i>+1000</i> -->
+            </span>
+            <i>{$item.reg_time|date='Y-m-d',###}</i>
+          </div>
+        </li>
+        </foreach>
+      </ul>
+    </div>
+  </div>
+  <div class="fx_bg"></div>
+  <div class="fx_fix">
+    <h3>请选择分享平台</h3>
+    <div class="bdsharebuttonbox" data-tag="share_1">
+      <a class="bds_qzone" data-cmd="qzone"></a>
+      <a class="bds_sqq" data-cmd="sqq"></a>
+    </div>
+  </div>
+  <include file='Public:page_nav'/>
+  <include file='Public:login'/>
+</body>
+<include file='Public:pageFooter'/>
+<script src="__JS__/jquery.qrcode.js"></script>
+<script src="__JS__/qrcode.js"></script>
+<script>
+  $("#ewm").qrcode({ 
+      width: 300, //宽度 
+      height:300, //高度 
+      text: "http://{$_SERVER['HTTP_HOST']}{:U('User/registered',array('invite_uid'=>$user_info['user_id']))}" //任意内容 
+  }); 
+  $("#ewm").append("<img src='"+$("#ewm canvas")[0].toDataURL("image/png")+"'>");
+  $(".fx_more").click(function(){
+    $(".fx_bg").show();
+    $(".fx_fix").show();
+  })
+  $(".fx_bg").click(function(){
+    $(".fx_bg").hide();
+    $(".fx_fix").hide();
+  })
+</script>
+<script>
+  window._bd_share_config = {
+    common : {
+      bdText : '自定义分享内容', 
+      bdDesc : '{$site_description}', 
+      bdUrl:"http://{$_SERVER['HTTP_HOST']}{:U('User/registered',array('invite_uid'=>$user_info['user_id']))}",
+      bdPic:"http://{$_SERVER['HTTP_HOST']}/__IMG__/logo_zs.png",
+    },
+    share : [{
+      "bdSize" : 16
+    }],
+    image : [{
+      viewType : 'list',
+      viewPos : 'top',
+      viewColor : 'black',
+      viewSize : '16',
+    }],
+  }
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>

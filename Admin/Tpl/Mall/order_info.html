@@ -1,0 +1,99 @@
+<include file="Index:pageHeader" />
+<script type="text/javascript">
+$(function(){
+	autoHeight(jQuery('.autoHeight'));
+	jQuery(".column_Box").each(function () {
+		var t = jQuery(this);
+		if (t.length < 1) return;
+		Tab_click(t.find('.tab ul li'), t.find(".wrapBox .body"));
+	});
+});
+KindEditor.ready(function(K) {
+	K.create('#content', {
+		allowFileManager : false,
+		pasteType : 2,
+		newlineTag : 'p',
+		filterMode : false, // true:开启过滤模式, false:关闭过滤模式
+		urlType : 'absolute'
+	});
+});
+</script>
+<div class="column_Box mainAutoHeight">
+	<div class="tab">
+		<ul>
+			<li class="current"><a href="javascript:">属性</a></li>
+		</ul>
+	</div>
+	<div class="column_Box mainAutoHeight wrapBox">
+    <div class="body">
+			<form method="post" action="{:U('Mall/order_save')}" id="submitForm" name="submitForm" enctype="multipart/form-data">
+				<table border="0" cellpadding="0" cellspacing="0">
+					<tbody>
+						<tr>
+							<td style="text-align:right;">会员名称：</td>
+							<td style="text-align:left;">{$info.user.user_name}</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">标题：</td>
+							<td style="text-align:left;">{$info.title}</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">商品类型：</td>
+							<td style="text-align:left;"><if condition="$info['mall_type']==1">电子素材<else/>实物礼品</if></td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">兑换途径：</td>
+							<td style="text-align:left;"><if condition="$info['type']==1">兑换<else/>抽奖</if></td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">花费积分：</td>
+							<td style="text-align:left;">{$info.integral}</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">兑换时间：</td>
+							<td style="text-align:left;">{$info.add_time|date='Y-m-d',###}</td>
+						</tr>
+						<if condition="$info['mall_type']==2">
+						<tr>
+							<td style="text-align:right;">收货人：</td>
+							<td style="text-align:left;">{$info.address_name}</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">详细地址：</td>
+							<td style="text-align:left;">{$info.province}{$info.city}{$info.district}{$info.address}</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">手机号码：</td>
+							<td style="text-align:left;">{$info.mobile}</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">快递公司：</td>
+							<td style="text-align:left;"><input type="text" class="txt" value="{$info.delivery_firm}" name="delivery_firm"/></td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">快递单号：</td>
+							<td style="text-align:left;"><input type="text" class="txt" value="{$info.delivery}" name="delivery"/></td>
+						</tr>
+						</if>
+						<tr>
+							<td style="text-align:right;">是否兑现：</td>
+							<td style="text-align:left;">
+						      <input type="radio" name="stauts" value="1" <if condition="empty($info)||$info['stauts']==1">checked</if>/>是&nbsp;&nbsp;
+						      <input type="radio" name="stauts" value="0" <eq name='info.stauts' value='0'>checked</eq>/>否
+							</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td style="text-align:left;" >
+								<input type="hidden" name="id" value="{$info.id}"/>
+								<input type="submit" value="提交"/>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+    </div>
+  </div>
+</div>
+</body>
+</html>

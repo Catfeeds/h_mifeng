@@ -1,0 +1,26 @@
+<include file="Index:pageHeader" />
+	<div id="loading"></div>
+  <div class="filetree treeview mainAutoHeight border_radius zTreeDemoBackground" >
+      <ul id="browser" class="ztree"></ul>
+      <script type="text/javascript">
+        $(document).ready(function(){
+          var setting = {
+            data: {
+              key: {
+                name: "theme_name"
+              },
+              simpleData: {
+                enable: true,
+                idKey: "theme_id",
+                pIdKey: "parent_id"
+              }
+            }
+          };
+          $.fn.zTree.init($("#browser"), setting, {$list});
+        });
+      </script>
+  </div>
+  <div class="ContainerMain_Box mainAutoHeight border_radius">
+  	<iframe src="{:U('InformationTheme/info')}" frameborder="0"  width="100%" height="100%" frameborder="0" scrolling="yes" name="container"></iframe>
+  </div>
+<include file="Index:pageFooter" />

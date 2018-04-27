@@ -1,0 +1,275 @@
+<include file='Public:pageHeader'/>
+<body data-psd-width="750">
+  <form method="post" action="{:U('Member/information_save')}" id="submitForm" name="submitForm" enctype="multipart/form-data">
+    <div class="Release">
+      <div class="Release_1">
+        <div class="rele_1">
+          <div class="re_1">
+            <div class="pr_box">
+              <input type="text" placeholder="标题(不超过50字)" name="title" datatype="*,*1-50" errormsg="标题不超过50字" nullmsg="请输入标题"/>
+              <span class="red">*</span>
+            </div>
+            <div class="resc">
+              <span>
+                <input type="file" name="file" class="file" datatype="*" errormsg="请添加封面图" nullmsg="请添加封面图"/>
+              </span>
+              <i>添加封面图<font class="red2">*</font></i>
+            </div>
+            <div class="pr_box">
+              <textarea placeholder="正文(不超过800字)" name="content" datatype="*,*1-800" errormsg="正文不超过800字" nullmsg="请输入正文"></textarea>
+              <span class="red">*</span>
+            </div>
+          </div>
+        </div>
+        <div class="rele_4">
+          <ul class="clearfix">
+            <li>
+              <div class="input">
+                <span>分类<font class="red2">*</font></span>
+                <input type="text" name="cat_name"/>
+                <input type="hidden" name="cat_id" id="cat_id" datatype="*" errormsg="请选择分类" nullmsg="请选择分类"/>
+              </div>
+              <div class="input_tc">
+                <i class="tc_bg"></i>
+                <div class="tc_mian">
+                  <h4>请选择分类</h4>
+                  <div class="tc_aa">
+                    <foreach name="cat_list" item="item">
+                    <span data-aa="{$item.cat_id}">{$item.cat_name}</span>
+                    </foreach>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li id="zy" style="display:none;margin-top:0.1rem;">
+              <div class="input">
+                <span>资源<font class="red2">*</font></span>
+                <h4 class="text">请上传资源</h4>
+                <input type="file" class="file2" name="file_url">
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="rele_2">
+          <ul class="clearfix">
+            <li class="clearfix">
+              <div class="fl">
+                <span>
+                  <i></i>
+                  <input type="file" name="file2[]" class="file"/>
+                </span>
+              </div>
+              <div class="fr">
+                <textarea placeholder="添加描述" name="content2[]"></textarea>
+              </div>
+            </li>
+          </ul>
+          <h6><span class="re_more"></span></h6>
+        </div>
+        <div class="rele_3">
+          <!-- <span class="next">下一步</span> -->
+          <input type="submit" value="发帖"/>
+        </div>
+      </div>
+      <!-- <div class="Release_2">
+        <div class="rele_1">
+          <h4>添加标签。让更多人看到。</h4>
+          <ul class="clearfix">
+            <li>
+              <div class="input">
+                <span>分类</span>
+                <input type="text" name="cat_id"/>
+              </div>
+              <div class="input_tc">
+                <i class="tc_bg"></i>
+                <div class="tc_mian">
+                  <h4>请选择分类</h4>
+                  <div class="tc_aa">
+                    <foreach name="cat_list" item="item">
+                    <span data-aa="{$item.cat_id}">{$item.cat_name}</span>
+                    </foreach>
+                  </div>
+                  
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="input">
+                <span>主题</span>
+                <input type="text"/>
+                <input type="hidden" name="material_id"/>
+              </div>
+              <div class="input_tc">
+                <i class="tc_bg"></i>
+                <div class="tc_mian">
+                  <h4>请选择主题</h4>
+                  <div class="tc_aa">
+                    <foreach name="material_list" item="item">
+                    <span data-aa="{$item.material_id}">{$item.material_name}</span>
+                    </foreach>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="input">
+                <span>材料</span>
+                <input type="text"/>
+                <input type="hidden" name="theme_id"/>
+              </div>
+              <div class="input_tc">
+                <i class="tc_bg"></i>
+                <div class="tc_mian">
+                  <h4>请选择材料</h4>
+                  <div class="tc_aa">
+                    <foreach name="theme_list" item="item">
+                    <span data-aa="{$item.theme_id}">{$item.theme_name}</span>
+                    </foreach>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="input">
+                <span>年龄</span>
+                <input type="text"/>
+                <input type="hidden" name="age_id"/>
+              </div>
+              <div class="input_tc">
+                <i class="tc_bg"></i>
+                <div class="tc_mian">
+                  <h4>请选择年龄</h4>
+                  <div class="tc_aa">
+                    <foreach name="age_list" item="item">
+                    <span data-aa="{$item.age_id}">{$item.age_name}</span>
+                    </foreach>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li style="display:none;">
+              
+            </li>
+          </ul>
+        </div>
+        <div class="rele_2">
+          <label>
+            <em><input type="checkbox"/></em>
+            <span>是否原创</span>
+          </label>
+        </div>
+        <div class="rele_3">
+          <span class="prev">上一步</span>
+          <input type="submit" value="发帖"/>
+        </div>
+      </div> -->
+    </div>
+  </form>
+  <include file='Public:page_nav'/>
+  <include file='Public:login'/>
+</body>
+<include file='Public:pageFooter'/>
+<script>
+  $("#submitForm").Validform({
+    tipSweep:true,
+    tiptype:function(msg,o){
+      if(o.type==3){
+        layer.open({
+          content: msg
+          ,skin: 'msg'
+          ,time: 2
+        });
+      }
+    },
+    beforeSubmit:function(curform){
+      if($("#cat_id").val()==4&&$(".file2").val()==''){
+        layer.open({
+          content: "请上传资源"
+          ,skin: 'msg'
+          ,time: 2
+        });
+        return false;
+      }else{
+        return true;
+      }
+    },
+  });
+  $(document).ready(function() {
+    $('.rele_3 .next').on('click',function(){
+      $(this).parents('.Release_1').hide();
+      $('.Release_2').fadeIn(300);
+    });
+    $('.rele_3 .prev').on('click',function(){
+      $(this).parents('.Release_2').hide();
+      $('.Release_1').fadeIn(300);
+    });
+    $('.rele_4 >ul>li .input').on('click',function(){
+      $(this).siblings('.input_tc').fadeIn(300);
+    });
+    $('.tc_aa>span').on('click',function(){
+      $(this).addClass('on').siblings().removeClass('on');
+      // if($(this).attr('data-aa')==="-1"){
+        $(this).parents('.input_tc').hide();
+        $(this).parents('li').find('.input').find('input[type="text"]').val($(this).html());
+        $(this).parents('li').find('.input').find('input[type="hidden"]').val($(this).attr('data-aa'));
+        if($(this).attr('data-aa')==4){
+          $("#zy").show();
+        }else{
+          $("#zy").hide();
+        }
+      // }else{
+      //   $(this).parents('.tc_aa').hide().siblings('.tc_bb').find('div').eq($(this).attr('data-aa')).fadeIn(300);
+      // }
+    });
+    $('.tc_bb>div>em').on('click',function(){
+//      $(this).addClass('on').siblings().removeClass('on');
+      $(this).parent('div').hide().parent().siblings('.tc_aa').show();
+      $(this).parents('.input_tc').hide();
+      $(this).parents('li').find('.input').find('input').val($(this).html());
+    });
+    $('.rele_4 .input_tc .tc_bg').on('click',function(){
+      $('.rele_4 .input_tc').hide();
+      $('.tc_aa').show();
+      $('.tc_bb').hide();
+    });
+    $('.rele_4 .rele_2 label').on('click',function(){
+      if($(this).hasClass('on')){
+        $(this).removeClass('on');
+        $(this).find('input').attr('checked',false);
+      }else{
+        $(this).addClass('on');
+        $(this).find('input').attr('checked',true);
+      }
+    });
+
+
+    $('.Release_1 .rele_2').on('click',"li i",function(){
+      $(this).parents("li").remove();
+    })
+    $('.re_more').on('click',function(){
+      var html = '<li class="clearfix"><div class="fl"><span><i></i><input type="file" name="file2[]" class="file"/></span></div><div class="fr"><textarea placeholder="添加描述" name="content2[]"></textarea></div></li>';
+      $('.Release_1 .rele_2 ul').append(html);
+    })
+
+    $(".Release").on("change",".file",function(){
+      var _this = $(this);
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        _this.parent("span").addClass("img");
+        _this.parent("span").css("background-image","url("+e.target.result+")");
+      };
+      reader.readAsDataURL(this.files[0]);
+    })
+    $(".Release").on("change",".file2",function(e){
+      var _this = $(this);
+      _this.siblings("h4").html(e.currentTarget.files[0].name);
+      // console.log(e.currentTarget.files[0].name);
+      // var reader = new FileReader();
+      // reader.onload = function (e) {
+      //   _this.parent("span").addClass("img");
+      //   _this.parent("span").css("background-image","url("+e.target.result+")");
+      // };
+      // reader.readAsDataURL(this.files[0]);
+    })
+  });
+</script>

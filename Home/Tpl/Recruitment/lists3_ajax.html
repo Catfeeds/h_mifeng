@@ -1,0 +1,13 @@
+<foreach name="list" item="item">
+<li <if condition="$item['status'] eq 0"> class="no"</if> >
+  <a href="{:U('Recruitment/info3',array('id'=>$item['id']))}">
+    <h4>{$item.title}</h4>
+    <!-- <h5></h5> -->
+    <h6 class="clearfix">
+      <span>{$item.city} | {$item.district}</span>
+      <em>{$item.add_time|date='Y年m月d日',###}</em>
+    </h6>
+    <div class="no_end">已结束</div>
+  </a>
+</li>
+</foreach>

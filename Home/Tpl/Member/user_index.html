@@ -1,0 +1,114 @@
+<include file='Public:pageHeader'/>
+<body data-psd-width="750" class="f3f3f3">
+  <div class="Homepage">
+    <div class="home_1 clearfix" style="background-image: url(__IMG__/home_bg.jpg);">
+      <span><i style="background-image: url(/{$u_info.pic});"></i></span>
+      <em>{$u_info.user_name}</em>
+      <!-- <em><i style="background-image: url(__IMG__/icon_4.png);"></i>188</em> -->
+      <if condition="$user_info['user_id'] neq $u_info['user_id']">
+        <if condition="!empty($is_attention)">
+          <a class="attention">取消关注</a>
+        <else/>
+          <a class="attention">关注</a>
+        </if>
+      </if>
+    </div>
+    <div class="home_2">
+      <a href="{:U('Member/attention_lists',array('uid'=>$u_info['user_id']))}">
+        <i>{$attention_count}</i>
+        <em>关注</em>
+      </a>
+      <a href="{:U('Member/fans_lists',array('uid'=>$u_info['user_id']))}">
+        <i>{$fans_count}</i>
+        <em>粉丝</em>
+      </a>
+    </div>
+    <div class="home_3">
+      <div class="ho_tit clearfix">
+        <a href="{:U('Member/information_list',array('uid'=>$u_info['user_id']))}">
+          <i style="background-image: url(__IMG__/per_ul_1.png);"></i>
+          <span>发布</span>
+          <em>{$InformationCount}</em>
+          <i class="iconfont">&#xe614;</i>
+        </a>
+      </div>
+      <div class="ho_ul">
+        <ul class="clearfix">
+          <foreach name='Informationlist' item="item">
+          <li>
+            <a href="{:U('Information/info',array('id'=>$item['id']))}" style="background-image: url(/{$item.thumb_img});"></a>
+          </li>
+          </foreach>
+        </ul>
+      </div>
+    </div>
+    <div class="home_3">
+      <div class="ho_tit clearfix">
+        <a href="{:U('Member/collect_list',array('uid'=>$u_info['user_id']))}">
+          <i style="background-image: url(__IMG__/per_ul_2.png);"></i>
+          <span>蜜蜂</span>
+          <em>{$CollectCount}</em>
+          <i class="iconfont">&#xe614;</i>
+        </a>
+      </div>
+      <div class="ho_ul">
+        <ul class="clearfix">
+          <foreach name='Collectlist' item="item">
+          <li>
+            <a href="{:U('Information/info',array('id'=>$item['information_id']))}" style="background-image: url(/{$item.thumb_img});"></a>
+          </li>
+          </foreach>
+        </ul>
+      </div>
+    </div>
+    <div class="home_3">
+      <div class="ho_tit clearfix">
+        <a href="{:U('Member/praise_list',array('uid'=>$u_info['user_id']))}">
+          <i style="background-image: url(__IMG__/per_ul_4.png);"></i>
+          <span>点赞</span>
+          <em>{$PraiseCount}</em>
+          <i  class="iconfont">&#xe614;</i>
+        </a>
+      </div>
+      <div class="ho_ul">
+        <ul class="clearfix">
+          <foreach name='Praiselist' item="item">
+          <li>
+            <a href="{:U('Information/info',array('id'=>$item['information_id']))}" style="background-image: url(/{$item.thumb_img});"></a>
+          </li>
+          </foreach>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <include file='Public:page_nav'/>
+  <include file='Public:login'/>
+</body>
+<include file='Public:pageFooter'/>
+<script type="text/javascript">
+  $(".attention").on("click",function(){
+    var _this = $(this);
+    if(_this.attr('is')!='false'){
+      _this.attr("is",false);
+      $.ajax({
+        type: "POST",
+        url:"{:U('Member/attention_save')}",
+        data:"attention_id={$u_info.user_id}",
+        success:function(data){
+          _this.attr("is",true);
+          if(data.status==200){
+            _this.html("取消关注");
+          }else if(data.status==201){
+            _this.html("关注");
+          }else{
+            layer.open({
+              content: data.info
+              ,skin: 'msg'
+              ,time: 2
+            });
+          }
+        },
+      });
+    }
+  })
+</script>

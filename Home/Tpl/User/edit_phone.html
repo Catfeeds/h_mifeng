@@ -1,0 +1,61 @@
+<include file='Public:pageHeader'/>
+<style type="text/css">
+    .Login{display: block;}
+</style>
+<body data-psd-width="750" class="f3f3f3">
+    <div class="Login" style="display:block;">
+      <div class="Lo_code">
+        <div class="Lo_logo">
+          <img src="__IMG__/logo_1.png"/>
+        </div>
+        <form method="post" action="{:U('User/edit_phone2')}" id="" name="submitForm" enctype="multipart/form-data" class="Lo_mian" id="do_login">
+          <div class="code_box">
+            <input type="text" class="text" name="code" placeholder="旧手机验证码">
+            <a class="code" data-url="{:U('User/code')}">发送验证码</a>
+          </div>
+          <input type="submit" id="" value="提交">
+        </form>
+      </div>
+    </div>
+</body>
+<include file='Public:pageFooter'/>
+<script type="text/javascript">
+  $(".code").click(function(){
+   var _this = $(this);
+   var phone = '';
+   var i=60;
+   if(_this.attr('is')!='false'){
+     _this.attr("is",false);
+     $.ajax({
+       type:'POST',
+       url:_this.attr("data-url"),
+       data:"code=code&is_rg=2",
+       dataType: "JSON",
+       success:function(data){
+         if(data.status==200){
+           layer.open({
+             content: "验证码是："+data.data
+             ,skin: 'msg'
+             ,time: 10
+           });
+           sint = setInterval(function(){
+             _this.html(i--);
+             if(i<=0){
+           _this.attr("is",true);
+               _this.html("发送验证码");
+               clearInterval(sint);
+             }
+           },1000)
+         }else{
+           _this.attr("is",true);
+           layer.open({
+             content: data.info
+             ,skin: 'msg'
+             ,time: 2
+           });
+         }
+       }
+     })
+   }
+  })
+</script>

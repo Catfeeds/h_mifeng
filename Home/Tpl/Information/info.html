@@ -1,0 +1,117 @@
+<include file='Public:pageHeader'/>
+<body data-psd-width="750" class="f3f3f3">
+  <div class="News_yh">
+    <notempty name='info.user_id'>
+    <div class="yh_top clearfix">
+      <div class="yh_1"><a href="{:U('Member/user_index',array('uid'=>$info['user_id']))}"><i style="background-image: url(/{$info.pic});"></i></a></div>
+      <div class="yh_2">
+        <span>{$info.user_name|mySubstr=###,13}</span>
+        <em>{$info.introduction|mySubstr=###,16}</em>
+      </div>
+      <div class="yh_3">
+        <if condition="$user_info['user_id'] neq $info['user_id']">
+          <if condition="!empty($is_attention)">
+            <a data-uid="{$info.user_id}" class="attention">取消关注</a>
+          <else/>
+            <a data-uid="{$info.user_id}" class="attention">关注</a>
+          </if>
+        </if>
+      </div>
+    </div>
+    </notempty>
+    <div class="yh_box">
+      <div class="yh_tit">
+        <h4>{$info.title}</h4>
+        <h6 class="clearfix">
+          <span>{$info.add_time|date='Y-m-d',###}</span>
+          <a class="iconfont collect <if condition="!empty($is_collect)">on</if>"><if condition="!empty($is_collect)">已收藏<else/>收藏</if></a>
+        </h6>
+      </div>
+      <div class="yh_mian">
+        <if condition="$info['original_img']"><p><img src="/{$info.original_img}"/></p></if>
+        <br />
+        <p>{$info.content|nl2br}</p>
+        <br />
+        <foreach name="info.child_content" item="item">
+          <if condition="$item['original_img']"><p><img src="/{$item.original_img}"/></p></if>
+          <if condition="$item['content']"><br /><p>{$item.content|nl2br}</p><br /></if>
+        </foreach>
+      </div>
+      <if condition="!empty($info['file_url'])">
+        <div class="file_btn">
+          <a data-clipboard-target="#file_url" class="btn copy_file">复制链接</a><a href="/{$info.file_url}" >立即下载</a>
+          <input type="text" readonly="true" value="http://{$_SERVER['HTTP_HOST']}/{$info.file_url}" id="file_url">
+        </div>
+      </if>
+    </div>
+  </div>
+  <include file='Public:comment'/>
+  <include file='Public:login'/>
+</body>
+<include file='Public:pageFooter'/>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+<script>
+new Clipboard('.btn');
+  // $('.yh_box .yh_tit h6 a').on('click',function(){
+  //   $(this).toggleClass('on')
+  // })
+  
+
+  // $('.pl_more').on('click',function(){
+  //   var _this = $(this);
+  //   var p = parseInt(_this.attr('data-p'))+1;
+  //   if(_this.attr('is')!='false'){
+  //     _this.attr("is",false);
+  //     $.ajax({
+  //       type: "GET",
+  //       url:"{:U('Information/comment_list')}",
+  //       data:"id={$info.id}&p="+p,
+  //       success:function(data){
+  //         _this.attr("is",true);
+  //         if(data.status==500){
+  //           //完结
+  //           _this.hide();
+  //         }
+  //         _this.attr('data-p',p);
+  //         $(".pl_bd .pl_1 ul").append(data.data);
+  //       },
+  //     });
+  //   }
+  // })
+  $(".attention").on("click",function(){
+    var _this = $(this);
+    if(_this.attr('is')!='false'){
+      _this.attr("is",false);
+      $.ajax({
+        type: "POST",
+        url:"{:U('Member/attention_save')}",
+        data:"attention_id="+_this.attr('data-uid'),
+        success:function(data){
+          _this.attr("is",true);
+          if(data.status==200){
+            _this.html("取消关注");
+          }else if(data.status==201){
+            _this.html("关注");
+          }else if(data.status==0){
+            //登陆显示
+            layer.open({
+              content: data.info
+              ,skin: 'msg'
+              ,time: 2
+            });
+            if(data.url!=''){
+              location.href=data.url;
+            }
+          }else{
+            layer.open({
+              content: data.info
+              ,skin: 'msg'
+              ,time: 2
+            });
+          }
+        },
+      });
+    }
+  })
+  
+</script>

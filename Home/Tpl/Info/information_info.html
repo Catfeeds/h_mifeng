@@ -1,0 +1,41 @@
+<include file='Public:pageHeader'/>
+<img src="{$info.original_img}">
+{$info.title}
+{$info.content}
+<foreach name="info.child_content" item="item">
+  <if condition="!empty($item.original_img)">
+    <img src="{$item.original_img}">
+  </if>
+  {$item.content}
+</foreach>
+<form method="post" action="{:U('Member/comment_save')}" id="submitForm" name="submitForm" enctype="multipart/form-data">
+  <textarea name="content" id="" cols="30" rows="10"></textarea>
+  <input type="hidden" name="information_id" value="{$info.id}">
+  <input type="hidden" name="parent_id" value="0">
+  <input type="submit" value="评论">
+</form>
+<a class="praise">点赞</a>
+<a class="collect">收藏</a>
+<script type="text/javascript">
+  $(".collect").click(function(){
+    $.ajax({
+       type: "POST",
+       url: "{:U('Member/collect_save')}",
+       data: "information_id={$info['id']}&collect_id=1",
+       success: function(msg){
+        console.log(msg);
+       }
+    });
+  })
+  $(".praise").click(function(){
+    $.ajax({
+       type: "POST",
+       url: "{:U('Member/praise_save')}",
+       data: "information_id={$info['id']}",
+       success: function(msg){
+        console.log(msg);
+       }
+    });
+  })
+</script>
+<include file='Public:pageFooter'/>

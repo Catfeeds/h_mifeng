@@ -1,0 +1,108 @@
+<include file="Index:pageHeader" />
+<script type="text/javascript">
+$(function(){
+	autoHeight(jQuery('.autoHeight'));
+	jQuery(".column_Box").each(function () {
+		var t = jQuery(this);
+		if (t.length < 1) return;
+		Tab_click(t.find('.tab ul li'), t.find(".wrapBox .body"));
+	});
+});
+KindEditor.ready(function(K) {
+	K.create('#content', {
+		allowFileManager : false,
+		pasteType : 2,
+		newlineTag : 'p',
+		filterMode : false, // true:开启过滤模式, false:关闭过滤模式
+		urlType : 'absolute'
+	});
+});
+</script>
+<div class="column_Box mainAutoHeight">
+	<div class="tab">
+		<ul>
+			<li class="current"><a href="javascript:">积分抽奖属性</a></li>
+		</ul>
+	</div>
+	<div class="column_Box mainAutoHeight wrapBox">
+    <div class="body">
+			<form method="post" action="{:U('Mall/lottery_save')}" id="submitForm" name="submitForm" enctype="multipart/form-data">
+				<table border="0" cellpadding="0" cellspacing="0">
+					<tbody>
+						<tr>
+							<td style="text-align:right;">抽奖所需积分：</td>
+							<td style="text-align:left;"><input type="text" class="txt" name="value[1][integral]" value="{$lottery.1.integral}" size='60'/><em>*</em></td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">抽奖规格：</td>
+							<td style="text-align:left;"><textarea style="width:400px;height:100px;" name="value[1][content]" >{$lottery.1.content}</textarea></td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">特等奖：</td>
+							<td style="text-align:left;">
+								中奖几率：<input type="text" class="txt" name="value[2][lottery]" value="{$lottery.2.lottery}" size='10'/>%<br>
+								对应商品:<select name="value[2][mall_id]">
+											<foreach name="mall_list" item="item">
+												<option value="{$item.id}" <if condition="$item['id'] eq $lottery['2']['mall_id']"> selected="selected" </if>>{$item.title}</option>
+											</foreach>
+										</select>
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">一等奖：</td>
+							<td style="text-align:left;">
+								中奖几率：<input type="text" class="txt" name="value[3][lottery]" value="{$lottery.3.lottery}" size='10'/>%<br>
+								对应商品:<select name="value[3][mall_id]">
+											<foreach name="mall_list" item="item">
+												<option value="{$item.id}" <if condition="$item['id'] eq $lottery['3']['mall_id']"> selected="selected" </if>>{$item.title}</option>
+											</foreach>
+										</select>
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">二等奖：</td>
+							<td style="text-align:left;">
+								中奖几率：<input type="text" class="txt" name="value[4][lottery]" value="{$lottery.4.lottery}" size='10'/>%<br>
+								对应商品:<select name="value[4][mall_id]">
+											<foreach name="mall_list" item="item">
+												<option value="{$item.id}" <if condition="$item['id'] eq $lottery['4']['mall_id']"> selected="selected" </if>>{$item.title}</option>
+											</foreach>
+										</select>
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">三等奖：</td>
+							<td style="text-align:left;">
+								中奖几率：<input type="text" class="txt" name="value[5][lottery]" value="{$lottery.5.lottery}" size='10'/>%<br>
+								对应商品:<select name="value[5][mall_id]">
+											<foreach name="mall_list" item="item">
+												<option value="{$item.id}" <if condition="$item['id'] eq $lottery['5']['mall_id']"> selected="selected" </if>>{$item.title}</option>
+											</foreach>
+										</select>
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">幸运奖：</td>
+							<td style="text-align:left;">
+								中奖几率：<input type="text" class="txt" name="value[6][lottery]" value="{$lottery.6.lottery}" size='10'/>%<br>
+								对应商品:<select name="value[6][mall_id]">
+											<foreach name="mall_list" item="item">
+												<option value="{$item.id}" <if condition="$item['id'] eq $lottery['6']['mall_id']"> selected="selected" </if>>{$item.title}</option>
+											</foreach>
+										</select>
+							</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td style="text-align:left;" >
+								<input type="submit" value="提交"/>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+    </div>
+  </div>
+</div>
+</body>
+</html>

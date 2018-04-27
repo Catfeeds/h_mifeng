@@ -1,0 +1,7 @@
+<include file='Public:pageHeader'/>
+<ul>
+  <foreach name="list" item="item">
+    <li><a href="{:U('Member/collect',array('collect_id'=>$item['collect_id']))}">{$item.title}</a></li>
+  </foreach>
+</ul>
+<include file='Public:pageFooter'/>

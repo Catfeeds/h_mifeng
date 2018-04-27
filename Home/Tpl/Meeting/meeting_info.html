@@ -1,0 +1,40 @@
+<include file='Public:pageHeader'/>
+<body data-psd-width="750">
+  <div class="yrfh_x">
+    <div class="yrf_tit">
+      <h4>{$info.title}</h4>
+      <h6>
+        <em>{$info.add_time|date='Y-m-d',###}</em>
+        <!-- <i>Laixiac</i>
+        <a>蜜蜂贝贝</a> -->
+      </h6>
+      <h5>
+        <span>
+          <em>地点:</em><i>{$info.meeting_address}</i>
+        </span>
+        <span>
+          <em>时间:</em><i>{$info.meeting_time|date='Y-m-d H:i',###}</i>
+        </span>
+        <span>
+          <em>浏览量:</em><i>{$info.view_count}</i>
+        </span>
+        <span>
+          <em>报名人数:</em><i>{$count}</i>
+        </span>
+      </h5>
+    </div>
+    <div class="yrf_mian">
+      {$info.content}
+    </div>
+    <div class="yrf_nav">
+      <div>
+        <if condition="$info['meeting_time'] gt time()">
+          <a href="{:U('Meeting/signup',array('id'=>$info['id']))}">我要报名</a>
+        <else/>
+          <a class="no">已经结束</a>
+        </if>
+      </div>
+    </div>
+  </div>
+</body>
+<include file='Public:pageFooter'/>

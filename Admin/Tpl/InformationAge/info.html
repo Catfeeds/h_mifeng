@@ -1,0 +1,84 @@
+<include file="Index:pageHeader" />
+<script type="text/javascript">
+function delInformationAge(id) {
+	$.dialog.confirm('你确定要删除吗？', function(){
+		window.location.href="{:U('InformationAge/del')}?age_id="+id;
+	}, function(){
+		//$.dialog.tips('执行取消操作');
+	});
+}
+$(function(){
+	autoHeight(jQuery('.autoHeight'));
+	jQuery(".column_Box").each(function () {
+		var t = jQuery(this);
+		if (t.length < 1) return;
+		Tab_click(t.find('.tab ul li'), t.find(".wrapBox .body"));
+	});
+});
+$(function() {
+	var editor = KindEditor.create('textarea[name="content"]',{urlType : 'domain'}); 
+}); 
+</script>
+<div class="column_Box mainAutoHeight">
+	<div class="tab">
+		<ul>
+			<li class="current"><a href="javascript:">栏目属性</a></li>
+		</ul>
+	</div>
+	<div class="column_Box mainAutoHeight wrapBox">
+    <div class="body">
+  		<if condition="!empty($info)">
+    		<div class="item">
+	    		<a href="{:U('InformationAge/info',array('selected'=>$info['age_id']))}" class="dot_Item"><span class="Icon_item icon_xingjian2"></span><i>新建子栏目</i></a>
+	    		<a href="javascript:void(0);" class="dot_Item" onclick="delInformationAge('{$info.age_id}')"><span class="Icon_item icon_shanchu"></span><i>删除</i></a>
+    		</div>
+  		</if>
+			<form method="post" action="{:U('InformationAge/save')}" id="submitForm" name="submitForm" enctype="multipart/form-data">
+				<table border="0" cellpadding="0" cellspacing="0">
+					<tbody>
+						<tr>
+							<td style="text-align:right;">栏目名称：</td>
+							<td style="text-align:left;"><input type="text" class="txt" name="age_name" value="{$info.age_name}"  /><em>*</em></td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">上级栏目：</td>
+							<td style="text-align:left;">
+								<select name="parent_id">
+									<option value="0">顶级栏目</option>
+									{$select}
+								</select>
+							<em>*</em></td>
+						</tr>
+						<if condition="!empty($info['thumb_img'])||!empty($info['original_img'])">
+							<tr>
+								<td style="text-align:right;">图片预览：</td>
+								<td style="text-align:left;"><img src="__ROOT__/<empty name='info.thumb_img'>{$info.original_img}<else/>{$info.thumb_img}</empty>" style='max-height:300px;'/></td>
+							</tr>
+						</if>
+						<tr>
+							<td style="text-align:right;">封面图片：</td>
+							<td style="text-align:left;">
+								<input type="file" name="file_img" size="35" /><br/>
+								<font color="#ff0000">
+									<!-- 图片尺寸为：300px*300px;<br/> -->
+								</font>
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">排序：</td>
+							<td style="text-align:left;"><input type="text" class="txt" value="{$info.sort_order|default='50'}" name="sort_order"  /><em>*</em> </td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td style="text-align:left;">
+								<input type="hidden" name="age_id" value="{$info.age_id}"/>
+								<input type="submit" value="提交"/>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+    </div>
+	</div>
+</div>
+<include file="Index:pageFooter" />

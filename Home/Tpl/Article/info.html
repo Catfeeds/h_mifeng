@@ -1,0 +1,45 @@
+<include file='Public:pageHeader'/>
+<body data-psd-width="750" >
+  <div class="News_gf">
+    <div class="gf_tit">
+      <h4>{$info.title}</h4>
+      <h6>
+        <em>{$info.add_time|date='Y-m-d',###}</em>
+        <i>浏览量:{$info.view_count}</i>
+        <!-- <i>Laixiac</i>
+        <a>蜜蜂贝贝</a> -->
+        <a class="iconfont collect <if condition="!empty($is_collect)">on</if>"><if condition="!empty($is_collect)">已收藏<else/>收藏</if></a>
+      </h6>
+    </div>
+    <div class="gf_mian">
+      {$info.content}
+    </div>
+    <if condition="!empty($info['file_url'])">
+      <div class="file_btn">
+        <a data-clipboard-target="#file_url" class="btn copy_file">复制链接</a><a href="/{$info.file_url}" >立即下载</a>
+        <input type="text" readonly="true" value="http://{$_SERVER['HTTP_HOST']}/{$info.file_url}" id="file_url">
+      </div>
+    </if>
+  </div>
+  <include file='Public:comment'/>
+</body>
+<include file='Public:pageFooter'/>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+<script type="text/javascript">
+new Clipboard('.btn');
+$('.yh_nav .na_1').on('click',function(){
+  $('.yh_form').fadeIn(500);
+  $(".yh_form input[name='parent_id']").val('0');
+  $(".yh_form textarea").val('');
+  $(".yh_form textarea").attr('placeholder',"评论");
+})
+$('.yh_form .form_bg,.yh_form .input>span').on('click',function(){
+  $('.yh_form').fadeOut(300);
+})
+$("#comment_list").on('click',".comment_info",function(){
+  $('.yh_form').fadeIn(500);
+  $(".yh_form input[name='parent_id']").val($(this).attr('data-id'));
+  $(".yh_form textarea").val('');
+  $(".yh_form textarea").attr('placeholder',"回复："+$(this).attr('data-name'));
+})
+</script>

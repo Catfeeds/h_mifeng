@@ -1,0 +1,310 @@
+<include file='Public:pageHeader'/>
+<body data-psd-width="750" class="f3f3f3">
+  <div class="Join_form">
+    <form method="post" action="{:U('Recruitment/my_info_save')}" id="submitForm" name="submitForm" enctype="multipart/form-data">
+      <div class="jo_box" id="jo_box1">
+        <div class="input clearfix">
+          <span class="span">联系人<font class="red2">*</font></span>
+          <input type="text" name="name" placeholder="联系人" value="{$info.name}" datatype="*" errormsg="请填写联系人" nullmsg="请填写联系人" <if condition="$info['is_open'] eq 1"> </if> />
+        </div>
+        <div class="input clearfix">
+          <span class="span">联系号码<font class="red2">*</font></span>
+          <input type="text" name="phone" placeholder="联系号码" value="{$info.phone}" datatype="/^1[3|4|5|7|8|9]\d{9}$/|/^([0-9]{3,4}-)?[0-9]{7,8}$/" errormsg="请填写正确的联系号码" nullmsg="请填写联系号码" <if condition="$info['is_open'] eq 1"> </if> />
+        </div>
+        <div class="input clearfix">
+          <span class="span">职位<font class="red2">*</font></span>
+          <input type="text" name="position" placeholder="职位" value="{$info.position}" datatype="*" errormsg="请填写职位" nullmsg="请填写职位" <if condition="$info['is_open'] eq 1"> </if> />
+        </div>
+        <div class="input clearfix">
+          <span class="span">薪资<font class="red2">*</font></span>
+          <input type="text" name="salary" placeholder="薪资" value="{$info.salary}" datatype="*" errormsg="请填写薪资" nullmsg="请填写薪资" <if condition="$info['is_open'] eq 1"> </if>/>
+        </div>
+        <div class="input clearfix">
+          <span class="span">学历</span>
+          <!-- <input type="text" name="education" placeholder="学历" value="{$info.education}" <if condition="$info['is_open'] eq 1"> </if>/> -->
+          <select name="education" <if condition="$info['is_open'] eq 1"> </if>>
+            <option value="高中以下" <if condition="$info['education'] eq '高中以下' "> selected="selected"</if>>高中以下</option>
+            <option value="高中" <if condition="$info['education'] eq '高中' "> selected="selected"</if>>高中</option>
+            <option value="中专/技校" <if condition="$info['education'] eq '中专/技校' "> selected="selected"</if>>中专/技校</option>
+            <option value="大专" <if condition="$info['education'] eq '大专' "> selected="selected"</if>>大专</option>
+            <option value="本科" <if condition="$info['education'] eq '本科' "> selected="selected"</if>>本科</option>
+            <option value="硕士" <if condition="$info['education'] eq '硕士' "> selected="selected"</if>>硕士</option>
+            <option value="博士" <if condition="$info['education'] eq '博士' "> selected="selected"</if>>博士</option>
+          </select>
+        </div>
+        <div class="input clearfix">
+          <span class="span">工作年龄</span>
+          <!-- <input type="text" name="working_age" placeholder="工作年龄" value="{$info.working_age}" <if condition="$info['is_open'] eq 1"> </if>/> -->
+          <select name="working_age" <if condition="$info['is_open'] eq 1"> </if>>
+            <option value="无经验" <if condition="$info['working_age'] eq '无经验' "> selected="selected"</if>>无经验</option>
+            <option value="应届生" <if condition="$info['working_age'] eq '应届生' "> selected="selected"</if>>应届生</option>
+            <option value="1年以下" <if condition="$info['working_age'] eq '1年以下' "> selected="selected"</if>>1年以下</option>
+            <option value="1-2年" <if condition="$info['working_age'] eq '1-2年' "> selected="selected"</if>>1-2年</option>
+            <option value="3-5年" <if condition="$info['working_age'] eq '3-5年' "> selected="selected"</if>>3-5年</option>
+            <option value="6-10年" <if condition="$info['working_age'] eq '6-10年' "> selected="selected"</if>>6-10年</option>
+            <option value="10年以上" <if condition="$info['working_age'] eq '10年以上' "> selected="selected"</if>>10年以上</option>
+          </select>
+        </div>
+        <div class="input clearfix cat_id">
+          <span class="span">分类<font class="red2">*</font></span>
+          <span class="text" <if condition="$info['is_open'] neq 1"> id="cat_id" </if> ><if condition="!empty($info['cat_name'])">{$info['cat_name']}<else/>请选择</if></span>
+          <input type="hidden" name="cat_id"  value="{$info.cat_id}" datatype="*" errormsg="请填写分类" nullmsg="请填写分类">
+        </div>
+        <if condition="count($info['district']) gt 0">
+          <foreach name="info.district" item="item" key="k">
+            <div class="input clearfix regin" data-on="{$k}">
+              <span class="span">工作地点<font class="red2">*</font></span>
+              <span class="text" id="regin{$k}" ><if condition="!empty($info['province_name'][$k]) OR !empty($info['city_name'][$k]) OR !empty($info['district_name'][$k])">{$info['province_name'][$k]} {$info['city_name'][$k]} {$info['district_name'][$k]}<else/>请选择</if></span>
+              <input type="hidden" name="province[]"  value="{$info.province.$k}" datatype="*" errormsg="请填写工作地点" nullmsg="请填写工作地点">
+              <input type="hidden" name="city[]"  value="{$info.city.$k}" datatype="*" errormsg="请填写工作地点" nullmsg="请填写工作地点">
+              <input type="hidden" name="district[]"  value="{$info.district.$k}" datatype="*" errormsg="请填写工作地点" nullmsg="请填写工作地点">
+              <if condition="$k eq 0">
+                <i class="ace-icon fa fa-plus bigger-110"></i>
+              <else/>
+                <i class="ace-icon fa fa-minus bigger-110"></i>
+              </if>
+            </div>
+          </foreach>
+        <else/>
+        <div class="input clearfix regin" data-on="0">
+          <span class="span">工作地点<font class="red2">*</font></span>
+          <span class="text" id="regin0" ><if condition="!empty($info['province_name']) OR !empty($info['city_name']) OR !empty($info['district_name'])">{$info['province_name']} {$info['city_name']} {$info['district_name']}<else/>请选择</if></span>
+          <input type="hidden" name="province[]"  value="" datatype="*" errormsg="请填写工作地点" nullmsg="请填写工作地点">
+          <input type="hidden" name="city[]"  value="" datatype="*" errormsg="请填写工作地点" nullmsg="请填写工作地点">
+          <input type="hidden" name="district[]"  value="" datatype="*" errormsg="请填写工作地点" nullmsg="请填写工作地点">
+          <i class="ace-icon fa fa-plus bigger-110"></i>
+        </div>
+        </if>
+      </div>
+      <div class="jo_box">
+        <div class="input clearfix">
+          <span class="span">工作内容<font class="red2">*</font></span>
+          <textarea rows="3" datatype="*" errormsg="请填写工作内容" nullmsg="请填写工作内容" <if condition="$info['is_open'] eq 1"> </if> name="work_content" placeholder="工作内容">{$info.work_content}</textarea>
+        </div>
+        <div class="input clearfix">
+          <span class="span">职位描述<font class="red2">*</font></span>
+          <textarea rows="3" datatype="*" errormsg="请填写职位描述" nullmsg="请填写职位描述" <if condition="$info['is_open'] eq 1"> </if> name="position_description" placeholder="职位描述">{$info.position_description}</textarea>
+        </div>
+      </div>
+      <div class="jo_box">
+        <div class="input clearfix">
+          <span class="span">有效时间<font class="red2">*</font></span>
+          <input type="text" datatype="*" errormsg="请填写有效时间" nullmsg="请填写有效时间" readonly onfocus="this.blur()" name="end_time" id="end_time" placeholder="招聘有效时间" <if condition="!empty($info['end_time'])">value="{$info.end_time|date='Y-m-d',###}"</if>/>
+        </div>
+        <div class="input clearfix">
+          <span class="span">是否招聘</span>
+          <em class="switch <if condition="$info['status'] eq 1">on</if>">
+            <input type="checkbox" name="status" value="1" <if condition="$info['status'] eq 1">checked="checked"</if> />
+            <i></i>
+          </em>
+        </div>
+      </div>
+      <div class="ybm_submit">
+        <input type="hidden" name="id" value="{$info.id}">
+        <input type="submit" value="确认保存" />
+        <if condition="!empty($info['id'])">
+        <a del-href="{:U('Recruitment/my_del',array('id'=>$info['id']))}" class="del">删除岗位</a>
+        </if>
+      </div>
+      <div class="ybm_checkbox">
+        <label for="gg_1">
+          <input type="checkbox" name="protocol" value="1" checked="checked" datatype="*" errormsg="请同意协议" nullmsg="请同意协议"/>
+          <span>已阅读并同意</span>
+        </label>
+        <a class="xieyi">《{$xieyi_list.255.title}》</a>
+        
+      </div>
+    </form>
+  </div>
+  <div class="xieyi_bg"></div>
+  <div class="xieyi_fix">
+    <h3>{$xieyi_list.255.title}</h3>
+    {$xieyi_list.255.content}
+  </div>
+  <include file='Public:page_nav'/>
+</body>
+<include file='Public:pageFooter'/>
+<link rel="stylesheet" type="text/css" href="__CSS__/mobileSelect.css">
+<script src="__JS__/mobileSelect.min.js" type="text/javascript"></script>
+<script>
+  $(document).ready(function() {
+    $("#submitForm").Validform({
+      tipSweep:true,
+      tiptype:function(msg,o){
+        if(o.type==3){
+          layer.open({
+            content: msg
+            ,skin: 'msg'
+            ,time: 2
+          });
+        }
+      },
+    });
+    $("#jo_box1").on("click",".regin .fa-minus",function(){
+      $(this).parents(".regin").remove();
+    })
+    $("#jo_box1").on("click",".regin .fa-plus",function(){
+      var id_on = $(".regin").last().attr("data-on");
+      id_on++;
+      if($("#jo_box1").find(".regin").length>2){
+        layer.open({
+          content: "工作地点最多3个"
+          ,skin: 'msg'
+          ,time: 2
+        });
+        return false;
+      }
+      var html = '<div class="input clearfix regin" data-on="'+id_on+'"> <span class="span">工作地点<font class="red2">*</font></span> <span class="text" id="regin'+id_on+'" >请选择</span> <input type="hidden" name="province[]"  value=""> <input type="hidden" name="city[]"  value=""> <input type="hidden" name="district[]"  value=""> <i class="ace-icon fa fa-minus bigger-110"></i></div>';
+      $("#jo_box1").append(html);
+      var mobileSelect2 = new MobileSelect({
+          trigger: '#regin'+id_on,
+          title: '地区',
+          triggerDisplayData:true,
+          wheels:[{data:region_all},],
+              keyMap: {
+                id:'region_id',
+                value: 'region_name',
+                childs :'child'
+            }, 
+          transitionEnd:function(indexArr, data){
+              // console.log(data);
+          },
+          callback:function(indexArr, data){
+            $(this.trigger).siblings("input[name='province[]']").val(data['0'].region_id);
+            $(this.trigger).siblings("input[name='city[]']").val(data['1'].region_id);
+            $(this.trigger).siblings("input[name='district[]']").val(data['2'].region_id);
+          }
+      });
+    })
+    $(".del").on('click',function(){
+        var url = $(this).attr('del-href');
+        layer.open({
+          content: '您确定删除吗？'
+          ,btn: ['删除','否']
+          ,yes: function(index){
+            location.href=url;
+          }
+        });
+    })
+    
+    var region_all = {$region_all};
+    
+    <if condition="count($info['district']) gt 0">
+      <foreach name="info.district" item="item" key="k">
+        var mobileSelect2 = new MobileSelect({
+            trigger: '#regin{$k}',
+            title: '地区',
+            triggerDisplayData:true,
+            wheels:[{data:region_all},],
+                keyMap: {
+                  id:'region_id',
+                  value: 'region_name',
+                  childs :'child'
+              }, 
+            transitionEnd:function(indexArr, data){
+                // console.log(data);
+            },
+            callback:function(indexArr, data){
+              $(this.trigger).siblings("input[name='province[]']").val(data['0'].region_id);
+              $(this.trigger).siblings("input[name='city[]']").val(data['1'].region_id);
+              $(this.trigger).siblings("input[name='district[]']").val(data['2'].region_id);
+            }
+        });
+      </foreach>
+    <else/>
+      var mobileSelect2 = new MobileSelect({
+          trigger: '#regin0',
+          title: '地区',
+          triggerDisplayData:true,
+          wheels:[{data:region_all},],
+              keyMap: {
+                id:'region_id',
+                value: 'region_name',
+                childs :'child'
+            }, 
+          transitionEnd:function(indexArr, data){
+              // console.log(data);
+          },
+          callback:function(indexArr, data){
+            $(this.trigger).siblings("input[name='province[]']").val(data['0'].region_id);
+            $(this.trigger).siblings("input[name='city[]']").val(data['1'].region_id);
+            $(this.trigger).siblings("input[name='district[]']").val(data['2'].region_id);
+          }
+      });
+    </if>
+
+    var cat_all = {$cat_all};
+    var mobileSelect2 = new MobileSelect({
+        trigger: '#cat_id',
+        title: '分类',
+        triggerDisplayData:false,
+        wheels:[{data:cat_all},],
+            keyMap: {
+              id:'cat_id',
+              value: 'cat_name',
+              childs :'child'
+          }, 
+        transitionEnd:function(indexArr, data){
+            // console.log(data);
+        },
+        callback:function(indexArr, data){
+          var key = data.length-1;
+          $(".cat_id input[name='cat_id']").val(data[key].cat_id);
+          $("#cat_id").html(data[key].cat_name);
+        }
+    });
+
+    var d = new Date();
+    var result = [];
+    var position = [];
+    for(var i=1;i<13;i++){
+      var obj = {};
+      var m=d.getMonth()+1;
+      m=m<10?"0"+m:m;
+      <if condition="!empty($info['end_time'])">
+      if(m=={$info.end_time|date='m',###}){
+        position.push(i-1);
+      }
+      </if>
+      obj['id'] = i;
+      obj['value'] = d.getFullYear()+"-"+m;
+      var date = [];
+      do{
+        <if condition="!empty($info['end_time'])">
+        if(m=={$info.end_time|date='m',###}&&d.getDate()=={$info.end_time|date='d',###}){
+          position.push(d.getDate()-1);
+        }
+        </if>
+        date_d=d.getDate()<10?"0"+d.getDate():d.getDate();
+        date.push({id:d.getDate(),value:date_d});
+        d.setDate(d.getDate()+1);
+      }while(d.getDate()!=1);
+      obj['childs'] = date;
+      result.push(obj);
+    }
+    var mobileSelect3 = new MobileSelect({
+        trigger: '#end_time',
+        title: '有效期',
+        triggerDisplayData:false,
+        wheels:[{data:result}],
+        position:position,
+        transitionEnd:function(indexArr, data){
+            // console.log(data);
+        },
+        callback:function(indexArr, data){
+          var val = data['0'].value+"-"+data['1'].value;
+          $("#end_time").val(val);
+        }
+    });
+    console.log(position);
+    $('.switch').on('click',function(){
+      if($(this).hasClass('on')){
+        $(this).removeClass('on');
+        $(this).find('input').attr('checked',false);
+      }else{
+        $(this).addClass('on');
+        $(this).find('input').attr('checked',true);
+      }
+    });
+  });
+</script>

@@ -1,0 +1,29 @@
+<include file='Public:pageHeader'/>
+<body data-psd-width="750" class="f3f3f3">
+  <div class="Contact">
+    <form method="post" action="{:U('Member/contact_us_save')}" id="submitForm" name="submitForm" enctype="multipart/form-data">
+      <input type="text" name="title" placeholder="标题" datatype="*" errormsg="请填写标题" nullmsg="请填写标题"/>
+      <input type="text" name="name" placeholder="姓名" datatype="*" errormsg="请填写姓名" nullmsg="请填写姓名"/>
+      <input type="text" name="phone" placeholder="手机号码" datatype="*,m" errormsg="请填写手机" nullmsg="请填写手机"/>
+      <textarea placeholder="请留下您对我们的宝贵意见或建议，商务合作。" name="content" datatype="*" errormsg="请填写建议" nullmsg="请填写建议"></textarea>
+      <input type="submit" value="提交"/>
+    </form>
+  </div>
+  <include file='Public:page_nav'/>
+  <include file='Public:login'/>
+</body>
+<include file='Public:pageFooter'/>
+<script type="text/javascript">
+  $("#submitForm").Validform({
+    tipSweep:true,
+    tiptype:function(msg,o){
+      if(o.type==3){
+        layer.open({
+          content: msg
+          ,skin: 'msg'
+          ,time: 2
+        });
+      }
+    },
+  });
+</script>

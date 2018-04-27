@@ -1,0 +1,280 @@
+<include file="Index:pageHeader" />
+<script type="text/javascript">
+$(function(){
+	autoHeight(jQuery('.autoHeight'));
+	jQuery(".column_Box").each(function () {
+		var t = jQuery(this);
+		if (t.length < 1) return;
+		Tab_click(t.find('.tab ul li'), t.find(".wrapBox .body"));
+	});
+});
+// KindEditor.ready(function(K) {
+// 	K.create('#content', {
+// 		allowFileManager : false,
+// 		pasteType : 2,
+// 		newlineTag : 'p',
+// 		filterMode : false, // true:开启过滤模式, false:关闭过滤模式
+// 		urlType : 'absolute'
+// 	});
+// });
+</script>
+<div class="column_Box mainAutoHeight">
+	<div class="tab">
+		<ul>
+			<li class="current"><a href="javascript:">属性</a></li>
+		</ul>
+	</div>
+	<div class="column_Box mainAutoHeight wrapBox">
+    <div class="body">
+			<form method="post" action="{:U('Recruitment/save')}" id="submitForm" name="submitForm" enctype="multipart/form-data">
+				<table border="0" cellpadding="0" cellspacing="0">
+					<tbody>
+						<tr>
+							<td style="text-align:right;">职位：</td>
+							<td style="text-align:left;"><input type="text" class="txt" name="position" value="{$info.position}" size='60'/><em>*</em></td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">地点：</td>
+							<td style="text-align:left;" id="jo_box1">
+								<if condition="isset($info['district'])&&count($info['district']) gt 0">
+									<foreach name="info.district" item="item" key="k">
+									<div class="xo" data-on="{$k}">
+										<span class="html" id="regin{$k}"><if condition="!empty($info['province_name'][$k])">{$info['province_name'][$k]} {$info['city_name'][$k]} {$info['district_name'][$k]}<else/>请选择地区</if></span>
+										<if condition="$k eq 0">
+										  <i class="ace-icon fa fa-plus bigger-110"></i>
+										<else/>
+										  <i class="ace-icon fa fa-minus bigger-110"></i>
+										</if>
+										<input type="hidden" name="province[]"  value="{$info.province.$k}">
+										<input type="hidden" name="city[]"  value="{$info.city.$k}">
+										<input type="hidden" name="district[]"  value="{$info.district.$k}">
+									</div>
+									</foreach>
+								<else/>
+									<div class="xo" data-on="1">
+										<span class="html" id="regin0"><if condition="!empty($info['province_name'])">{$info.province_name} {$info.city_name} {$info.district_name}<else/>请选择地区</if></span>
+										<i class="ace-icon fa fa-plus bigger-110"></i>
+										<input type="hidden" name="province[]"  value="">
+										<input type="hidden" name="city[]"  value="">
+										<input type="hidden" name="district[]"  value="">
+									</div>
+								</if>
+								
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">分类：</td>
+							<td style="text-align:left;" class="cat_id">
+							  <span class="text" id="cat_id"><if condition="!empty($info['cat_name'])">{$info['cat_name']}<else/>请选择</if></span>
+							  <input type="hidden" name="cat_id"  value="{$info.cat_id}">
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">薪资：</td>
+							<td style="text-align:left;"><input type="text" class="txt" name="salary" value="{$info.salary}" size='60'/><em>*</em></td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">联系人：</td>
+							<td style="text-align:left;"><input type="text" class="txt" name="name" value="{$info.name}" size='60'/><em>*</em></td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">联系电话：</td>
+							<td style="text-align:left;"><input type="text" class="txt" name="phone" value="{$info.phone}" size='60'/><em>*</em></td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">学历：</td>
+							<td style="text-align:left;">
+								<select name="education">
+								  <option value="高中以下" <if condition="$info['education'] eq '高中以下' "> selected="selected"</if>>高中以下</option>
+								  <option value="高中" <if condition="$info['education'] eq '高中' "> selected="selected"</if>>高中</option>
+								  <option value="中专/技校" <if condition="$info['education'] eq '中专/技校' "> selected="selected"</if>>中专/技校</option>
+								  <option value="大专" <if condition="$info['education'] eq '大专' "> selected="selected"</if>>大专</option>
+								  <option value="本科" <if condition="$info['education'] eq '本科' "> selected="selected"</if>>本科</option>
+								  <option value="硕士" <if condition="$info['education'] eq '硕士' "> selected="selected"</if>>硕士</option>
+								  <option value="博士" <if condition="$info['education'] eq '博士' "> selected="selected"</if>>博士</option>
+								</select>
+								<!-- <input type="text" class="txt" name="education" value="{$info.education}" size='60'/><em>*</em> -->
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">工作年龄：</td>
+							<td style="text-align:left;">
+								<select name="working_age" >
+								  <option value="无经验" <if condition="$info['working_age'] eq '无经验' "> selected="selected"</if>>无经验</option>
+								  <option value="应届生" <if condition="$info['working_age'] eq '应届生' "> selected="selected"</if>>应届生</option>
+								  <option value="1年以下" <if condition="$info['working_age'] eq '1年以下' "> selected="selected"</if>>1年以下</option>
+								  <option value="1-2年" <if condition="$info['working_age'] eq '1-2年' "> selected="selected"</if>>1-2年</option>
+								  <option value="3-5年" <if condition="$info['working_age'] eq '3-5年' "> selected="selected"</if>>3-5年</option>
+								  <option value="6-10年" <if condition="$info['working_age'] eq '6-10年' "> selected="selected"</if>>6-10年</option>
+								  <option value="10年以上" <if condition="$info['working_age'] eq '10年以上' "> selected="selected"</if>>10年以上</option>
+								</select>
+							<!-- <input type="text" class="txt" name="working_age" value="{$info.working_age}" size='60'/><em>*</em> -->
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">发布时间：</td>
+							<td style="text-align:left;">
+								<input type="text" name='add_time' value="{$info.add_time|date='Y-m-d',###}" onclick="WdatePicker();">&nbsp;<font color='red'>留空为当前时间</font>
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">工作内容：</td>
+							<td style="text-align:left;"><textarea rows="6" cols="60" name="work_content" id="work_content" >{$info.work_content}</textarea></td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">职位描述：</td>
+							<td style="text-align:left;"><textarea rows="6" cols="60" name="position_description" id="position_description" >{$info.position_description}</textarea></td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">单位名称：</td>
+							<td style="text-align:left;"><input type="text" class="txt" name="company_name" value="<if condition="!empty($info['company']['company_name'])">{$info.company.company_name}<else/>{$Company.company_name}</if>" size='60'/><em>*</em></td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">单位介绍：</td>
+							<td style="text-align:left;"><textarea rows="6" cols="60" name="company_info" id="company_info" ><if condition="!empty($info['company']['company_info'])">{$info.company.company_info}<else/>{$Company.company_info}</if></textarea></td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">招聘结束时间：</td>
+							<td style="text-align:left;">
+								<input type="text" name='end_time' value="{$info.end_time|date='Y-m-d',###}" onclick="WdatePicker();">&nbsp;<font color='red'>留空为当前时间</font>
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">招聘状态：</td>
+							<td style="text-align:left;">
+						      <input type="radio" name="status" value="1" <if condition="empty($info)||$info['status']==1">checked</if>/>是&nbsp;&nbsp;
+						      <input type="radio" name="status" value="0" <eq name='info.status' value='0'>checked</eq>/>否
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">阅读量：</td>
+							<td style="text-align:left;"><input type="text" class="txt" name="view_count" value="{$info.view_count}" size='60'/></td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">审核：</td>
+							<td style="text-align:left;">
+						      <input type="radio" name="is_open" value="1" <if condition="empty($info)||$info['is_open']==1">checked</if>/>是&nbsp;&nbsp;
+						      <input type="radio" name="is_open" value="0" <eq name='info.is_open' value='0'>checked</eq>/>否
+							</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td style="text-align:left;" >
+								<input type="hidden" name="id" value="{$info.id}"/>
+								<input type="submit" value="提交"/>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+			<script type="text/javascript">
+				var region_all = {$region_all};
+
+				$("#jo_box1").on("click",".fa-minus",function(){
+				  $(this).parents(".xo").remove();
+				})
+				$("#jo_box1").on("click",".fa-plus",function(){
+				  var id_on = $(".xo").last().attr("data-on");
+				  id_on++;
+				  if($("#jo_box1").find(".xo").length>2){
+				    alert("工作地点最多3个");
+				    return false;
+				  }
+				  var html = '<div class="xo" data-on="'+id_on+'"> <span class="html" id="regin'+id_on+'">请选择地区</span> <i class="ace-icon fa fa-minus bigger-110"></i> <input type="hidden" name="province[]"  value=""> <input type="hidden" name="city[]"  value=""> <input type="hidden" name="district[]"  value=""> </div>';
+				  $("#jo_box1").append(html);
+
+				  var mobileSelect2 = new MobileSelect({
+				      trigger: '#regin'+id_on,
+				      title: '地区',
+				      triggerDisplayData:true,
+				      wheels:[{data:region_all},],
+				          keyMap: {
+				            id:'region_id',
+				            value: 'region_name',
+				            childs :'child'
+				        }, 
+				      transitionEnd:function(indexArr, data){
+				          // console.log(data);
+				      },
+				      callback:function(indexArr, data){
+				        	// $(this.trigger).find(".html").html(data['0'].region_name+" "+data['1'].region_name+" "+data['2'].region_name);
+				        	$(this.trigger).siblings("input[name='province[]']").val(data['0'].region_id);
+				        	$(this.trigger).siblings("input[name='city[]']").val(data['1'].region_id);
+				        	$(this.trigger).siblings("input[name='district[]']").val(data['2'].region_id);
+				      }
+				  });
+				})
+
+				
+				<if condition="count($info['district']) gt 0">
+				  <foreach name="info.district" item="item" key="k">
+				    var mobileSelect2 = new MobileSelect({
+				        trigger: '#regin{$k}',
+				        title: '地区',
+				        triggerDisplayData:true,
+				        wheels:[{data:region_all},],
+				            keyMap: {
+				              id:'region_id',
+				              value: 'region_name',
+				              childs :'child'
+				          }, 
+				        transitionEnd:function(indexArr, data){
+				            // console.log(data);
+				        },
+				        callback:function(indexArr, data){
+				          	// $(this.trigger).find(".html").html(data['0'].region_name+" "+data['1'].region_name+" "+data['2'].region_name);
+				          	$(this.trigger).siblings("input[name='province[]']").val(data['0'].region_id);
+				          	$(this.trigger).siblings("input[name='city[]']").val(data['1'].region_id);
+				          	$(this.trigger).siblings("input[name='district[]']").val(data['2'].region_id);
+				        }
+				    });
+				  </foreach>
+				<else/>
+					var mobileSelect2 = new MobileSelect({
+					    trigger: '#regin0',
+					    title: '地区',
+					    triggerDisplayData:true,
+					    wheels:[{data:region_all},],
+					        keyMap: {
+					          id:'region_id',
+					          value: 'region_name',
+					          childs :'child'
+					      }, 
+					    transitionEnd:function(indexArr, data){
+					        // console.log(data);
+					    },
+					    callback:function(indexArr, data){
+					    	// $(this.trigger).find(".html").html(data['0'].region_name+" "+data['1'].region_name+" "+data['2'].region_name);
+					    	$(this.trigger).siblings("input[name='province[]']").val(data['0'].region_id);
+					    	$(this.trigger).siblings("input[name='city[]']").val(data['1'].region_id);
+					    	$(this.trigger).siblings("input[name='district[]']").val(data['2'].region_id);
+					    }
+					});
+				</if>
+
+				var cat_all = {$cat_all};
+				var mobileSelect2 = new MobileSelect({
+				    trigger: '#cat_id',
+				    title: '分类',
+				    triggerDisplayData:false,
+				    wheels:[{data:cat_all},],
+				        keyMap: {
+				          id:'cat_id',
+				          value: 'cat_name',
+				          childs :'child'
+				      }, 
+				    transitionEnd:function(indexArr, data){
+				        // console.log(data);
+				    },
+				    callback:function(indexArr, data){
+				      var key = data.length-1;
+				      $(".cat_id input[name='cat_id']").val(data[key].cat_id);
+				      $("#cat_id").html(data[key].cat_name);
+				    }
+				});
+			</script>
+    </div>
+  </div>
+</div>
+</body>
+</html>

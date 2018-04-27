@@ -1,0 +1,101 @@
+<include file="Index:pageHeader" />
+<script type="text/javascript">
+function delRecruitment(id) {
+	$.dialog.confirm('你确定要删除吗？', function(){
+		window.location.href="{:U('Recruitment/cast_del')}?id="+id;
+	}, function(){
+		//$.dialog.tips('执行取消操作');
+	});
+}
+</script>
+  <div class="column_Box mainAutoHeight">
+    <div class="tab">
+      <ul>
+        <li class="current"><a href="javascript:">简历列表</a></li>
+      </ul>
+    </div>
+    <div class="wrapBox mainAutoHeight">
+      <!--列表-->
+      <div class="body User">
+        <div class="item">
+          
+      	</div>
+				<form method="POST" action="{:U('Recruitment/cast_batch')}" name="listForm">
+				<table border="0" cellpadding="0" cellspacing="0" class="center">
+					<thead>
+						<tr>
+							<th style="width:70px;"><input type="checkbox" name="checkBox_All" class="checkBox_All" />编号</th>
+							<th>姓名</th>
+							<th>工作年龄</th>
+							<th>学历</th>
+							<th>专业</th>
+							<th>投放时间</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<foreach name="list" item="vo">
+						<tr>
+							<td><input type="checkbox" name="checkboxes[]" class="checkBox_list" value="{$vo.id}" />{$vo.id}</td>
+							<td>{$vo.name}</td>
+							<td>{$vo.working_age}</td>
+							<td>{$vo.education}</td>
+							<td>{$vo.profession}</td>
+							<td>{$vo.add_time|date='Y-m-d H:i:s',###}</td>
+							<td>
+								<span>
+									<a title="编辑" href="{:U('Recruitment/resume_info',array('id'=>$vo['resume_id']))}"><img width="16" height="16" border="0" src="__PUBLIC__/Admin/Img/icon_edit.gif"></a>&nbsp;
+									<a title="移除" onclick="delRecruitment('{$vo.id}')" href="javascript:;"><img width="16" height="16" border="0" src="__PUBLIC__/Admin/Img/icon_drop.gif"></a>
+								</span>
+							</td>
+						</tr>
+						</foreach>
+					</tbody>
+				</table>
+				<div class="lineHeight" style="border-bottom:1px dashed #cccccc;"></div>
+				<div class="batchChange">
+					<div class="f_l">
+						<select onchange="changeAction()" id="selAction" name="type">
+						<option value="">请选择...</option>
+						<option value="button_remove">批量删除</option>
+						</select>
+						<input type="submit" class="button" name="btnSubmit" id="btnSubmit" value=" 确定 "/>
+					</div>
+					<div class="f_r">
+						<div class="pagination">{$page}</div>
+					</div>
+				</div>
+				</form>
+	    </div>
+	  </div>
+	</div>
+	<script type="text/javascript">
+	/**
+	   * @param: bool ext 其他条件：用于转移分类
+	   */
+	  function confirmSubmit(frm, ext){
+		  if (frm.elements['type'].value == 'button_remove'){
+			  return confirm('您确定要删除吗');
+		  }else if (frm.elements['type'].value == 'not_on_sale'){
+			  return confirm('您确定要隐藏吗');
+		  }else if (frm.elements['type'].value == 'move_to'){
+			  ext = (ext == undefined) ? true : ext;
+			  return ext && frm.elements['target_cat'].value != 0;
+		  }else if (frm.elements['type'].value == ''){
+			  return false;
+		  }else{
+			  return true;
+		  }
+	  }
+	  function changeAction(){
+		  var frm = document.forms['listForm'];
+		  // 切换分类列表的显示
+		  // frm.elements['target_cat'].style.display = frm.elements['type'].value == 'move_to' ? '' : 'none';
+		  if (!document.getElementById('btnSubmit').disabled &&
+			  confirmSubmit(frm, false)){
+			  frm.submit();
+		  }
+	  }
+	</script>
+</body>
+</html>

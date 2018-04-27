@@ -1,0 +1,29 @@
+<if condition="$comment_list">
+<foreach name="comment_list" item="item">
+<li class="clearfix" >
+  <a href="{:U('Member/user_index',array('uid'=>$item['user_id']))}"><div class="fl" style="background-image: url(/{$item.pic});"></div></a>
+  <div class="fr comment_info" data-name="{$item.user_name}" data-id="{$item.user_id}">
+    <h4 class="clearfix">
+      <span>{$item.user_name}</span>
+      <em>
+        <if condition="$item['add_time'] gt (time()-60)">
+          刚刚
+        <elseif condition="$item['add_time'] gt (time()-3600)"/>
+          {:date("i",time()-$item['add_time'])}分钟前
+        <elseif condition="$item['add_time'] gt (time()-86400)"/>
+          {:date("H",time()-$item['add_time'])}小时前
+        <else/>
+          {$item.add_time|date='Y-m-d',###}
+        </if>
+      </em>
+    </h4>
+    <p>
+      <if condition="$item['reply']">
+        回复 {$item.reply}:
+      </if>
+      {$item.content}
+    </p>
+  </div>
+</li>
+</foreach>
+</if>

@@ -1,0 +1,42 @@
+<div class="Login">
+  <div class="registered">
+    <div class="Lo_logo">
+      <img src="__IMG__/logo_1.png"/>
+    </div>
+    <form method="post" action="{:U('User/phone_registered')}" id="registered_form" name="submitForm" enctype="multipart/form-data" class="Lo_mian" id="registered">
+      <input type="text" name="phone" placeholder="请输入手机号"/>
+      <input type="submit" id="registered_submit" value="手机号注册">
+    </form>
+    <div class="Lo_wx" style="margin-top:2rem;">
+      <!-- <b>或</b> -->
+      <a href="{:U('User/oauth')}" class="iconfont">&#xe622;</a>
+      <em>微信一键登录</em>
+    </div>
+    <div class="Lo_bott">
+      <em>登录代表您已同意</em><a href=""> 蜜蜂贝贝用户协议＞</a>
+    </div>
+  </div>
+  <div class="password">
+    <div class="Lo_logo">
+      <img src="__IMG__/logo_1.png"/>
+    </div>
+    <form method="post" action="{:U('User/do_login')}" id="do_login_form" name="submitForm" enctype="multipart/form-data" class="Lo_mian" id="do_login">
+      <input type="password" name="password" placeholder="请输入密码"/>
+      <a class="forget" href="{:U('User/forget_password')}">忘记密码</a>
+      <input type="submit" id="do_login_submit" value="登陆">
+    </form>
+  </div>
+  <div class="Lo_code">
+    <div class="Lo_logo">
+      <img src="__IMG__/logo_1.png"/>
+    </div>
+    <form method="post" action="{:U('User/do_register')}" id="do_register_form" name="submitForm" enctype="multipart/form-data" class="Lo_mian" id="do_login">
+      <input type="password" class="text" name="password" placeholder="密码">
+      <div class="code_box">
+        <input type="text" class="text" name="code" placeholder="验证码">
+        <a class="code" data-url="{:U('User/code')}">发送验证码</a>
+      </div>
+      <input type="submit" id="do_register_submit" value="注册">
+    </form>
+  </div>
+</div>

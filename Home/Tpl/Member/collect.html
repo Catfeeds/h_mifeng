@@ -1,0 +1,28 @@
+<include file='Public:pageHeader'/>
+<ul>
+  <foreach name="list" item="item">
+    <li>
+      <a href="{:U('Info/information_info',array('id'=>$item['id']))}">
+        <img src="{$item.thumb_img}">
+        {$item.title}
+      </a>
+      <a class="remove" data-id="{$item['id']}">删除</a>
+    </li>
+  </foreach>
+</ul>
+<script type="text/javascript">
+  $(".remove").click(function(){
+    var _this = $(this).parents('li');
+    $.ajax({
+       type: "POST",
+       url: "{:U('Member/collect_del')}",
+       data: "collect_id={$collect_id}&information_id="+$(this).attr('data-id'),
+       success: function(msg){
+        if(msg.status){
+          _this.remove();
+        }
+       }
+    });
+  })
+</script>
+<include file='Public:pageFooter'/>

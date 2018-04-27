@@ -1,0 +1,168 @@
+<include file='Public:pageHeader'/>
+<body data-psd-width="750" class="f3f3f3">
+  <div class="Class_xx">
+    <div class="clxx_banner">
+      <span style="background-image: url(/{$info.thumb_img});"></span>
+    </div>
+    <div class="clxx_mian">
+      <div class="clxx_hd">
+        <span>课程详情</span>
+        <span>课程列表</span>
+        <span>留言</span>
+      </div>
+      <div class="clxx_bd">
+        <div class="clxx_box clxx_box_1">
+          <div class="li_1">
+            <h4>{$info.title}</h4>
+            <h5 class="clearfix">
+              <span>讲师：{$info.teacher}</span>
+              <em>{$info.buy_count}人已购买</em>
+            </h5>
+            <h6 class="clearfix">
+              <span>总课程<i>{:count($info['child_list'])}</i>节</span>
+              <em><i>{$info.integral}</i>积分</em>
+            </h6>
+          </div>
+          <div class="li_2">
+            <div>
+              <h4><i style="background-image: url(__IMG__/icon_12.png);"></i>课程亮点</h4>
+              <div class="gf_mian">
+                {$info.content}
+              </div>
+            </div>
+          </div>
+          <div class="clxx_button">
+            <if condition="!empty($info['is_pay'])">
+              <a>已经兑换</a>
+            <else/>
+              <a data-href="{:U('Course/pay',array('id'=>$info['id']))}" class="pay">立即兑换</a>
+            </if>
+          </div>
+        </div>
+        <div class="clxx_box clxx_box_2">
+          <ul>
+            <foreach name="info.child_list" item="item">
+            <li>
+              <a href="{:U('Course/course_info',array('id'=>$item['id']))}" class="clearfix">
+                <div class="yr_img fl" style="background-image: url(/{$item.thumb_img});"></div>
+                <div class="yr_txt fr">
+                  <span>{$item.title}</span>
+                  <em>{$item.short|nl2br}</em>
+                  <if condition="$item['try_out'] eq 1">
+                  <span class="try_out">可试看</span>
+                  </if>
+                </div>
+              </a>
+            </li>
+            </foreach>
+          </ul>
+        </div>
+        <div class="clxx_box clxx_box_3">
+          <include file='Public:comment'/>
+        </div>
+        <style type="text/css">
+          .comment .yh_pl{margin-top: 0;}
+        </style>
+      </div>
+    </div>
+  </div>
+  <form method="post" action="{:U('Course/pay')}" id="submitForm" name="submitForm" enctype="multipart/form-data">
+    <div class="reel_bg"></div>
+    <div class="reel_fix">
+      <h3 style="background-color: #ef8875; color:#fff;">是否使用卡卷</h3>
+      <div class="box">
+        <ul id="reel_list">
+          <foreach name="reel_list" item="item">
+            <li class="clearfix">
+              <div class="yes"></div>
+              <div class="fl"><i style="background-image: url(__IMG__/icon_1.png);"></i></div>
+              <div class="fr">
+                <h4>{$item.title}</h4>
+                <h6 class="clearfix">
+                <span>{$item.price}积分</span>
+                  <em>
+                    <i>有效期至{$item.end_time|date='Y/m/d',###}</i>
+                  </em>
+                </h6>
+              </div>
+              <input type="radio" name="reel_id" value="{$item.id}" style="display:none;">
+            </li>
+          </foreach>
+        </ul>
+        <div class="text-right">
+          <span class="hide">取消</span>
+          <input type="hidden" name="id" value="{$info.id}">
+          <input type="submit" value="确定" class="submit">
+        </div>
+      </div>
+    </div>
+  </form>
+  <include file='Public:login'/>
+</body>
+<include file='Public:pageFooter'/>
+<script>
+  $(document).ready(function(){
+    $Tab('.clxx_hd span','.clxx_bd .clxx_box','.Class_xx .clxx_mian');
+    $('.yh_nav .na_1').on('click',function(){
+      $('.yh_form').fadeIn(500);
+      $(".yh_form input[name='parent_id']").val('0');
+      $(".yh_form textarea").val('');
+      $(".yh_form textarea").attr('placeholder',"评论");
+    })
+    $('.yh_form .form_bg,.yh_form .input>span').on('click',function(){
+      $('.yh_form').fadeOut(300);
+    })
+    $("#comment_list").on('click',".comment_info",function(){
+      $('.yh_form').fadeIn(500);
+      $(".yh_form input[name='parent_id']").val($(this).attr('data-id'));
+      $(".yh_form textarea").val('');
+      $(".yh_form textarea").attr('placeholder',"回复："+$(this).attr('data-name'));
+    })
+    
+    // $('.list_more').on('click',function(){
+    //   var _this = $(this);
+    //   var p = parseInt(_this.attr('data-p'))+1;
+    //   if(_this.attr('is')!='false'){
+    //     _this.attr("is",false);
+    //     $.ajax({
+    //       type: "GET",
+    //       url:"{:U('Course/comment_list')}",
+    //       data:"id={$info.id}&p="+p,
+    //       success:function(data){
+    //         _this.attr("is",true);
+    //         if(data.status==500){
+    //           //完结
+    //           _this.hide();
+    //         }
+    //         _this.attr('data-p',p);
+    //         $("#comment_list").append(data.data);
+    //       },
+    //     });
+    //   }
+    // })
+    $("#reel_list li").click(function(){
+      $(this).addClass("on");
+      $(this).siblings().removeClass("on");
+      $(this).find("input[name='reel_id']").prop("checked",true);
+    })
+    $(".pay").click(function(){
+      var url = $(this).attr('data-href');
+      <if condition="!empty($reel_list)">
+        $(".reel_bg").show();
+        $(".reel_fix").show();
+      <else/>
+      layer.open({
+        content: '您确定花费{$info.integral}积分兑换吗？'
+        ,btn: ['兑换','否']
+        ,yes: function(index){
+          location.href=url;
+        }
+      });
+      </if>
+    })
+    $(".hide").click(function(){
+      $(".reel_bg").hide();
+      $(".reel_fix").hide();
+    })
+  });
+</script>

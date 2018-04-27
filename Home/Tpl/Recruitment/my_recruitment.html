@@ -1,0 +1,36 @@
+<include file='Public:pageHeader'/>
+<body data-psd-width="750" class="f3f3f3">
+  <div class="Join">
+    <div class="JO_5 clearfix">
+      <div class="fl">
+        <i style="background-image: url(__IMG__/per_ul_10.png);"></i>我的单位信息
+      </div>
+      <div class="fr">
+        <a href="{:U('Recruitment/company')}">完善信息<i class="iconfont">&#xe614;</i></a>
+      </div>
+    </div>
+    <div class="JO_6">
+      <h6>已发布职位</h6>
+      <ul>
+        <foreach name="list" item="item">
+        <li class="clearfix">
+          <div class="fl">
+            <a href="{:U('Recruitment/my_info',array('id'=>$item['id']))}" class="clearfix"><i style="background-color: #f19ec2;">{$key+1}</i>{$item.position}</a>
+          </div>
+          <if condition="$item['is_open'] eq 0">
+          <div class="fr">
+            <a href="{:U('Recruitment/my_info',array('id'=>$item['id']))}"><em>审核中</em><i class="iconfont">&#xe614;</i></a>
+          </div>
+          </if>
+        </li>
+        </foreach>
+      </ul>
+    </div>
+    <div class="JO_7">
+      <div>
+        <a href="{:U("Recruitment/my_info")}">发布职位</a>
+      </div>
+    </div>  
+  </div>
+</body>
+<include file='Public:pageFooter'/>

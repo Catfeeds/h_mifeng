@@ -1,0 +1,256 @@
+<include file='Public:pageHeader'/>
+<body data-psd-width="750" class="f3f3f3">
+  <if condition="$banner">
+  <div class="banner">
+    <div class="swiper-wrapper">
+      <foreach name="banner" item="item">
+      <a class="swiper-slide" <if condition="!empty($item['link'])">href="{$item.link}"</if> >
+        <img data-src="/{$item.thumb_img}" class="swiper-lazy"/>
+        <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+      </a>
+      </foreach>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+  </if>
+  <div class="index">
+      <if condition="$btn_list">
+      <div class="index_1">
+          <foreach name="btn_list" item="item">
+          <a <if condition="!empty($item['link'])">href="{$item.link}"</if> style="width:<?php echo 100/count($btn_list); ?>%" class="li_1">
+            <i style="background-image: url(/{$item.thumb_img});"></i>
+            <span>{$item.description}</span>
+          </a>
+          </foreach>
+      <!-- <a href="https://weidian.com/?userid=1279248888&infoType=1" class="li_1">
+        <i></i>
+        <span>蜜蜂微店</span>
+      </a>
+      <a href="{:U('Mall/index')}" class="li_3">
+        <i></i>
+        <span>积分商城</span>
+      </a>
+      <a href="{:U('Information/lists')}" class="li_2">
+        <i></i>
+        <span>蜜蜂干货</span>
+      </a>
+      <a href="{:U('Recruitment/index')}" class="li_4">
+        <i></i>
+        <span>人才服务</span>
+      </a> -->
+      <!-- <a href="{:U('Information/lists')}" class="li_4">
+        <i></i>
+        <span>全部分类</span>
+      </a> -->
+    </div>
+    </if>
+    <!-- <div class="index_2 clearfix">
+      <div class="in_1" style="background-image: url(__IMG__/in_5.png);"></div>
+      <div class="in_2">
+        <span>下午好，我是一只小蜜蜂。下午好，我是一只小蜜蜂。下午好，我是一只小蜜蜂。</span>
+        <em>这是您在蜜蜂贝贝的第<i>8</i>天</em>
+      </div>
+      <div class="in_3">
+        <a href="">签到</a>
+      </div>
+    </div> -->
+    <if condition="$article_cat2">
+    <div class="index_6">
+      <div class="ind_tit clearfix">
+        <span>{$article_cat2.cat_name}</span>
+        <a href="{:U('Article/lists',array('cat_id'=>$article_cat2['cat_id']))}">查看更多<i class="iconfont">&#xe614;</i></a>
+      </div>
+      <div class="in_mian">
+        <ul class="clearfix">
+          <foreach name="article2" item="item">
+          <li>
+            <a href="{:U('Article/info',array('id'=>$item['article_id']))}" class="clearfix">
+              <div class="yr_img fl" style="background-image: url(/{$item.thumb_img});"></div>
+              <div class="yr_txt fr">
+                <span>{$item.title}</span>
+                <em>{$item.short|nl2br}</em>
+              </div>
+            </a>
+          </li>
+          </foreach>
+        </ul>
+      </div>
+    </div>
+    </if>
+    <if condition="$article_cat1">
+    <div class="index_3">
+      <div class="ind_tit clearfix">
+        <span>{$article_cat1.cat_name}</span>
+        <a href="{:U('Article/lists',array('cat_id'=>$article_cat1['cat_id']))}">查看更多<i class="iconfont">&#xe614;</i></a>
+      </div>
+      <div class="in_mian">
+        <ul>
+          <foreach name="article1" item="item">
+          <li class="clearfix">
+            <a href="{:U('Article/info',array('id'=>$item['article_id']))}">
+              <div class="in_img" style="background-image: url(/{$item.thumb_img});"></div>
+              <div class="in_txt">
+                <span>{$item.title}</span>
+                <em>{$item.short|nl2br}</em>
+              </div>
+            </a>
+          </li>
+          </foreach>
+        </ul>
+      </div>
+    </div>
+    </if>
+    
+
+    <if condition="$article_cat1">
+    <div class="index_3">
+      <div class="ind_tit clearfix">
+        <span>蜜蜂蜂会</span>
+        <a href="{:U('Meeting/meeting_list')}">查看更多<i class="iconfont">&#xe614;</i></a>
+      </div>
+      <div class="in_mian">
+        <ul>
+          <foreach name="meeting_list" item="item">
+          <li class="clearfix">
+            <a href="{:U('Meeting/meeting_info',array('id'=>$item['id']))}">
+              <div class="in_img" style="background-image: url(/{$item.thumb_img});"></div>
+              <div class="in_txt">
+                <span>{$item.title}</span>
+                <em>{$item.short|nl2br}</em>
+              </div>
+            </a>
+          </li>
+          </foreach>
+        </ul>
+      </div>
+    </div>
+    </if>
+    <if condition="$Information_cat1">
+    <div class="index_6">
+      <div class="ind_tit clearfix">
+        <span>{$Information_cat1.cat_name}</span>
+        <a href="{:U('Information/lists',array('cat_id'=>$Information_cat1['cat_id']))}">查看更多<i class="iconfont">&#xe614;</i></a>
+      </div>
+      <div class="in_mian">
+        <ul class="clearfix">
+          <foreach name="Information1" item="item">
+          <li>
+            <a href="{:U('Information/info',array('id'=>$item['id']))}" class="clearfix">
+              <div class="yr_img fl" style="background-image: url(/{$item.thumb_img});"></div>
+              <div class="yr_txt fr">
+                <span>{$item.title}</span>
+                <em>{$item.content}</em>
+              </div>
+            </a>
+          </li>
+          </foreach>
+        </ul>
+      </div>
+    </div>
+    </if>
+    <if condition="$Information_cat2">
+    <div class="index_6">
+      <div class="ind_tit clearfix">
+        <span>{$Information_cat2.cat_name}</span>
+        <a href="{:U('Information/lists',array('cat_id'=>$Information_cat2['cat_id']))}">查看更多<i class="iconfont">&#xe614;</i></a>
+      </div>
+      <div class="in_mian">
+        <ul class="clearfix">
+          <foreach name="Information2" item="item">
+          <li>
+            <a href="{:U('Information/info',array('id'=>$item['id']))}" class="clearfix">
+              <div class="yr_img fl" style="background-image: url(/{$item.thumb_img});"></div>
+              <div class="yr_txt fr">
+                <span>{$item.title}</span>
+                <em>{$item.content}</em>
+              </div>
+            </a>
+          </li>
+          </foreach>
+        </ul>
+      </div>
+    </div>
+    </if>
+    <if condition="$Information_cat3">
+    <div class="index_6">
+      <div class="ind_tit clearfix">
+        <span>{$Information_cat3.cat_name}</span>
+        <a href="{:U('Information/lists',array('cat_id'=>$Information_cat3['cat_id']))}">查看更多<i class="iconfont">&#xe614;</i></a>
+      </div>
+      <div class="in_mian">
+        <ul class="clearfix">
+          <foreach name="Information3" item="item">
+          <li>
+            <a href="{:U('Information/info',array('id'=>$item['id']))}" class="clearfix">
+              <div class="yr_img fl" style="background-image: url(/{$item.thumb_img});"></div>
+              <div class="yr_txt fr">
+                <span>{$item.title}</span>
+                <em>{$item.content}</em>
+              </div>
+            </a>
+          </li>
+          </foreach>
+        </ul>
+      </div>
+    </div>
+    </if>
+    <div class="index_5">
+      <div class="ind_tit clearfix">
+        <span>蜜蜂精选</span>
+        <!-- <a href="">查看更多<i class="iconfont">&#xe614;</i></a> -->
+      </div>
+      <div class="in_mian">
+        <ul class="clearfix">
+          <foreach name="index_5" item="item">
+          <li>
+            <a <if condition="!empty($item['link'])">href="{$item.link}"</if> style="background-image: url(/{$item.thumb_img});">
+              <!-- <span>
+                <em>电子素材</em>
+                <i style="color: #00a0d4;">限时1元抢</i>
+              </span> -->
+            </a>
+          </li>
+          </foreach>
+          <!-- <li>
+            <a href="{:U('Mall/lists',array('type'=>1))}" style="background-image: url(__IMG__/ins_2.jpg);">
+              <span>
+                <em>电子素材</em>
+                <i style="color: #00a0d4;">限时1元抢</i>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="{:U('Reel/index')}" style="background-image: url(__IMG__/ins_3.jpg);">
+              <span>
+                <em>卡券兑换</em>
+                <i style="color: #eb2525;">天天有惊喜</i>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="{:U('Course/lists')}" style="background-image: url(__IMG__/ins_4.jpg);">
+              <span>
+                <em>专家讲座</em>
+                <i style="color: #ed8438;">24小时不间断</i>
+              </span>
+            </a>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+    </if>
+  </div>
+  <include file='Public:page_nav'/>
+</body>
+<include file='Public:pageFooter'/>
+<script>
+  $(window).load(function(){
+  /*banner*/
+    var mybanner = new Swiper('.banner', {
+      pagination : '.swiper-pagination',
+      autoplay: 5000,
+      autoplayDisableOnInteraction : false,
+      lazyLoading : true,
+    });
+  });
+</script>

@@ -1,0 +1,61 @@
+<include file='Public:pageHeader'/>
+<body data-psd-width="750" class="f3f3f3">
+  <div class="Join_form">
+    <form method="post" action="{:U('Recruitment/company_save')}" id="submitForm" name="submitForm" enctype="multipart/form-data">
+      <div class="jo_box">
+        <div class="input clearfix">
+          <span class="span">单位名称</span>
+          <input type="text" name="company_name" placeholder="单位名称" value="{$info.company_name}" />
+        </div>
+      </div>
+      <div class="jo_box">
+        <div class="input clearfix">
+          <span class="span">单位描述</span>
+          <textarea rows="10" name="company_info" placeholder="单位描述" style="width:100%;">{$info.company_info}</textarea>
+        </div>
+      </div>
+      <div class="ybm_submit">
+        <input type="submit" value="确认保存" />
+      </div>
+    </form>
+  </div>
+  <include file='Public:page_nav'/>
+</body>
+<include file='Public:pageFooter'/>
+<link rel="stylesheet" type="text/css" href="__CSS__/mobileSelect.css">
+<script src="__JS__/mobileSelect.min.js" type="text/javascript"></script>
+<script>
+  $(document).ready(function() {
+    var region_all = {$region_all};
+    var mobileSelect2 = new MobileSelect({
+        trigger: '#regin',
+        title: '地区',
+        triggerDisplayData:false,
+        wheels:[{data:region_all},],
+            keyMap: {
+              id:'region_id',
+              value: 'region_name',
+              childs :'child'
+          }, 
+        transitionEnd:function(indexArr, data){
+            // console.log(data);
+        },
+        callback:function(indexArr, data){
+          $("#regin").html(data['0'].region_name+" "+data['1'].region_name+" "+data['2'].region_name);
+          $(".regin input[name='province']").val(data['0'].region_id);
+          $(".regin input[name='city']").val(data['1'].region_id);
+          $(".regin input[name='district']").val(data['2'].region_id);
+        }
+    });
+
+    $('.switch').on('click',function(){
+      if($(this).hasClass('on')){
+        $(this).removeClass('on');
+        $(this).find('input').attr('checked',false);
+      }else{
+        $(this).addClass('on');
+        $(this).find('input').attr('checked',true);
+      }
+    });
+  });
+</script>

@@ -1,0 +1,11 @@
+<foreach name="list" item="item">
+<li>
+  <a href="{:U('Information/info',array('id'=>$item['id']))}" class="clearfix">
+    <div class="yr_img fl" style="background-image: url(/{$item.thumb_img});"></div>
+    <div class="yr_txt fr">
+      <span>{$item.title}</span>
+      <em>{$item.content}</em>
+    </div>
+  </a>
+</li>
+</foreach>

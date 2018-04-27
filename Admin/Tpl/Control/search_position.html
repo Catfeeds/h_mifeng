@@ -1,0 +1,42 @@
+<assign name="district" value="[district]" />
+省份:
+<select name='province' id='province' onchange="getRegion(this.value,'city');">
+	<option value="0">请选择省</option>
+</select>
+城市:
+<select name='city' id='city' onchange="getRegion(this.value,'district');" >
+	<option value="0">请选择市</option>
+</select>
+<if condition="$district neq -1">
+地区:
+<select name='district' id='district' >
+	<option value="0">请选择区</option>
+</select>
+</if>
+<script type="text/javascript">
+var province = parseInt('[province]') || parseInt('{$province}');
+var city = parseInt('[city]') || parseInt('{$city}');
+var district = parseInt('[district]') || parseInt('{$district}');
+function getRegion(region_id, container){
+	var url = "{:U('Control/getRegion')}?region_id="+region_id;
+	$.get(url,null,function(res){
+		$('#'+container+' option:gt(0)').remove();
+		$('#'+container).append(res);
+		$('#'+container).show();
+		if(container == 'province' && province>0){
+			document.getElementById('province').value = province;
+			getRegion(province, 'city');
+		}
+		if(container == 'city' && city>0){
+			document.getElementById('city').value = city;
+			getRegion(city, 'district');
+		}
+		<if condition="$district neq -1">
+		if(container == 'district' && district>0){
+			document.getElementById('district').value = district;
+		}
+		</if>
+	},'html')
+}
+getRegion(1, 'province');
+</script>

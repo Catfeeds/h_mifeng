@@ -1,0 +1,32 @@
+<include file='Public:pageHeader'/>
+<body data-psd-width="750" class="f3f3f3">
+  <div class="Contact">
+    <div class="jo_box">
+      <div class="input clearfix">
+        <h6>标题:</h6>
+        <p>{$info.title}</p>
+      </div>
+      <div class="input clearfix">
+        <h6>内容:</h6>
+        <p>{$info.content|nl2br}</p>
+      </div>
+      <if condition="!empty($info['return_content'])">
+      <div class="input clearfix">
+        <h6>回复:</h6>
+        <p>{$info.return_content|nl2br}</p>
+      </div>
+      <else/>
+      <div class="input clearfix">
+        <h6>等待回复</h6>
+      </div>
+      </if>
+    </div>
+      <!-- <input type="text" name="title" placeholder="标题"/>
+      <input type="text" name="name" placeholder="姓名"/>
+      <input type="text" name="phone" placeholder="手机号码"/>
+      <textarea placeholder="请留下您对我们的宝贵意见或建议，商务合作。" name="content"></textarea> -->
+  </div>
+  <include file='Public:page_nav'/>
+  <include file='Public:login'/>
+</body>
+<include file='Public:pageFooter'/>

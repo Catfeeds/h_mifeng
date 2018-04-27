@@ -1,0 +1,15 @@
+<foreach name="list" item="item">
+<li class="clearfix">
+  <a href="{:U('Recruitment/resume_show',array('id'=>$item['id']))}">
+  <if condition="empty($info['pic'])">
+  <div class="fl" style="background-image: url(/Uploads/user/avatar.png);"></div>
+  <else/>
+  <div class="fl" style="background-image: url(/{$item.pic});"></div>
+  </if>
+  <div class="fr">
+    <h4 class="clearfix"><span>{$item.name}</span></h4>
+    <p>{$item.position} | 工作经验{$item.working_age}</p>
+  </div>
+  </a>
+</li>
+</foreach>

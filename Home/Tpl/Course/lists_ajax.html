@@ -1,0 +1,20 @@
+<foreach name="list" item="item">
+<li>
+  <a href="{:U('Course/detail',array('id'=>$item['id']))}">
+    <div class="cl_img">
+      <span style="background-image: url(/{$item.thumb_img});"></span>
+    </div>
+    <div class="cl_txt">
+      <h4>{$item.title}</h4>
+      <h5 class="clearfix">
+        <span>讲师：{$item.teacher}</span>
+        <em>{$item.buy_count}人已购买</em>
+      </h5>
+      <h6 class="clearfix">
+        <span>总课程<i>{$item.list_count}</i>节</span>
+        <em><i>{$item.integral}</i>积分</em>
+      </h6>
+    </div>
+  </a>
+</li>
+</foreach>

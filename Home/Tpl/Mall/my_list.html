@@ -1,0 +1,44 @@
+<include file='Public:pageHeader'/>
+<body data-psd-width="750" class="f3f3f3">
+  <div class="Class">
+    <div class="cl_hd">
+      <div>
+        <a href="{:U('Course/lists')}">全部课程</a>
+        <a class="on">我的课程</a>
+      </div>
+    </div>
+    <div class="cl_ul">
+      <ul class="ul_more">
+        <include file='Course:lists_ajax'/>
+      </ul>
+      <if condition="count($list) egt $listRows">
+        <i class="list_more" data-p='1'>加载更多了</i>
+      </if>
+    </div>
+  </div>
+  <include file='Public:page_nav'/>
+</body>
+<include file='Public:pageFooter'/>
+<script type="text/javascript">
+  $('.list_more').on('click',function(){
+    var _this = $(this);
+    var p = parseInt(_this.attr('data-p'))+1;
+    if(_this.attr('is')!='false'){
+      _this.attr("is",false);
+      $.ajax({
+        type: "GET",
+        url:"{:U('Course/my_list')}",
+        data:"p="+p,
+        success:function(data){
+          _this.attr("is",true);
+          if(data.status==500){
+            //完结
+            _this.hide();
+          }
+          _this.attr('data-p',p);
+          $(".ul_more").append(data.data);
+        },
+      });
+    }
+  })
+</script>

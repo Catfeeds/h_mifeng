@@ -1,0 +1,46 @@
+<include file='Public:pageHeader'/>
+<body data-psd-width="750">
+    <div class="Exchange_Suc">
+        <div class="Suc_1">
+            <span>
+                <i style="background-image: url(__IMG__/success.png);"></i>
+                <em><?php echo($message); ?></em>
+                <p class="jump">等待 <b id="wait" style="color:#f00;"><?php echo($waitSecond); ?></b> 秒后页面将自动 <a id="href" data-href="<?php echo($jumpUrl); ?>">跳转</a> </p>
+            </span>
+        </div>
+    </div>
+</body>
+<include file='Public:pageFooter'/>
+<script type="text/javascript">
+    (function(){
+        var is_true = true;
+        var wait = document.getElementById('wait'),href = $("#href").attr("data-href");
+        var interval = setInterval(function(){
+            var time = --wait.innerHTML;
+            if(time <= 0) {
+                if(is_true){
+                    is_true = false;
+                    if(href=="javascript:history.back(-1);"){
+                        window.location.replace(document.referrer);
+                    }else{
+                        window.location.replace(href);
+                    }
+                    // location.href = href;
+                    clearInterval(interval);
+                }
+            };
+        }, 1000);
+        $("#href").click(function(){
+            if(is_true){
+                is_true = false;
+                if(href=="javascript:history.back(-1);"){
+                    window.location.replace(document.referrer);
+                }else{
+                    window.location.replace(href);
+                }
+                // location.href = href;
+                clearInterval(interval);
+            }
+        })
+    })();
+</script>

@@ -1,0 +1,84 @@
+<include file='Public:pageHeader'/>
+<body data-psd-width="750" class="f3f3f3">
+  <if condition="$banner">
+  <div class="banner">
+    <div class="swiper-wrapper">
+      <foreach name="banner" item="item">
+      <a class="swiper-slide" <if condition="!empty($item['link'])">href="{$item.link}"</if> >
+        <img data-src="/{$item.thumb_img}" class="swiper-lazy"/>
+        <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+        <p class="description">{$item.description}</p>
+      </a>
+      </foreach>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+  </if>
+  <div class="Bee_square">
+    <if condition="$btn_list">
+    <div class="Bee_1">
+      <foreach name="btn_list" item="item">
+      <a <if condition="!empty($item['link'])">href="{$item.link}"</if> style="width:<?php echo 100/count($btn_list); ?>%" class="a1">
+        <i style="background-image: url(/{$item.thumb_img});"></i>
+        <span>{$item.description}</span>
+      </a>
+      </foreach>
+      <!-- <a href="https://weidian.com/?userid=1279248888&infoType=1" class="a1">
+        <i></i>
+        <span>蜜蜂微店</span>
+      </a>
+      <a href="{:U('Mall/index')}" class="a2">
+        <i></i>
+        <span>积分商城</span>
+      </a>
+      <a href="{:U('Recruitment/index2')}" class="a3">
+        <i></i>
+        <span>园区转让</span>
+      </a> -->
+    </div>
+    </if>
+    <div class="Bee_2">
+      <h4 class="clearfix">
+        <span>最新文章</span>
+        <a href="{:U('Information/lists')}">查看更多<i class="iconfont">&#xe614;</i></a>
+      </h4>
+      <ul class="ganhuo clearfix">
+        <include file='Information:lists_ajax'/>
+      </ul>
+    </div>
+    <div class="Join">
+      <div class="JO_3" style="margin-top:0.2rem;">
+        <h4 class="h4 clearfix">
+          <span>最新园所供需</span>
+          <a href="{:U("Recruitment/lists2")}">查看更多<i class="iconfont">&#xe614;</i></a>
+        </h4>
+        <ul>
+          <foreach name="kindergarten_list" item="item">
+          <li <if condition="$item['status'] eq 0"> class="no"</if>>
+            <a href="{:U('Recruitment/info2',array('id'=>$item['id']))}">
+              <h4>{$item.title}</h4>
+              <h6 class="clearfix">
+                <span>{$item.city} | {$item.district}</span>
+                <em>{$item.add_time|date='Y年m月d日',###}</em>
+              </h6>
+              <div class="no_end">已结束</div>
+            </a>
+          </li>
+          </foreach>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <include file='Public:page_nav'/>
+</body>
+<include file='Public:pageFooter'/>
+<script type="text/javascript">
+  $(window).load(function(){
+    var mybanner = new Swiper('.banner', {
+      pagination : '.swiper-pagination',
+      autoplay: 5000,
+      autoplayDisableOnInteraction : false,
+      lazyLoading : true,
+    });
+  });
+</script>

@@ -1,0 +1,25 @@
+<include file='Public:pageHeader'/>
+<form method="post" action="{:U('Member/collect_cat_save')}" id="submitForm" name="submitForm" enctype="multipart/form-data">
+  <table>
+    <tr>
+      <td><input type="text" name="title" value="{$info.title}"></td>
+    </tr>
+    <tr>
+      <td><textarea name="short" id="" cols="30" rows="10">{$info.short}</textarea></td>
+    </tr>
+    <tr>
+      <td>
+        <label>
+          <input type="checkbox" name="visible" value="1">所有人可见
+        </label>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input type="hidden" name="id" value="{$info.id}">
+        <input type="submit" value="submit">
+      </td>
+    </tr>
+  </table>
+</form>
+<include file='Public:pageFooter'/>

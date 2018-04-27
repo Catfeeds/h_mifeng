@@ -1,0 +1,9 @@
+<foreach name="list" item="item">
+<li class="<if condition="$item['integral'] lt 0"> on </if>">
+  <span class="clearfix ">
+    <em class="fl">{$item.message}</em>
+    <i class="fr">{$item['integral']>=0?'+':''}{$item.integral}</i>
+  </span>
+  <em>{$item.add_time|date='Y-m-d',###}</em>
+</li>
+</foreach>

@@ -1,0 +1,36 @@
+<include file='Public:pageHeader'/>
+<style type="text/css">
+    .Login{display: block;}
+</style>
+<body data-psd-width="750" class="f3f3f3">
+  <div class="Login">
+    <div class="registered">
+      <div class="Lo_logo">
+        <img src="__IMG__/logo_1.png"/>
+      </div>
+      <form method="post" action="{:U('User/do_login')}" id="registered_form" name="user_login" enctype="multipart/form-data" class="Lo_mian" id="registered">
+        <input type="text" name="user_phone" placeholder="请输入手机号"/>
+        <input type="password" name="password" placeholder="请输入密码"/>
+        <div class="clearfix">
+            <a class="forget" href="/User/registered2.html" style="margin-left:0.2rem;">注册</a><a class="forget" href="/User/forget_password.html">忘记密码</a>
+        </div>
+        <input type="submit" id="registered_submit" value="登陆">
+      </form>
+      <div class="Lo_wx" style="margin-top:1rem;">
+        <!-- <b>或</b> -->
+        <a href="{:U('User/oauth')}" class="iconfont">&#xe622;</a>
+        <em>微信一键登录</em>
+      </div>
+      <div class="Lo_bott">
+        <em>登录代表您已同意</em>
+        <a class="xieyi">{$xieyi_list.255.title}＞</a>
+      </div>
+    </div>
+  </div>
+  <div class="xieyi_bg"></div>
+  <div class="xieyi_fix">
+    <h3>{$xieyi_list.255.title}</h3>
+    {$xieyi_list.255.content}
+  </div>
+</body>
+<include file='Public:pageFooter'/>

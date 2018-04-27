@@ -1,0 +1,78 @@
+<include file='Public:pageHeader'/>
+<body data-psd-width="750" class="f3f3f3">
+  <div class="Position_x">
+    <div class="Posx_1">
+      <h4>{$info.position}</h4>
+      <h5>
+        <em>{$info.add_time|date='Y-m-d',###}</em>
+        <em>浏览量:{$info.view_count}</em>
+        <a>{$info.company.company_name}</a>
+      </h5>
+      <h6>
+        <span>
+          <i>分类:</i>
+          <em>{$info.cat_name}</em>
+        </span>
+        <span>
+          <i>学历：</i>
+          <em>{$info.education}</em>
+        </span>
+        <span>
+          <i>薪资:</i>
+          <em>{$info.salary}</em>
+        </span>
+        <span>
+          <i>工作经验:</i>
+          <em>{$info.working_age}</em>
+        </span>
+        <p>
+          <i>工作地点:</i>
+          <foreach name="info.district" item="item" key='k'><em>{$info.city_name.$k} {$info.district_name.$k}</em></foreach>
+        </p>
+      </h6>
+    </div>
+    <div class="Posx_2">
+      <div class="Posx_hd">
+        <span>职位描述</span>
+        <!-- <span>单位简介</span> -->
+      </div>
+      <div class="Posx_bd">
+        <div class="Posx_box">
+          <h4>工作内容:</h4>
+          <p>
+            {$info.work_content|nl2br}
+          </p>
+          <h4>职位描述:</h4>
+          <p>
+            {$info.position_description|nl2br}
+          </p>
+        </div>
+        <!-- <div class="Posx_box">
+          {$info.company.company_info|nl2br}
+        </div> -->
+      </div>
+    </div>
+    <form method="post" action="{:U('Recruitment/cast_resume')}" id="submitForm" name="submitForm" enctype="multipart/form-data">
+    <div class="Posx_3">
+      <div>
+          <if condition="$info['status'] eq 0">
+            <a class="no">已结束</a>
+          <elseif condition="$info['is_resume_cast']"/>
+            <a>已投递</a>
+          <else/>
+            <a class="submit">发送简历</a>
+          </if>
+          <input type="hidden" name="recruitment_id" value="{$info.id}">
+        <!-- <i></i> -->
+      </div>
+    </div>  
+    </form>
+  </div>
+</body>
+<include file='Public:pageFooter'/>
+<script>
+  $(".submit").click(function(){
+    $(this).parents("form").submit();
+  })
+  // $Tab('.Posx_hd span','.Posx_bd .Posx_box','.Posx_2');
+</script>

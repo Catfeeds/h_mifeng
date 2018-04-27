@@ -1,0 +1,136 @@
+<include file='Public:pageHeader'/>
+<body data-psd-width="750" class="f3f3f3">
+  <div class="Personal">
+    <div class="Per_1">
+      <div class="Per_mian" style="background-image: url(__IMG__/Center_1.jpg);">
+        <div class="per_top clearfix">
+          <span class="top_1"><i style="background-image: url(/{$user_info.pic})"></i></span>
+          <span class="top_2">
+            <em>{$user_info.user_name}</em>
+            <!-- <a href="">个人信息<i class="iconfont">&#xe614;</i></a> -->
+            <a>{$user_info.introduction}</a>
+          </span>
+          <span class="top_3">
+            <a href="{:U('Member/checkin')}">签到</a>
+          </span>
+        </div>
+        <div class="per_bod">
+          <a href="{:U('Member/attention_lists',array('uid'=>$user_info['user_id']))}">
+            <span>
+              <i>{$attention_count}</i>
+              <em>关注</em>
+            </span>
+          </a>
+          <a href="{:U('Member/fans_lists',array('uid'=>$user_info['user_id']))}">
+            <span>
+              <i>{$fans_count}</i>
+              <em>粉丝</em>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="Per_2">
+      <a href="{:U("Reel/index")}">
+        <i>{$reel_count}</i>
+        <em>卡券</em>
+      </a>
+      <a href="{:U('Member/integral_log')}">
+        <i>{$user_info.integral}</i>
+        <em>积分</em>
+      </a>
+      <a href="{:U('Mall/order_list')}">
+        <i>{$mall_count}</i>
+        <em>我的兑换</em>
+      </a>
+    </div>
+    <div class="Per_3">
+      <ul>
+        <li>
+          <a href="{:U('Member/information_list')}" class="clearfix">
+            <i style="background-image: url(__IMG__/per_ul_1.png)"></i>
+            <span>我的发布</span>
+            <em>{$InformationCount}</em>
+          </a>
+        </li>
+        <li>
+          <a href="{:U('Member/collect_list')}" class="clearfix">
+            <i style="background-image: url(__IMG__/per_ul_2.png)"></i>
+            <span>我的收藏</span>
+            <em>{$CollectCount}</em>
+          </a>
+        </li>
+        <!-- <li>
+          <a href="" class="clearfix">
+            <i style="background-image: url(__IMG__/per_ul_3.png)"></i>
+            <span>我的资源</span>
+            <em>0</em>
+          </a>
+        </li> -->
+        <li>
+          <a href="{:U('Member/praise_list')}" class="clearfix">
+            <i style="background-image: url(__IMG__/per_ul_4.png)"></i>
+            <span>我的点赞</span>
+            <em>{$PraiseCount}</em>
+          </a>
+        </li>
+        <li>
+          <a href="{:U('Recruitment/resume_info')}" class="clearfix">
+            <i style="background-image: url(__IMG__/per_ul_5.png)"></i>
+            <span>我的简历</span>
+          </a>
+        </li>
+        <li>
+          <a href="{:U('Recruitment/resume_cast_list')}" class="clearfix">
+            <i style="background-image: url(__IMG__/per_ul_16.png)"></i>
+            <span>我的投递</span>
+          </a>
+        </li>
+        <li>
+          <a href="{:U('Course/my_list')}" class="clearfix">
+            <i style="background-image: url(__IMG__/per_ul_17.png)"></i>
+            <span>我的课程</span>
+          </a>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <a href="{:U('Member/invite')}" class="clearfix">
+            <i style="background-image: url(__IMG__/per_ul_6.png)"></i>
+            <span>邀请好友</span>
+            <em>赢积分</em>
+          </a>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <a href="{:U('Member/contact_us_list')}" class="clearfix">
+            <i style="background-image: url(__IMG__/per_ul_7.png)"></i>
+            <span>联系我们</span>
+          </a>
+        </li>
+        <li>
+          <a href="{:U('Article/lists2',array('cat_id'=>80))}" class="clearfix">
+            <i style="background-image: url(__IMG__/per_ul_8.png)"></i>
+            <span>帮助</span>
+          </a>
+        </li>
+        <li>
+          <a href="{:U('Member/user_site')}" class="clearfix">
+            <i style="background-image: url(__IMG__/per_ul_9.png)"></i>
+            <span>设置</span>
+          </a>
+        </li>
+        <li>
+          <a href="{:U('User/logout')}" class="clearfix">
+            <i style="background-image: url(__IMG__/per_ul_15.png)"></i>
+            <span>退出</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <include file='Public:page_nav'/>
+  <include file='Public:login'/>
+</body>
+<include file='Public:pageFooter'/>

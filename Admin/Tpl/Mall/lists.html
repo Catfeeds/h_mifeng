@@ -1,0 +1,111 @@
+<include file="Index:pageHeader" />
+<script type="text/javascript">
+function delMall(id) {
+	$.dialog.confirm('你确定要删除吗？', function(){
+		window.location.href="{:U('Mall/del')}?id="+id;
+	}, function(){
+		//$.dialog.tips('执行取消操作');
+	});
+}
+</script>
+  <div class="column_Box mainAutoHeight">
+    <div class="tab">
+      <ul>
+        <li class="current"><a href="javascript:">商品列表</a></li>
+      </ul>
+    </div>
+    <div class="wrapBox mainAutoHeight">
+      <!--列表-->
+      <div class="body User">
+        <div class="item">
+          <a href="javascript:void(0);" class="dot_Item"><span class="Icon_item icon_xingjian"></span><i><input type="button" value="新建商品" class="submitNoBg" onclick="window.location.href='{:U('Mall/info')}'"/></i></a>
+          <div class="searchBar">
+				<form action="{:U('Mall/lists')}">
+					标题 ：
+					<input type="text" class="txt" name="keyword" value="{$filter.keyword}"/>&nbsp;&nbsp;<input type="submit" class="submit btn_search" value="搜索" />
+				</form>
+        	</div>
+      	</div>
+				<form method="POST" action="{:U('Mall/batch')}" name="listForm">
+				<table border="0" cellpadding="0" cellspacing="0" class="center">
+					<thead>
+						<tr>
+							<th style="width:70px;"><input type="checkbox" name="checkBox_All" class="checkBox_All" />编号</th>
+							<th>标题</th>
+							<th>排序</th>
+							<th>类型</th>
+							<th>是否显示</th>
+							<th>是否推荐</th>
+							<th>添加日期</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<foreach name="list" item="vo">
+						<tr>
+							<td><input type="checkbox" name="checkboxes[]" class="checkBox_list" value="{$vo.id}" />{$vo.id}</td>
+							<td>{$vo.title}</td>
+							<td>{$vo.sort_order}</td>
+							<td><if condition="$vo['type']==1">电子素材<else/>实物礼品</if></td>
+							<td><if condition="$vo['is_open']==1"><img src="__PUBLIC__/Admin/Img/yes.gif"/><else/><img src="__PUBLIC__/Admin/Img/no.gif"/></if></td>
+							<td><if condition="$vo['is_recommend']==1"><img src="__PUBLIC__/Admin/Img/yes.gif"/><else/><img src="__PUBLIC__/Admin/Img/no.gif"/></if></td>
+							<td>{$vo.add_time|date='Y-m-d H:i:s',###}</td>
+							<td>
+								<span>
+									<a title="编辑" href="{:U('Mall/info',array('id'=>$vo['id']))}"><img width="16" height="16" border="0" src="__PUBLIC__/Admin/Img/icon_edit.gif"></a>&nbsp;
+									<a title="移除" onclick="delMall('{$vo.id}')" href="javascript:;"><img width="16" height="16" border="0" src="__PUBLIC__/Admin/Img/icon_drop.gif"></a>
+								</span>
+							</td>
+						</tr>
+						</foreach>
+					</tbody>
+				</table>
+				<div class="lineHeight" style="border-bottom:1px dashed #cccccc;"></div>
+				<div class="batchChange">
+					<div class="f_l">
+						<select onchange="changeAction()" id="selAction" name="type">
+						<option value="">请选择...</option>
+						<option value="button_remove">批量删除</option>
+						<option value="button_hide">批量隐藏</option>
+						<option value="button_show">批量显示</option>
+						</select>
+						<input type="submit" class="button" name="btnSubmit" id="btnSubmit" value=" 确定 "/>
+					</div>
+					<div class="f_r">
+						<div class="pagination">{$page}</div>
+					</div>
+				</div>
+				</form>
+	    </div>
+	  </div>
+	</div>
+	<script type="text/javascript">
+	/**
+	   * @param: bool ext 其他条件：用于转移分类
+	   */
+	  function confirmSubmit(frm, ext){
+		  if (frm.elements['type'].value == 'button_remove'){
+			  return confirm('您确定要删除吗');
+		  }else if (frm.elements['type'].value == 'not_on_sale'){
+			  return confirm('您确定要隐藏吗');
+		  }else if (frm.elements['type'].value == 'move_to'){
+			  ext = (ext == undefined) ? true : ext;
+			  return ext && frm.elements['target_cat'].value != 0;
+		  }else if (frm.elements['type'].value == ''){
+			  return false;
+		  }else{
+			  return true;
+		  }
+	  }
+	  function changeAction(){
+		  var frm = document.forms['listForm'];
+		  // 切换分类列表的显示
+		  // frm.elements['target_cat'].style.display = frm.elements['type'].value == 'move_to' ? '' : 'none';
+		  if (!document.getElementById('btnSubmit').disabled &&
+			  confirmSubmit(frm, false)){
+			  frm.submit();
+		  }
+	  }
+	</script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<include file='Public:pageHeader'/>
+<body data-psd-width="750" class="f3f3f3">
+  <if condition="$banner">
+  <div class="banner">
+    <div class="swiper-wrapper">
+      <foreach name="banner" item="item">
+      <a class="swiper-slide" <if condition="!empty($item['link'])">href="{$item.link}"</if> >
+        <img data-src="/{$item.thumb_img}" class="swiper-lazy"/>
+        <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+        <p class="description">{$item.description}</p>
+      </a>
+      </foreach>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+  </if>
+  <div class="Exchange">
+    <!-- <div class="Exc_banner" style="background-image: url(__IMG__/Ex_banner_1.jpg);"></div> -->
+    <div class="Exc_1">
+      <span>积分：<em>{$user_info.integral}</em></span>
+      <a href="{:U('Mall/order_list')}">奖品记录</a>
+    </div>
+    <if condition="$btn_list">
+    <div class="Exc_2">
+      <foreach name="btn_list" item="item">
+      <a <if condition="!empty($item['link'])">href="{$item.link}"</if> style="width:<?php echo 100/count($btn_list); ?>%" class="li_1">
+        <i style="background-image: url(/{$item.thumb_img});"></i>
+        <span>{$item.description}</span>
+      </a>
+      </foreach>
+      <!-- <a href="{:U('Mall/lists',array('type'=>1))}" class="li_1">
+        <i></i>
+        <span>电子素材</span>
+      </a>
+      <a href="{:U('Reel/index')}" class="li_2">
+        <i></i>
+        <span>卡券</span>
+      </a>
+      <a href="{:U('Mall/lists',array('type'=>2))}" class="li_3">
+        <i></i>
+        <span>实物礼品</span>
+      </a>
+      <a href="{:U('Mall/lottery')}" class="li_4">
+        <i></i>
+        <span>积分抽奖</span>
+      </a> -->
+    </div>
+    </if>
+  </div>
+  <div class="Popular">
+    <!-- <h4><span>热门兑换</span></h4> -->
+    <h4><span style="background-image: url(/{$btn_title.0.thumb_img});"></span></h4>
+    <ul class="clearfix">
+      <include file='Mall:lists_ajax'/>
+    </ul>
+    <!-- <h4><span>大家都在换</span></h4> -->
+    <h4><span style="background-image: url(/{$btn_title.1.thumb_img});"></span></h4>
+    <ul class="clearfix">
+      <foreach name="list2" item="item">
+      <li>
+        <a href="{:U('Mall/info',array('id'=>$item['id']))}">
+          <div class="po_img" style="background-image: url(/{$item.thumb_img});"></div>
+          <div class="po_txt">
+            <h4>{$item.title}</h4>
+            <h6 class="clearfix">
+              <span class="fl"><em>{$item.integral}</em> 积分</span>
+              <span class="fr">市场价{$item.price}元</span>
+            </h6>
+          </div>
+        </a>
+      </li>
+      </foreach>
+    </ul>
+    <h6><a href="{:U('Mall/lists')}">查看所有兑换</a></h6>
+  </div>
+  <include file='Public:page_nav'/>
+</body>
+<include file='Public:pageFooter'/>
+<script type="text/javascript">
+  $(window).load(function(){
+  /*banner*/
+    var mybanner = new Swiper('.banner', {
+      pagination : '.swiper-pagination',
+      autoplay: 5000,
+      autoplayDisableOnInteraction : false,
+      lazyLoading : true,
+    });
+  });
+</script>

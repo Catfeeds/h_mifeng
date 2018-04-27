@@ -1,0 +1,28 @@
+<include file='Public:pageHeader'/>
+<body data-psd-width="750" class="f3f3f3">
+  <div class="Class_xx">
+    <div class="clxx_banner">
+      <span style="background-image: url(/{$info.thumb_img});"></span>
+    </div>
+    <div class="mp3">
+      <!-- <embed src="/{$info.mp3}" /> -->
+      <audio src="/{$info.mp3}" width="100%" controls="controls"></audio>
+      <!-- <audio src="/{$info.mp3}"></audio> -->
+    </div>
+    <div class="gf_mian info_content">
+      {$info.content}
+    </div>
+  </div>
+  <include file='Public:login'/>
+</body>
+<include file='Public:pageFooter'/>
+<script type="text/javascript">
+  $(window).scroll(function(){
+    if((document.documentElement.scrollTop|document.body.scrollTop)>=$(".clxx_banner").height()){
+      $(".mp3").height($(".mp3").height());
+      $(".mp3 audio").addClass('fiex');
+    }else{
+      $(".mp3 audio").removeClass('fiex');
+    }
+  });
+</script>

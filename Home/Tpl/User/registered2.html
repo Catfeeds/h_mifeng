@@ -1,0 +1,79 @@
+<include file='Public:pageHeader'/>
+<style type="text/css">
+    .Login{display: block;}
+</style>
+<body data-psd-width="750" class="f3f3f3">
+  <div class="Login">
+    <div class="registered">
+      <div class="Lo_logo">
+        <img src="__IMG__/logo_1.png"/>
+      </div>
+      <form method="post" action="{:U('User/do_register')}" id="registered_form" name="user_login" enctype="multipart/form-data" class="Lo_mian" id="registered">
+        <input type="text" name="phone" id="phone" placeholder="请输入手机号"/>
+        <input type="password" name="password" placeholder="请输入密码"/>
+        <div class="code_box">
+          <input type="text" class="text" name="code" placeholder="验证码">
+          <a class="code" data-url="{:U('User/code')}">发送验证码</a>
+        </div>
+        <div class="clearfix" s>
+            <a class="forget" href="/User/registered.html" style="margin-top:0.4rem;">登陆</a>
+        </div>
+        <input type="submit" id="registered_submit" value="注册">
+      </form>
+      <!-- <div class="Lo_wx" style="margin-top:2rem;">
+        <a href="{:U('User/oauth')}" class="iconfont">&#xe622;</a>
+        <em>微信一键登录</em>
+      </div> -->
+      <div class="Lo_bott">
+        <em>登录代表您已同意</em>
+        <a class="xieyi">{$xieyi_list.255.title}＞</a>
+      </div>
+    </div>
+  </div>
+  <div class="xieyi_bg"></div>
+  <div class="xieyi_fix">
+    <h3>{$xieyi_list.255.title}</h3>
+    {$xieyi_list.255.content}
+  </div>
+</body>
+<include file='Public:pageFooter'/>
+<script type="text/javascript">
+  $(".code").click(function(){
+   var _this = $(this);
+   var phone = '';
+   var i=60;
+   if(_this.attr('is')!='false'){
+     _this.attr("is",false);
+     $.ajax({
+       type:'POST',
+       url:_this.attr("data-url"),
+       data:"code=code&is_rg=1&phone="+$("#phone").val(),
+       dataType: "JSON",
+       success:function(data){
+         if(data.status==200){
+           layer.open({
+             content: "验证码是："+data.data
+             ,skin: 'msg'
+             ,time: 10
+           });
+           sint = setInterval(function(){
+             _this.html(i--);
+             if(i<=0){
+           _this.attr("is",true);
+               _this.html("发送验证码");
+               clearInterval(sint);
+             }
+           },1000)
+         }else{
+           _this.attr("is",true);
+           layer.open({
+             content: data.info
+             ,skin: 'msg'
+             ,time: 2
+           });
+         }
+       }
+     })
+   }
+  })
+</script>

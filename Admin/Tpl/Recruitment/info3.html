@@ -1,0 +1,119 @@
+<include file="Index:pageHeader" />
+<script type="text/javascript">
+$(function(){
+	autoHeight(jQuery('.autoHeight'));
+	jQuery(".column_Box").each(function () {
+		var t = jQuery(this);
+		if (t.length < 1) return;
+		Tab_click(t.find('.tab ul li'), t.find(".wrapBox .body"));
+	});
+});
+// KindEditor.ready(function(K) {
+// 	K.create('#content', {
+// 		allowFileManager : false,
+// 		pasteType : 2,
+// 		newlineTag : 'p',
+// 		filterMode : false, // true:开启过滤模式, false:关闭过滤模式
+// 		urlType : 'absolute'
+// 	});
+// });
+</script>
+<div class="column_Box mainAutoHeight">
+	<div class="tab">
+		<ul>
+			<li class="current"><a href="javascript:">属性</a></li>
+		</ul>
+	</div>
+	<div class="column_Box mainAutoHeight wrapBox">
+    <div class="body">
+			<form method="post" action="{:U('Recruitment/save3')}" id="submitForm" name="submitForm" enctype="multipart/form-data">
+				<table border="0" cellpadding="0" cellspacing="0">
+					<tbody>
+						<tr>
+							<td style="text-align:right;">需求名称：</td>
+							<td style="text-align:left;"><input type="text" class="txt" name="title" value="{$info.title}" size='60'/><em>*</em></td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">地点：</td>
+							<td style="text-align:left;">
+								<div id="regin"><if condition="!empty($info['province_name'])">{$info.province_name} {$info.city_name} {$info.district_name}<else/>请选择地区</if></div>
+							<div class="regin">
+								<input type="hidden" name="province"  value="{$info.province}">
+								<input type="hidden" name="city"  value="{$info.city}">
+								<input type="hidden" name="district"  value="{$info.district}">
+							</div>
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">联系人：</td>
+							<td style="text-align:left;"><input type="text" class="txt" name="name" value="{$info.name}" size='60'/><em>*</em></td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">电话：</td>
+							<td style="text-align:left;"><input type="text" class="txt" name="phone" value="{$info.phone}" size='60'/><em>*</em></td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">发布时间：</td>
+							<td style="text-align:left;">
+								<input type="text" name='add_time' value="{$info.add_time|date='Y-m-d',###}" onclick="WdatePicker();">&nbsp;<font color='red'>留空为当前时间</font>
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">需求描述：</td>
+							<td style="text-align:left;"><textarea rows="6" cols="60" name="text" id="text" >{$info.text}</textarea></td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">阅读量：</td>
+							<td style="text-align:left;"><input type="text" class="txt" name="view_count" value="{$info.view_count}" size='60'/></td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">审核：</td>
+							<td style="text-align:left;">
+						      <input type="radio" name="is_open" value="1" <if condition="empty($info)||$info['is_open']==1">checked</if>/>是&nbsp;&nbsp;
+						      <input type="radio" name="is_open" value="0" <eq name='info.is_open' value='0'>checked</eq>/>否
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align:right;">寻找：</td>
+							<td style="text-align:left;">
+						      <input type="radio" name="status" value="1" <if condition="empty($info)||$info['status']==1">checked</if>/>是&nbsp;&nbsp;
+						      <input type="radio" name="status" value="0" <eq name='info.status' value='0'>checked</eq>/>否
+							</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td style="text-align:left;" >
+								<input type="hidden" name="id" value="{$info.id}"/>
+								<input type="submit" value="提交"/>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+			<script type="text/javascript">
+				var region_all = {$region_all};
+				var mobileSelect2 = new MobileSelect({
+				    trigger: '#regin',
+				    title: '地区',
+				    triggerDisplayData:true,
+				    wheels:[{data:region_all},],
+				        keyMap: {
+				          id:'region_id',
+				          value: 'region_name',
+				          childs :'child'
+				      }, 
+				    transitionEnd:function(indexArr, data){
+				        // console.log(data);
+				    },
+				    callback:function(indexArr, data){
+				      $(".regin input[name='province']").val(data['0'].region_id);
+				      $(".regin input[name='city']").val(data['1'].region_id);
+				      $(".regin input[name='district']").val(data['2'].region_id);
+				    }
+				});
+			</script>
+    </div>
+  </div>
+</div>
+</body>
+</html>

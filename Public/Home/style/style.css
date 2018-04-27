@@ -1,0 +1,24 @@
+@charset "utf-8";
+html,body,h1,h2,h3,h4,h5,h6,hr,p,iframe,dl,dt,dd,ul,ol,li,pre,form,button,input,textarea,th,td,fieldset{margin:0;padding:0}
+ul,ol,dl{list-style-type:none}
+address,caption,cite,code,dfn,em,th,var,i,b{font-style:normal;font-weight:normal}
+input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit}
+input,button{overflow: visible;vertical-align:middle;outline:none}
+h1,h2,h3,h4,h5,h6{font-size:100%; font-weight:normal;}
+a,area{outline:none;blr:expression(this.onFocus="this.blur"())}
+a:focus,a:hover,a:active{outline:none;blr:expression(this.onFocus="this.blur"())}
+sub,sup{vertical-align:baseline}
+table{border-collapse:collapse;border-spacing:0}
+textarea { resize:none} 
+input[type="submit"],input[type="button"]{ cursor:pointer;}
+img{border:0;vertical-align:middle}
+a img,img{-ms-interpolation-mode:bicubic}
+a{text-decoration:none;cursor: pointer; color:#666}
+a:hover{text-decoration:none}
+body,th,td,button,input,select,textarea{ font-family: Arial,"微软雅黑";font-size:12px;color:#000;}
+body{width:100%;overflow-x:hidden}
+.layout{ width:1200px; margin:0 auto; clear:both}
+.fl{ float:left}
+.fr{ float:right}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden; font-size:0; line-height:0}
+.clearfix{*zoom:1}

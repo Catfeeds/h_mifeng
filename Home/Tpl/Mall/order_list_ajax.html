@@ -1,0 +1,13 @@
+<foreach name="list" item="item">
+<li>
+  <a href="{:U('Mall/order_info',array('id'=>$item['id']))}">
+    <div class="po_img" style="background-image: url(/{$item.thumb_img});"></div>
+    <div class="po_txt">
+      <h4>{$item.title}</h4>
+      <h6 class="clearfix">
+        <span class="fl"><em>{$item.integral}</em> 积分</span>
+      </h6>
+    </div>
+  </a>
+</li>
+</foreach>

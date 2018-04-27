@@ -1,0 +1,153 @@
+<include file='Public:pageHeader'/>
+<body data-psd-width="750" class="f3f3f3">
+  <if condition="$banner">
+  <div class="banner">
+    <div class="swiper-wrapper">
+      <foreach name="banner" item="item">
+      <a class="swiper-slide" <if condition="!empty($item['link'])">href="{$item.link}"</if> >
+        <img data-src="/{$item.thumb_img}" class="swiper-lazy"/>
+        <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+        <p class="description">{$item.description}</p>
+      </a>
+      </foreach>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+  </if>
+  <div class="Join">
+    <div class="JO_1">
+      <form method="get" action="{:U('Recruitment/lists2')}" id="submitForm" name="submitForm" enctype="multipart/form-data">
+        <div><input type="text" name="keyword" placeholder="搜索园区"/></div>
+        <span><i class="iconfont">&#xe60a;</i><em id="city">{$city_title|default='城市'}</em></span>
+      </form>
+    </div>
+    <if condition="$btn_list">
+    <div class="JO_2 w50">
+      <foreach name="btn_list" item="item">
+      <a <if condition="!empty($item['link'])">href="{$item.link}"</if> style="width:<?php echo 100/count($btn_list); ?>%" class="a1">
+        <i style="background-image: url(/{$item.thumb_img});"></i>
+        <span>{$item.description}</span>
+      </a>
+      </foreach>
+      <!-- <a href="{:U('Recruitment/my_kindergarten')}" class="a5">
+        <i></i>
+        <span>园区转让</span>
+      </a>
+      <a href="{:U("Recruitment/my_kindergarten_xuqiu")}" class="a6">
+        <i></i>
+        <span>寻找园区</span>
+      </a> -->
+<!--       <a href="{:U("Meeting/meeting_list")}" class="a3">
+        <i></i>
+        <span>幼儿峰会</span>
+      </a>
+      <a href="{:U("Course/lists")}" class="a4">
+        <i></i>
+        <span>蜜蜂学堂</span>
+      </a> -->
+    </div>
+    </if>
+    <!-- <div class="JO_3">
+      <h4 class="h4 clearfix">
+        <span>岗位展示</span>
+        <a href="{:U("Recruitment/lists")}">查看更多<i class="iconfont">&#xe614;</i></a>
+      </h4>
+      <ul>
+        <foreach name="recruitment_list" item="item">
+        <li <if condition="$item['status'] eq 0"> class="no"</if>>
+          <a href="{:U('Recruitment/info',array('id'=>$item['id']))}">
+            <h4>{$item.position}</h4>
+            <h5>{$item.city} | {$item.district}</h5>
+            <h6 class="clearfix">
+              <span>{$item.company_name}</span>
+              <em>{$item.add_time|date='Y年m月d日',###}</em>
+            </h6>
+          </a>
+        </li>
+        </foreach>
+      </ul>
+    </div> -->
+    <div class="JO_3">
+      <h4 class="h4 clearfix">
+        <span>园区展示</span>
+        <a href="{:U("Recruitment/lists2")}">查看更多<i class="iconfont">&#xe614;</i></a>
+      </h4>
+      <ul>
+        <foreach name="kindergarten_list" item="item">
+        <li <if condition="$item['status'] eq 0"> class="no"</if>>
+          <a href="{:U('Recruitment/info2',array('id'=>$item['id']))}">
+            <h4>{$item.title}</h4>
+            <h6 class="clearfix">
+              <span>{$item.city} | {$item.district}</span>
+              <em>{$item.add_time|date='Y年m月d日',###}</em>
+            </h6>
+            <div class="no_end">已结束</div>
+          </a>
+        </li>
+        </foreach>
+      </ul>
+    </div>
+    <div class="JO_3">
+      <h4 class="h4 clearfix">
+        <span>寻找园区</span>
+        <a href="{:U("Recruitment/lists3")}">查看更多<i class="iconfont">&#xe614;</i></a>
+      </h4>
+      <ul>
+        <foreach name="kindergarten_xuqiu_list" item="item">
+        <li <if condition="$item['status'] eq 0"> class="no"</if>>
+          <a href="{:U('Recruitment/info3',array('id'=>$item['id']))}">
+            <h4>{$item.title}</h4>
+            <h6 class="clearfix">
+              <span>{$item.city} | {$item.district}</span>
+              <em>{$item.add_time|date='Y年m月d日',###}</em>
+            </h6>
+            <div class="no_end">已结束</div>
+          </a>
+        </li>
+        </foreach>
+      </ul>
+    </div>
+    
+  </div>
+  <include file='Public:page_nav'/>
+</body>
+<include file='Public:pageFooter'/>
+<link rel="stylesheet" type="text/css" href="__CSS__/mobileSelect.css">
+<script src="__JS__/mobileSelect.min.js" type="text/javascript"></script>
+<script>
+  $(document).ready(function(){
+    var region_city = {$region_city};
+    var mobileSelect2 = new MobileSelect({
+        trigger: '#city',
+        title: '城市',
+        triggerDisplayData:false,
+        wheels:[{data:region_city},],
+        keyMap: {
+          id:'region_id',
+          value: 'region_name',
+          childs :'child'
+        }, 
+        transitionEnd:function(indexArr, data){
+            // console.log(data);
+        },
+        callback:function(indexArr, data){
+          $('#city').html(data[1].region_name);
+          // var d = new Date();
+          // d.setTime(d.getTime()+(30*24*60*60*1000));
+          // var expires = "expires="+d.toGMTString();
+          // document.cookie = "city="+data[1].region_id+";"+expires;
+          // // $.cookie('city',data[1].region_id,{expires:30});
+          // window.location.reload();
+          window.location.href=window.location.pathname+"?city="+data[1].region_id;
+        }
+    });
+  });
+  $(window).load(function(){
+    var mybanner = new Swiper('.banner', {
+      pagination : '.swiper-pagination',
+      autoplay: 5000,
+      autoplayDisableOnInteraction : false,
+      lazyLoading : true,
+    });
+  });
+</script>

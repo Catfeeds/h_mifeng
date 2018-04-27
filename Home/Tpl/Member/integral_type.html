@@ -1,0 +1,65 @@
+<include file='Public:pageHeader'/>
+<body data-psd-width="750" class="f3f3f3">
+  <div class="Aarn_points">
+    <h4 class="h4"><span>每日上限</span></h4>
+    <div class="Aar_1">
+      <ul>
+        <foreach name="list" item="item">
+        <if condition="$item['id'] neq 8">
+          <li>
+            <span><i style="background-color: #fe885d;"></i>{$item.message}</span>
+            <em>+{$item.integral}</em>
+            <b><if condition="$item['upper_limit'] gt 0">{$item.upper_limit}<else/>无</if></b>
+          </li>
+        </if>
+        </foreach>
+      </ul>
+    </div>
+    <div class="Aar_2">
+      <a id="Aar_2">充值兑换积分</a>
+      <div class="address_bg"></div>
+      <div class="address_fix aar_fix">
+        <h3 style="background-color: #ef8875; color:#fff;">充值兑换积分</h3>
+        <form method="post" action="{:U('Member/integral_order')}" id="submitForm" name="submitForm" enctype="multipart/form-data">
+          <div class="box">
+            <p>积分兑换1:{$list.0.integral}</p>
+            金额:<input type="text" name="price" class="text" datatype="/^[1-9]\d*$/" placeholder="请输入兑换金额" errormsg="请输入整数金额" nullmsg="请输入整数金额">
+          </div>
+          <div class="text-right">
+            <span class="hide">取消</span>
+            <input type="submit" value="确定" class="submit">
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="Aar_3">
+      <h4>积分使用规则</h4>
+      <p>可使用有效的积分，在积分商城中的依照积分兑换规则兑换相应的礼物，在籍会员享有 在籍专享价，以优惠的积分兑换相应的礼物。当礼物兑换成功后，积分商城会自动从您 的积分中扣除相应的分值，此兑换动作将不予撤销。</p>
+    </div>
+  </div>
+  <include file='Public:page_nav'/>
+  <include file='Public:login'/>
+</body>
+<include file='Public:pageFooter'/>
+<script type="text/javascript">
+  $("#submitForm").Validform({
+    tipSweep:true,
+    tiptype:function(msg,o){
+      if(o.type==3){
+        layer.open({
+          content: msg
+          ,skin: 'msg'
+          ,time: 2
+        });
+      }
+    },
+  });
+  $("#Aar_2").click(function(){
+    $(".address_bg").show();
+    $(".address_fix").show();
+  })
+  $(".hide").click(function(){
+    $(".address_bg").hide();
+    $(".address_fix").hide();
+  })
+</script>

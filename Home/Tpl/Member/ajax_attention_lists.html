@@ -1,0 +1,20 @@
+<foreach name="list" item="item">
+<li class="clearfix">
+  <div class="mfo_1"><a href="{:U('Member/user_index',array('uid'=>$item['user_id']))}"><i style="background-image: url(/{$item.pic});"></i></a></div>
+  <div class="mfo_2">
+    <h4>{$item.user_name}</h4>
+    <h6>
+      <span>发布：{$item.i_count}</span>
+      <span>粉丝：{$item.fans_count}</span>
+    </h6>
+  </div>
+  <div class="mfo_3">
+    <span class="attention <if condition="!empty($item['is_attention'])">on</if>" data-id="{$item.user_id}" >
+      <i class="a1" style="background-image: url(__IMG__/icon_2.png);"></i>
+      <em class="a1">加关注</em>
+      <i class="a2" style="background-image: url(__IMG__/icon_3.png);"></i>
+      <em class="a2">已关注</em>
+    </span>
+  </div>
+</li>
+</foreach>

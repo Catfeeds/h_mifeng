@@ -1,0 +1,57 @@
+<include file='Public:pageHeader'/>
+<body data-psd-width="750" class="f3f3f3">
+  <div class="Personal">
+    <form method="post" action="{:U('Member/user_save')}" id="submitForm" name="submitForm" enctype="multipart/form-data">
+      <div class="user_site">
+        <ul>
+          <li style="line-height:1.3rem;" class="clearfix">
+            <a class="clearfix">
+              <span>头像</span>
+              <em><i class="pic_img" style="background-image: url('/{$user_info.pic}')"></i><input type="file" class="pic" name="pic"></em>
+            </a>
+          </li>
+          <li class="clearfix">
+            <a class="clearfix">
+              <span>会员名称</span>
+              <em><input type="text" name="user_name" value="{$user_info.user_name}"></em>
+            </a>
+          </li>
+          <li class="clearfix">
+            <a class="clearfix">
+              <span>个人简介</span>
+              <em><input type="text" name="introduction" value="{$user_info.introduction}"></em>
+            </a>
+          </li>
+          <li class="clearfix">
+            <a class="clearfix" href="{:U('User/edit_phone')}">
+              <span>手机</span>
+              <em><input type="text" name="phone" value="{$user_info.phone}"></em>
+            </a>
+          </li>
+          <li class="clearfix">
+            <a class="clearfix" href="{:U('User/exit_password')}">
+              <span>修改密码</span>
+            </a>
+          </li>
+        </ul>
+        <input type="submit" value="提交" class="submit">
+      </div>
+    </form>
+  </div>
+  <include file='Public:page_nav'/>
+  <include file='Public:login'/>
+</body>
+<include file='Public:pageFooter'/>
+<script type="text/javascript">
+  $(function(){
+    $(".pic").change(function(){
+      var _this = $(this);
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        _this.siblings(".pic_img").css("background-image","url("+e.target.result+")");
+        console.log(e.target.result);
+      };
+      reader.readAsDataURL(this.files[0]);
+    })
+  })
+</script>

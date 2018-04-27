@@ -1,0 +1,102 @@
+<include file="Index:pageHeader" />
+<script type="text/javascript">
+$(function(){
+	autoHeight(jQuery('.autoHeight'));
+	jQuery(".column_Box").each(function () {
+		var t = jQuery(this);
+		if (t.length < 1) return;
+		Tab_click(t.find('.tab ul li'), t.find(".wrapBox .body"));
+	});
+});
+KindEditor.ready(function(K) {
+	K.create('#content', {
+		allowFileManager : false,
+		pasteType : 2,
+		newlineTag : 'p',
+		filterMode : false, // true:开启过滤模式, false:关闭过滤模式
+		urlType : 'absolute'
+	});
+});
+</script>
+<div class="column_Box mainAutoHeight">
+	<div class="tab">
+		<ul>
+			<li class="current"><a href="javascript:">属性</a></li>
+		</ul>
+	</div>
+	<div class="column_Box mainAutoHeight wrapBox">
+    <div class="body">
+		<form method="post" action="{:U('Reel/zengsong_save')}" id="submitForm" name="submitForm" enctype="multipart/form-data">
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tbody>
+					<tr>
+						<td>会员列表　<input type="name" name="user_name" id="user_name"> <input type="button" value="搜索" id="search"></td>
+						<td>操作</td>
+						<td>赠送人员</td>
+					</tr>
+					<tr>
+						<td>
+						</td>
+					</tr>
+					<tr>
+						<td width="50%">
+							<select multiple="multiple" id="user_id" style="width:100%;height:250px;">
+								<include file='Reel:user_option'/>
+							</select>
+						</td>
+						<td width="25" style="text-align: center;">
+							<p>
+								<input type="button" value=">" id="add">
+							</p>
+							<p>
+								<input type="button" value="<"  id="remove">
+							</p>
+						</td>
+						<td width="50%">
+							<select multiple="multiple" name="user_id[]" id="zengsong" style="width:100%;height:250px;">
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td style="text-align:left;" >
+							<input type="hidden" name="id" value="{$id}"/>
+							<input type="button" id="tijiao" value="提交"/>
+						</td>
+						<td>&nbsp;</td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+    </div>
+    <script type="text/javascript">
+    $("#add").click(function(){
+    	$("#user_id option:selected").each(function(){
+    		if(!$("#zengsong option[value='"+$(this).val()+"']").length){
+    			var html = '<option value="'+$(this).val()+'" >'+$(this).html()+'</option>';
+    			$("#zengsong").append(html);
+    		}
+    	})
+    })
+    $("#remove").click(function(){
+    	$("#zengsong option:selected").remove();
+    })
+    $("#search").click(function(){
+    	$.ajax({
+    	  type: "POST",
+    	  url:"{:U('Reel/user_key')}",
+    	  data:"user_name="+$("#user_name").val(),
+    	  success:function(data){
+    	    $("#user_id").html(data.data);
+    	  },
+    	});
+    })
+    $("#tijiao").click(function(){
+    	$("#zengsong option").prop("selected",true);
+    	$("#submitForm").submit();
+    })
+    </script>
+  </div>
+</div>
+</body>
+</html>

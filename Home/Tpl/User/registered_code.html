@@ -1,0 +1,24 @@
+<include file='Public:pageHeader'/>
+<form method="post" action="{:U('User/do_register')}" id="submitForm" name="submitForm" enctype="multipart/form-data">
+  <input type="text" class="text" name="code" placeholder="验证码">
+  <input type="password" class="text" name="password" placeholder="密码">
+  <a class="code">发送验证码</a>
+  <input type="submit" class="submit" value="submit">
+  <script>
+  $(function(){
+    $(".code").click(function(){
+      $.ajax({
+        type:'POST',
+        url:'{:U("User/code")}',
+        data:"phone={$phone}",
+        dataType: "JSON",
+        success:function(data){
+          console.log(data);
+        }
+      })
+    })
+    $(".code").trigger("click");
+  })
+  </script>
+</form>
+<include file='Public:pageFooter'/>

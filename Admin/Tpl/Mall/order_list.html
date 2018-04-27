@@ -1,0 +1,114 @@
+<include file="Index:pageHeader" />
+<script type="text/javascript">
+function delMall(id) {
+	$.dialog.confirm('你确定要删除吗？', function(){
+		window.location.href="{:U('Mall/del')}?id="+id;
+	}, function(){
+		//$.dialog.tips('执行取消操作');
+	});
+}
+</script>
+  <div class="column_Box mainAutoHeight">
+    <div class="tab">
+      <ul>
+        <li class="current"><a href="javascript:">兑换列表</a></li>
+      </ul>
+    </div>
+    <div class="wrapBox mainAutoHeight">
+      <!--列表-->
+      <div class="body User">
+	        <div class="item">
+	          <div class="searchBar">
+					<form action="{:U('Mall/order_list')}">
+						会员名称 ：
+						<input type="text" class="txt" name="keyword" value="{$filter.keyword}"/>
+						兑换日期:
+						<input type="text" class="txt" name="strat_time" value="{$filter.strat_time}" onclick="WdatePicker();"/> - <input type="text" class="txt" name="end_time" value="{$filter.end_time}" onclick="WdatePicker();"/>
+						<select name="mall_type" class="dot_Item">
+							<option value="">礼物类型</option>
+							<option value="1" <if condition="1 eq $filter['mall_type']"> selected="selected" </if>>电子素材</option>
+							<option value="2" <if condition="2 eq $filter['mall_type']"> selected="selected" </if>>实物礼物</option>
+						</select>
+						<select name="type" class="dot_Item">
+							<option value="">获取途径</option>
+							<option value="1" <if condition="1 eq $filter['type']"> selected="selected" </if>>积分兑换</option>
+							<option value="2" <if condition="2 eq $filter['type']"> selected="selected" </if>>积分抽奖</option>
+						</select>
+						<input type="submit" class="submit btn_search" value="搜索" />
+						<input type="submit" name="excel" class="submit btn_search" value="导出" />
+					</form>
+	        	</div>
+	      	</div>
+			<!-- <form method="POST" action="{:U('Mall/batch')}" name="listForm"> -->
+				<table border="0" cellpadding="0" cellspacing="0" class="center">
+					<thead>
+						<tr>
+							<th style="width:70px;"><input type="checkbox" name="checkBox_All" class="checkBox_All" />编号</th>
+							<th>会员名称</th>
+							<th>兑换日期</th>
+							<th>礼物标题</th>
+							<th>礼物类型</th>
+							<th>获取途径</th>
+							<th>兑现</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<foreach name="list" item="vo">
+							<tr>
+								<td><input type="checkbox" name="checkboxes[]" class="checkBox_list" value="{$vo.id}" />{$vo.id}</td>
+								<td>{$vo.user_name}</td>
+								<td>{$vo.add_time|date='Y-m-d H:i:s',###}</td>
+								<td>{$vo.title}</td>
+								<td><if condition="$vo['mall_type']==1">电子素材<else/>实物礼品</if></td>
+								<td><if condition="$vo['type']==1">积分兑换<else/>积分抽奖</if></td>
+								<td><if condition="$vo['stauts']==1"><img src="__PUBLIC__/Admin/Img/yes.gif"/><else/><img src="__PUBLIC__/Admin/Img/no.gif"/></if></td>
+								<td>
+									<span>
+										<a title="编辑" href="{:U('Mall/order_info',array('id'=>$vo['id']))}"><img width="16" height="16" border="0" src="__PUBLIC__/Admin/Img/icon_edit.gif"></a>&nbsp;
+									</span>
+								</td>
+							</tr>
+						</foreach>
+					</tbody>
+				</table>
+				<div class="lineHeight" style="border-bottom:1px dashed #cccccc;"></div>
+				<div class="batchChange">
+					<div class="f_r">
+						<div class="pagination">{$page}</div>
+					</div>
+				</div>
+				<!-- </form> -->
+	    </div>
+	  </div>
+	</div>
+	<script type="text/javascript">
+	/**
+	   * @param: bool ext 其他条件：用于转移分类
+	   */
+	  function confirmSubmit(frm, ext){
+		  if (frm.elements['type'].value == 'button_remove'){
+			  return confirm('您确定要删除吗');
+		  }else if (frm.elements['type'].value == 'not_on_sale'){
+			  return confirm('您确定要隐藏吗');
+		  }else if (frm.elements['type'].value == 'move_to'){
+			  ext = (ext == undefined) ? true : ext;
+			  return ext && frm.elements['target_cat'].value != 0;
+		  }else if (frm.elements['type'].value == ''){
+			  return false;
+		  }else{
+			  return true;
+		  }
+	  }
+	  function changeAction(){
+		  var frm = document.forms['listForm'];
+		  // 切换分类列表的显示
+		  // frm.elements['target_cat'].style.display = frm.elements['type'].value == 'move_to' ? '' : 'none';
+		  if (!document.getElementById('btnSubmit').disabled &&
+			  confirmSubmit(frm, false)){
+			  frm.submit();
+		  }
+	  }
+	</script>
+</body>
+</html>

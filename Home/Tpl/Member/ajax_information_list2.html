@@ -1,0 +1,29 @@
+<foreach name="list" item="item">
+	<li class="clearfix">
+		<div class="re_1">
+			<if condition="$item['add_time'] gt strtotime(date('Y-m-d'))">
+				<span>今天</span>
+			<else/>
+				<span>{$item.add_time|date='d',###}</span><em>{$item.add_time|date='m',###}月</em>
+			</if>
+		</div>
+		<div class="re_2">
+			<a href="{:U('Information/info',array('id'=>$item['information_id']))}"  >
+				<h4>{$item.title}</h4>
+				<p>
+					<span style="background-image: url(/{$item.thumb_img});"></span>
+					<foreach name="item.child_content" item="item2">
+						<span style="background-image: url(/{$item2.thumb_img});"></span>
+					</foreach>
+				</p>
+			</a>
+			<h6 class="clearfix">
+				<!-- <span><i class="iconfont">&#xe60b;</i>{$item.comment_count}</span>
+				<span><i class="iconfont">&#xe609;</i>{$item.praise_count}</span> -->
+				<if condition="empty($uid)">
+					<a del-href="{:U('Member/collect_del',array('id'=>$item['id']))}" class="del">删除</a>
+				</if>
+			</h6>
+		</div>
+	</li>
+</foreach>

@@ -1,0 +1,179 @@
+<include file='Public:pageHeader'/>
+<body data-psd-width="750" class="f3f3f3">
+  <div class="Join">
+    <div class="JO_1">
+      <form method="get" action="{:U('Recruitment/lists')}" id="submitForm" name="submitForm" enctype="multipart/form-data">
+        <div><input type="text" name="keyword" value="{$keyword}" placeholder="搜索职位"/></div>
+        <span><i class="iconfont">&#xe60a;</i><em id="city">{$city_title|default='城市'}</em></span>
+      </form>
+    </div>
+    <div class="JO_5 clearfix">
+      <div class="fl">
+        <i style="background-image: url(__IMG__/per_ul_5.png);"></i>我的简历
+      </div>
+      <div class="fr">
+        <a href="{:U('Recruitment/resume_info')}">完善信息<i class="iconfont">&#xe614;</i></a>
+      </div>
+    </div>
+    <div class="JO_3">
+      <form method="get" action="{:U('Recruitment/lists')}" id="submitForm2" name="submitForm" enctype="multipart/form-data">
+        <div class="filter clearfix">
+          <a class="address_clicks" style="cursor: pointer;">
+            <span class="html"><if condition="!empty($district_name)">{$district_name}<else/>选择地区</if></span><i class="fa fa-angle-down"></i>
+            <input type="hidden" name="district_name" class="district_name" value="<if condition="!empty($district_name)">{$district_name}<else/>选择地区</if>">
+            <input type="hidden" name="district" class="district" value="{$district}">
+          </a>
+          <a class="select_ks">
+            <span class="html"><if condition="!empty($cat_name)">{$cat_name}<else/>选择分类</if></span><i class="fa fa-angle-down"></i>
+            <input type="hidden" name="cat_id" class="cat_id" value="{$cat_id}">
+            <input type="hidden" name="cat_name" class="cat_name" value="<if condition="!empty($cat_name)">{$cat_name}<else/>选择分类</if>">
+          </a>
+        </div>
+      </form>
+      <h4 class="h4 clearfix">
+        <span>岗位展示</span>
+      </h4>
+      <ul class="ul_more">
+        <include file='Recruitment:lists_ajax'/>    
+      </ul>
+      <if condition="count($list) egt $listRows">
+        <i class="list_more" data-p='1'>加载更多了</i>
+      </if>
+    </div>
+  </div>
+  <include file='Public:page_nav'/>
+</body>
+<include file='Public:pageFooter'/>
+<link rel="stylesheet" type="text/css" href="__CSS__/mobileSelect.css">
+<script src="__JS__/mobileSelect.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var cat_all = {$cat_all};
+  var mobileSelect2 = new MobileSelect({
+      trigger: '.select_ks',
+      title: '分类',
+      triggerDisplayData:false,
+      wheels:[{data:cat_all},],
+          keyMap: {
+            id:'cat_id',
+            value: 'cat_name',
+            childs :'child'
+        }, 
+      transitionEnd:function(indexArr, data){
+          // console.log(data);
+      },
+      callback:function(indexArr, data){
+        var key = data.length-1;
+        $(".cat_id").val(data[key].cat_id);
+        $(".cat_name").val(data[key].cat_name);
+        $(".select_ks .html").html(data[key].cat_name);
+        $("#submitForm2").submit();
+      }
+  });
+  <if condition="!empty($district_all)">
+  var district_all = {$district_all};
+  var mobileSelect2 = new MobileSelect({
+      trigger: '.address_clicks',
+      title: '地区',
+      triggerDisplayData:false,
+      wheels:[{data:district_all},],
+          keyMap: {
+            id:'region_id',
+            value: 'region_name',
+            childs :'child'
+        }, 
+      transitionEnd:function(indexArr, data){
+          // console.log(data);
+      },
+      callback:function(indexArr, data){
+        var key = data.length-1;
+        $(".district").val(data[key].region_id);
+        $(".district_name").val(data[key].region_name);
+        $(".address_clicks .html").html(data[key].region_name);
+        $("#submitForm2").submit();
+      }
+  });
+  <else/>
+  $(".address_clicks").click(function(){
+    layer.open({
+      content:"请先选择城市"
+      ,skin: 'msg'
+      ,time: 2
+    });
+  })
+  </if>
+
+  $(window).scroll(function() {  
+      var scrollTop = $(this).scrollTop(),scrollHeight = $(document).height(),windowHeight = $(this).height();  
+      var positionValue = (scrollTop + windowHeight) - scrollHeight;  
+      if(positionValue>=-400){
+          var _this = $('.list_more');
+          if(!_this.length){
+            return false;
+          }
+          var p = parseInt(_this.attr('data-p'))+1;
+          if(_this.attr('is')!='false'){
+              _this.attr("is",false);
+              $.ajax({
+                type: "GET",
+                url:"{:U('Recruitment/lists')}",
+                data:"keyword={$keyword}&p="+p,
+                success:function(data){
+                  _this.attr("is",true);
+                  if(data.status==500){
+                    //完结
+                    _this.hide();
+                  }
+                  _this.attr('data-p',p);
+                  $(".ul_more").append(data.data);
+                },
+              });
+          }
+      }  
+  });
+  // $('.list_more').on('click',function(){
+  //   var _this = $(this);
+  //   var p = parseInt(_this.attr('data-p'))+1;
+  //   if(_this.attr('is')!='false'){
+  //     _this.attr("is",false);
+  //     $.ajax({
+  //       type: "GET",
+  //       url:"{:U('Recruitment/lists')}",
+  //       data:"keyword={$keyword}&p="+p,
+  //       success:function(data){
+  //         _this.attr("is",true);
+  //         if(data.status==500){
+  //           //完结
+  //           _this.hide();
+  //         }
+  //         _this.attr('data-p',p);
+  //         $(".ul_more").append(data.data);
+  //       },
+  //     });
+  //   }
+  // })
+  var region_city = {$region_city};
+  var mobileSelect2 = new MobileSelect({
+      trigger: '#city',
+      title: '城市',
+      triggerDisplayData:false,
+      wheels:[{data:region_city},],
+      keyMap: {
+        id:'region_id',
+        value: 'region_name',
+        childs :'child'
+      }, 
+      transitionEnd:function(indexArr, data){
+          // console.log(data);
+      },
+      callback:function(indexArr, data){
+        $('#city').html(data[1].region_name);
+        // var d = new Date();
+        // d.setTime(d.getTime()+(30*24*60*60*1000));
+        // var expires = "expires="+d.toGMTString();
+        // document.cookie = "city="+data[1].region_id+";"+expires;
+        // // $.cookie('city',data[1].region_id,{expires:30});
+        // window.location.reload();
+        window.location.href=window.location.pathname+"?city="+data[1].region_id;
+      }
+  });
+</script>
