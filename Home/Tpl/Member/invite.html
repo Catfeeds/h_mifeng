@@ -7,12 +7,14 @@
         <!-- <img src="__IMG__/ewm.jpg"/> -->
       </span>
     </div>
+    <div class="url" style="margin-bottom:.2rem;">
+      邀请链接：<a href="http://{$_SERVER['HTTP_HOST']}?invite_uid={$user_info['user_id']}" onclick="return false;" style="color:#ff345a;">http://{$_SERVER['HTTP_HOST']}?invite_uid={$user_info['user_id']}</a>
+    </div>
     <div class="inv_button">
-      <div class="bdsharebuttonbox" data-tag="share_1">
+      <div>
         <!-- <a class="fx_more" >发送邀请</a> -->
         {$site_info.integral_description|nl2br}
       </div>
-      
     </div>
     <div class="inv_ul">
       <h4><span>已邀请好友</span></h4>
