@@ -96,10 +96,10 @@ class RecruitmentModel extends Model {
     //简历总数
     $where = ' 1 ';
     if($filter['id']){
-      $where .= " AND rc.recruitment_id=".$filter['id'];
+      $where .= " AND type=1  AND rc.recruitment_id=".$filter['id'];
     }
     if($filter['resume_id']){
-      $where .= " AND rc.resume_id=".$filter['resume_id'];
+      $where .= " AND type=2  AND rc.resume_id=".$filter['resume_id'];
     }
     $count = M("ResumeCast")->alias("rc")->where($where)->count();
     return $count;

@@ -9,6 +9,11 @@
           <div class="fl">
             <a href="{:U('Recruitment/my_kindergarten_xuqiu_info',array('id'=>$item['id']))}" class="clearfix"><i style="background-color: #f19ec2;">{$key+1}</i>{$item.title}</a>
           </div>
+          <if condition="$item['is_open'] eq 0">
+          <div class="fr">
+            <a href="{:U('Recruitment/my_kindergarten_info',array('id'=>$item['id']))}"><em>审核中</em><i class="iconfont">&#xe614;</i></a>
+          </div>
+          </if>
         </li>
         </foreach>
       </ul>

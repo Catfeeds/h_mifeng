@@ -42,15 +42,15 @@ $(function(){
 								</select>
 							<em>*</em></td>
 						</tr>
-						<if condition="$info['cat_id'] eq 4">
-							<tr id="zy">
+						
+							<tr id="zy" <if condition="$info['cat_id'] neq 4"> style="display:none;" </if>>
 								<td style="text-align:right;">附件：</td>
 								<td style="text-align:left;">
 									<input name='file_url' type='file'/>&nbsp;&nbsp;&nbsp;&nbsp;
 									<input type="text" name="file_url_text" value="{$info.file_url}">
 								</td>
 							</tr>
-						</if>
+						
 						<!-- <tr>
 							<td style="text-align:right;">年龄：</td>
 							<td style="text-align:left;">

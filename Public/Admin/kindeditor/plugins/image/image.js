@@ -259,12 +259,12 @@ KindEditor.plugin('image', function(K) {
 			K(document.body).append(tempImg);
 		});
 		widthBox.change(function(e) {
-			if (originalWidth > 0) {
+			if (originalWidth > 0 && this.value>0) {
 				heightBox.val(Math.round(originalHeight / originalWidth * parseInt(this.value, 10)));
 			}
 		});
 		heightBox.change(function(e) {
-			if (originalHeight > 0) {
+			if (originalHeight > 0 && this.value>0) {
 				widthBox.val(Math.round(originalWidth / originalHeight * parseInt(this.value, 10)));
 			}
 		});

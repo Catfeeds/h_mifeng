@@ -106,10 +106,30 @@ class CourseAction extends CommonAction {
         if($reel_id){
             //积分卷使用
             $time = time();
-            $reel = D("Reel")->where("id=$reel_id AND type=3 AND is_use=0 AND end_time>$time AND user_id=".$this->user_info['user_id'])->find();
+            $reel = D("ReelList")->where("id=$reel_id AND type=3 AND is_use=0 AND end_time>$time AND user_id=".$this->user_info['user_id'])->find();
             $info['integral'] = $info['integral']-$reel['price']>0?$info['integral']-$reel['price']:0;
         }
-        if(parent::integral("-".$info['integral'],$this->user_info['user_id'],"兑换课程(".$info['title'].")")){
+        if($info['integral']>0){
+            if(parent::integral("-".$info['integral'],$this->user_info['user_id'],"兑换课程(".$info['title'].")")){
+                $data = array();
+                $data['integral'] = $info['integral'];
+                $data['course_id'] = $info['id'];
+                $data['user_id'] = $this->user_info['user_id'];
+                $data['add_time'] = time();
+                $saveId=M("CourseOrder")->data($data)->add();
+                if($saveId){
+                    if($reel_id){
+                        //积分卷修改状态
+                        D("ReelList")->where("id=$reel_id AND type=3 AND user_id=".$this->user_info['user_id'])->data(array("is_use"=>1))->save();
+                    }
+                    $this->success('兑换成功！！',U('Course/detail',array('id'=>$id)));
+                }else{
+                    $this->error("兑换失败");
+                }
+            }else{
+                $this->error("操作失败");
+            }
+        }else{
             $data = array();
             $data['integral'] = $info['integral'];
             $data['course_id'] = $info['id'];
@@ -119,15 +139,14 @@ class CourseAction extends CommonAction {
             if($saveId){
                 if($reel_id){
                     //积分卷修改状态
-                    D("Reel")->where("id=$reel_id  AND type=3 AND user_id=".$this->user_info['user_id'])->data(array("is_use"=>1))->save();
+                    D("ReelList")->where("id=$reel_id AND type=3 AND user_id=".$this->user_info['user_id'])->data(array("is_use"=>1))->save();
                 }
                 $this->success('兑换成功！！',U('Course/detail',array('id'=>$id)));
             }else{
                 $this->error("兑换失败");
             }
-        }else{
-            $this->error("操作失败");
         }
+        
     }
     public function my_list(){
         //我的课程

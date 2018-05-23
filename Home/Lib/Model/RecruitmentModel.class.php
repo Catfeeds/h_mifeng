@@ -121,7 +121,7 @@ class RecruitmentModel extends Model {
     //我的投放
     $where = ' 1 ';
     if($filter['user_id']){
-      $where .= " AND rc.user_id=".$filter['user_id'];
+      $where .= " AND type=1 AND rc.user_id=".$filter['user_id'];
     }
     $result = M("ResumeCast")->alias("rc")->field("r.*,rc.add_time as add_time2")->join("left join ".table("recruitment")." as r on r.id=rc.recruitment_id")->where($where)->limit($firstRow,$listRows)->order("rc.add_time DESC")->select();
 

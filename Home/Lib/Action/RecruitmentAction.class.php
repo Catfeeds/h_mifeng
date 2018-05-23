@@ -267,12 +267,12 @@ class RecruitmentAction extends CommonAction {
       if(!is_phone($data['phone'])&&!is_tel($data['phone'])){
         $this->error("请填写正确的联系电话");
       }
-      if(!empty($id)){
-        $info = $M_Recruitment->where("id=$id AND user_id=".$this->user_info['user_id'])->find();
-        if($info['is_open']==1){
-            $data = array();
-        }
-      }
+      // if(!empty($id)){
+      //   $info = $M_Recruitment->where("id=$id AND user_id=".$this->user_info['user_id'])->find();
+      //   if($info['is_open']==1){
+      //       $data = array();
+      //   }
+      // }
       $data['user_id'] = $this->user_info['user_id'];
       $data['end_time'] = strtotime($this->_post('end_time'));
       $data['status'] = $this->_post('status')!==null?$this->_post('status'):0;
@@ -575,12 +575,12 @@ class RecruitmentAction extends CommonAction {
       }
       $id = $this->_post('id');
       $data = $M_Recruitment->create();
-      if(!empty($id)){
-        $info = $M_Recruitment->where("id=$id AND user_id=".$this->user_info['user_id'])->find();
-        if($info['is_open']==1){
-            $data = array();
-        }
-      }
+      // if(!empty($id)){
+      //   $info = $M_Recruitment->where("id=$id AND user_id=".$this->user_info['user_id'])->find();
+      //   if($info['is_open']==1){
+      //       $data = array();
+      //   }
+      // }
       $data['user_id'] = $this->user_info['user_id'];
       $data['status'] = $this->_post('status')!==null?$this->_post('status'):0;
       $data['end_time'] = strtotime($this->_post('end_time'));

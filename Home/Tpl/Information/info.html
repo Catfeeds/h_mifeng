@@ -51,7 +51,14 @@
 <include file='Public:pageFooter'/>
 <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
 <script>
-new Clipboard('.btn');
+  var clipboard = new Clipboard('.btn');
+  clipboard.on('success', function(e) {
+    layer.open({
+      content: "复制成功"
+      ,skin: 'msg'
+      ,time: 2
+    });
+  });
   // $('.yh_box .yh_tit h6 a').on('click',function(){
   //   $(this).toggleClass('on')
   // })
