@@ -74,7 +74,7 @@ nav ul li.ov span { color: #ff8314; }
 .index_3 .in_mian ul li:last-child { border-bottom: none; }
 .index_3 .in_mian .in_img { float: left; width: 1.8rem; height: 1.2rem; border-radius: .2rem; overflow: hidden; background: no-repeat center; background-size: cover; }
 .index_3 .in_mian .in_txt { float: right; width: calc(100% - 2.1rem); }
-.index_3 .in_mian .in_txt span { display: block; padding: .07rem 0; font-size: .3rem; color: #333; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.index_3 .in_mian .in_txt span { display: block; padding:0.18rem 0 .07rem 0; font-size: .3rem; color: #333; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 .index_3 .in_mian .in_txt em { display: block; font-size: .26rem; color: #a9a9a9; line-height: .36rem; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;overflow: hidden; }
 
 .index_4 { background: #fff; margin-bottom: .2rem; }
@@ -180,7 +180,7 @@ nav ul li.ov span { color: #ff8314; }
 .Yrgh .yr_box > ul > li { padding: .3rem; }
 .Yrgh .yr_box .yr_img { width: 1.8rem; height: 1.2rem; border-radius: .1rem; background: no-repeat center/cover; }
 .Yrgh .yr_box .yr_txt { width: calc(100% - 2.2rem); }
-.Yrgh .yr_box .yr_txt span { display: block; padding: .07rem 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: .34rem; color: #333; }
+.Yrgh .yr_box .yr_txt span { display: block; padding:.18rem 0 .07rem 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: .34rem; color: #333; }
 .Yrgh .yr_box .yr_txt em { display: block; height: .72rem; font-size: .26rem; color: #a9a9a9; line-height: .36rem; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;}
 
 .Yrgh_x .yrx_tit { padding: .3rem; margin-bottom: .2rem; background: #fff; }
@@ -356,12 +356,12 @@ nav ul li.ov span { color: #ff8314; }
 .Popular > h4 { border-bottom: 1px solid #ddd; }
 .Popular > h4 span { display: block; width: 4rem; height: 1rem; margin: 0 auto; background: url(../images/icon_7.png) no-repeat center/100%; font-size: .3rem; color: #666; text-align: center; line-height: 1rem; }
 .Popular > h6 > a { display: block; width: 3.6rem; height: .7rem; margin: 0 auto; border: 1px solid #eea92a; border-radius: .15rem; box-sizing: border-box; font-size: .3rem; color: #eea92a; text-align: center; line-height: calc(.7rem - 2px); }
-.Popular > ul { padding: .2rem; }
-.Popular > ul li { float: left; width: 3.48rem; margin-bottom: .2rem; }
+.Popular > ul { padding: .24rem 0.3rem; }
+.Popular > ul li { float: left; width: 3.3rem; margin-bottom: .2rem; }
 .Popular > ul li:nth-child(even) { float: right; }
-.Popular .po_img { width: 100%; height: 2.6rem; background: no-repeat center/cover; }
+.Popular .po_img { width: 100%; height: 2.47rem; background: no-repeat center/cover; }
 .Popular .po_txt { padding: .2rem; box-sizing: border-box; border: 1px solid #eee; border-top: none; }
-.Popular .po_txt h4 { height: .72rem; margin-bottom: .1rem; font-size: .3rem; color: #313131; line-height: .36rem; }
+.Popular .po_txt h4 { height: .36rem; margin-bottom: .1rem; font-size: .3rem; color: #313131; line-height: .36rem; }
 .Popular .po_txt h6 { font-size: .24rem; color: #313131; }
 .Popular .po_txt h6 em { font-size: .3rem; color: #ef8874; }
 
@@ -486,15 +486,15 @@ nav ul li.ov span { color: #ff8314; }
 .Class_xx .clxx_box.clxx_box_1 .li_1 h6 em { float: right; font-size: .26rem; color: #999; line-height: .42rem; }
 .Class_xx .clxx_box.clxx_box_1 .li_1 h6 i { color: #fe885d; }
 .Class_xx .clxx_box.clxx_box_1 .li_2 { padding: .5rem .3rem; background: #fff; }
-.Class_xx .clxx_box.clxx_box_1 .li_2 > div { padding-left: .75rem; }
-.Class_xx .clxx_box.clxx_box_1 .li_2 > div h4 { position: relative; padding: .1rem 0; margin-bottom: .2rem; font-size: .3rem; font-weight: bold; color: #333; }
-.Class_xx .clxx_box.clxx_box_1 .li_2 > div h4 i { display: block; position: absolute; top: 0; left: -.6rem; width: .4rem; height: .4rem; background: no-repeat center/cover; background-size: 100%; }
+.Class_xx .clxx_box.clxx_box_1 .li_2 > div {  }
+.Class_xx .clxx_box.clxx_box_1 .li_2 > div h4 { position: relative; padding: .1rem 0; margin-bottom: .2rem; font-size: .3rem; font-weight: bold; color: #333; padding-left: .75rem;}
+.Class_xx .clxx_box.clxx_box_1 .li_2 > div h4 i { display: block; position: absolute; top: 0; left: 0; width: .4rem; height: .4rem; background: no-repeat center/cover; background-size: 100%; }
 .Class_xx .clxx_box.clxx_box_1 .li_2 > div p { font-size: .3rem; color: #666; line-height: .42rem; }
 .Class_xx .clxx_box.clxx_box_2 > ul > li { padding: .3rem; background: #Fff; border-bottom: 1px solid #eee; }
 .Class_xx .clxx_box.clxx_box_2 > ul > li:last-child { border-bottom: none; }
 .Class_xx .clxx_box.clxx_box_2 .yr_img { width: 1.8rem; height: 1.2rem; border-radius: .1rem; background: no-repeat center/cover; }
 .Class_xx .clxx_box.clxx_box_2 .yr_txt { width: calc(100% - 2.2rem); position: relative;}
-.Class_xx .clxx_box.clxx_box_2 .yr_txt span { display: block; padding: .07rem 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: .34rem; color: #333; }
+.Class_xx .clxx_box.clxx_box_2 .yr_txt span { display: block; padding:0.18rem 0 .07rem 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: .34rem; color: #333; }
 .Class_xx .clxx_box.clxx_box_2 .yr_txt em { display: block; height: .72rem; font-size: .26rem; color: #a9a9a9; line-height: .36rem; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;padding-right: 0.3rem;}
 .Class_xx .clxx_box.clxx_box_2 .yr_txt .try_out{position: absolute;right: 0;bottom: 0;font-size: 0.26rem;color:#fe885d;}
 .Class_xx .clxx_box.clxx_box_3 ul li { padding: .2rem .3rem; border-bottom: 1px solid #eee; background: #fff; }
@@ -604,7 +604,7 @@ nav ul li.ov span { color: #ff8314; }
 .Bee_square .Bee_2 > ul > li:last-child { border-bottom: none; }
 .Bee_square .Bee_2 .yr_img { width: 1.8rem; height: 1.2rem; border-radius: .1rem; background: no-repeat center/cover; }
 .Bee_square .Bee_2 .yr_txt { width: calc(100% - 2.2rem); }
-.Bee_square .Bee_2 .yr_txt span { display: block; padding: .07rem 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: .34rem; color: #333; }
+.Bee_square .Bee_2 .yr_txt span { display: block; padding:0.18rem 0 .07rem 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: .34rem; color: #333; }
 .Bee_square .Bee_2 .yr_txt em { display: block; height: .72rem; font-size: .26rem; color: #a9a9a9; line-height: .36rem; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;}
 
 .Resume_Exh .Resume_1 { padding: .3rem; background: url(../images/Resume_1.jpg) no-repeat center/cover; }

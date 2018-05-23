@@ -140,7 +140,7 @@ class RecruitmentAction extends CommonAction {
     if(isset($type)){
       $in_ids='id '.db_create_in(join(',',$checkboxes));
       if (!isset($checkboxes) || !is_array($checkboxes)){
-        $this->error('请选择商品！');exit;
+        $this->error('请选择！');exit;
       }
       switch ($type) {
         case 'button_remove':
@@ -229,7 +229,7 @@ class RecruitmentAction extends CommonAction {
     if(isset($type)){
       $in_ids='id '.db_create_in(join(',',$checkboxes));
       if (!isset($checkboxes) || !is_array($checkboxes)){
-        $this->error('请选择商品！');exit;
+        $this->error('请选择！');exit;
       }
       switch ($type) {
         case 'button_remove':
@@ -344,7 +344,7 @@ class RecruitmentAction extends CommonAction {
       if(isset($type)){
         $in_ids='id '.db_create_in(join(',',$checkboxes));
         if (!isset($checkboxes) || !is_array($checkboxes)){
-          $this->error('请选择商品！');exit;
+          $this->error('请选择！');exit;
         }
         switch ($type) {
           case 'button_remove':
@@ -414,7 +414,7 @@ class RecruitmentAction extends CommonAction {
       if(isset($type)){
         $in_ids='id '.db_create_in(join(',',$checkboxes));
         if (!isset($checkboxes) || !is_array($checkboxes)){
-          $this->error('请选择商品！');exit;
+          $this->error('请选择！');exit;
         }
         switch ($type) {
           case 'button_remove':
@@ -703,7 +703,7 @@ class RecruitmentAction extends CommonAction {
       if(isset($type)){
         $in_ids='id '.db_create_in(join(',',$checkboxes));
         if (!isset($checkboxes) || !is_array($checkboxes)){
-          $this->error('请选择商品！');exit;
+          $this->error('请选择！');exit;
         }
         switch ($type) {
           case 'button_remove':

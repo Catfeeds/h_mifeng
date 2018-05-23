@@ -169,7 +169,7 @@
 
 .Popular .po_txt h4{text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;overflow: hidden;}
 
 .Exchange .cl_hd { padding-top: .88rem; font-size: 0; }
@@ -578,7 +578,7 @@
 .index_6 .in_mian ul>li:nth-child(2n){padding-left: 0.15rem;}
 .index_6 .in_mian ul .yr_img{float:none;width: 100%; height:3.3rem;background: no-repeat center/cover;}
 .index_6 .in_mian ul .yr_txt{float:none;width: 100%;}
-.index_6 .in_mian ul .yr_txt span { display: block; padding: .07rem 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: .34rem; color: #333; }
+.index_6 .in_mian ul .yr_txt span { display: block; padding:0.18rem 0 .07rem 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: .34rem; color: #333; }
 .index_6 .in_mian ul .yr_txt em { display: block; height: .36rem;font-size: .26rem; color: #a9a9a9; line-height: .36rem; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp:1; -webkit-box-orient: vertical; overflow: hidden;}
 
 .xieyi_bg{position: fixed;top: 0;left: 0;z-index: 9999;width: 100%;height: 100%;background: rgba(0, 0, 0, 0.5);display: none;}

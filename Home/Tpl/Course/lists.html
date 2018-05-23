@@ -5,8 +5,8 @@
     <div class="swiper-wrapper">
       <foreach name="banner" item="item">
       <a class="swiper-slide" <if condition="!empty($item['link'])">href="{$item.link}"</if> >
-        <img data-src="/{$item.thumb_img}" class="swiper-lazy"/>
-        <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+        <img src="/{$item.thumb_img}" class="swiper-lazy"/>
+        <!-- <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div> -->
         <p class="description">{$item.description}</p>
       </a>
       </foreach>
@@ -92,8 +92,8 @@
     var mybanner = new Swiper('.banner', {
       pagination : '.swiper-pagination',
       autoplay: 5000,
-      autoplayDisableOnInteraction : false,
-      lazyLoading : true,
+      // autoplayDisableOnInteraction : false,
+      // lazyLoading : true,
     });
   });
 </script>

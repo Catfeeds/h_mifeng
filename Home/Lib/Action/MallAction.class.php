@@ -196,7 +196,7 @@ class MallAction extends CommonAction {
         $this->assign("region_all",json_encode($region_all['0']['child'],JSON_UNESCAPED_UNICODE));
         $this->assign("info",$info);
         //中奖名单
-        $lottery_log = M("LotteryLog")->alias("l")->field("l.add_time,l.lottery_id,u.user_name,u.pic")->join("left join ".table("user")." as u on u.user_id=l.user_id")->where("lottery_id<>7")->order("add_time DESC")->limit(30)->select();
+        $lottery_log = M("LotteryLog")->alias("l")->field("l.add_time,l.lottery_id,u.user_name,u.pic,u.user_id")->join("left join ".table("user")." as u on u.user_id=l.user_id")->where("lottery_id<>7 AND u.user_id>0")->order("add_time DESC")->limit(30)->select();
         $this->assign("lottery_log",$lottery_log);
         $lottery_title = array("2"=>"特等奖","3"=>"一等奖","4"=>"二等奖","5"=>"三等奖","6"=>"幸运奖","7"=>"再接再历");
         $this->assign('lottery_title',$lottery_title);

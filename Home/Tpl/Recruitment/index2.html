@@ -1,19 +1,5 @@
 <include file='Public:pageHeader'/>
 <body data-psd-width="750" class="f3f3f3">
-  <if condition="$banner">
-  <div class="banner">
-    <div class="swiper-wrapper">
-      <foreach name="banner" item="item">
-      <a class="swiper-slide" <if condition="!empty($item['link'])">href="{$item.link}"</if> >
-        <img data-src="/{$item.thumb_img}" class="swiper-lazy"/>
-        <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-        <p class="description">{$item.description}</p>
-      </a>
-      </foreach>
-    </div>
-    <div class="swiper-pagination"></div>
-  </div>
-  </if>
   <div class="Join">
     <div class="JO_1">
       <form method="get" action="{:U('Recruitment/lists2')}" id="submitForm" name="submitForm" enctype="multipart/form-data">
@@ -21,6 +7,20 @@
         <span><i class="iconfont">&#xe60a;</i><em id="city">{$city_title|default='城市'}</em></span>
       </form>
     </div>
+    <if condition="$banner">
+    <div class="banner">
+      <div class="swiper-wrapper">
+        <foreach name="banner" item="item">
+        <a class="swiper-slide" <if condition="!empty($item['link'])">href="{$item.link}"</if> >
+          <img src="/{$item.thumb_img}" class="swiper-lazy"/>
+          <!-- <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div> -->
+          <p class="description">{$item.description}</p>
+        </a>
+        </foreach>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+    </if>
     <if condition="$btn_list">
     <div class="JO_2 w50">
       <foreach name="btn_list" item="item">
@@ -146,8 +146,8 @@
     var mybanner = new Swiper('.banner', {
       pagination : '.swiper-pagination',
       autoplay: 5000,
-      autoplayDisableOnInteraction : false,
-      lazyLoading : true,
+      // autoplayDisableOnInteraction : false,
+      // lazyLoading : true,
     });
   });
 </script>

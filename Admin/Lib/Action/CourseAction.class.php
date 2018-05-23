@@ -201,12 +201,39 @@ class CourseAction extends CommonAction {
     //兑换的会员列表
     $M_Course = D("Course");
     $id = $this->_get('id');
-    $filter = array('course_id'=>$id);
+    $filter = array(
+      'course_id'=>$id,
+      'strat_time'=>$this->_get('strat_time'),
+      'end_time'=>$this->_get('end_time'),
+    );
     $filter['record_count'] = $count = $M_Course->order_count($filter);
     import("ORG.Util.Page");       //载入分页类
     $page = new Page($count, 20);
     $showPage = $page->show();
-    
+    if($this->_get("excel")){
+      Vendor('PHPExcel');
+      $objPHPExcel = new PHPExcel();
+      $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A1', '会员名称')->setCellValue('B1', '兑换日期')->setCellValue('C1', '兑换课程');
+      $Course_info = $M_Course->find($id);
+      $list = $M_Course->order_list(0,0,$filter);
+      foreach($list as $k=>$v){
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.($k+2),$v['user_name'])->setCellValue('B'.($k+2),date('Y-m-d H:i:s',$v['add_time']))->setCellValue('C'.($k+2),$Course_info['title']);
+      }
+      $filename = $Course_info['title'].'兑换列表';
+      ob_end_clean();//清除缓冲区,避免乱码 
+      header('Content-Type: application/vnd.ms-excel');
+      header('Content-Disposition: attachment;filename="'.$filename.'.xls"');
+      header('Cache-Control: max-age=0');
+      // If you're serving to IE 9, then the following may be needed
+      header('Cache-Control: max-age=1');
+      // If you're serving to IE over SSL, then the following may be needed
+      header('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); // Date in the past
+      header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT'); // always modified
+      header('Cache-Control: cache, must-revalidate'); // HTTP/1.1
+      header('Pragma: public'); // HTTP/1.0
+      $objWriter = new PHPExcel_Writer_Excel5($objPHPExcel);
+      $objWriter->save('php://output');
+    }
     $this->assign("filter", $filter);
     $this->assign("page", $showPage);
     $this->assign("list", $M_Course->order_list($page->firstRow, $page->listRows,$filter));

@@ -42,7 +42,17 @@ class CourseModel extends Model {
     if($filter['course_id']){
       $where .= " AND o.course_id=".$filter['course_id'];
     }
-    $result = M("CourseOrder")->alias("o")->field("o.*,u.user_name")->join("left join ".table("user")." as u on u.user_id=o.user_id")->where($where)->limit($firstRow,$listRows)->order("o.add_time DESC")->select();
+    if($filter['strat_time']){
+      $where .= " AND o.add_time>".strtotime($filter['strat_time']);
+    }
+    if($filter['end_time']){
+      $where .= " AND o.add_time<=".(strtotime($filter['end_time'])+86399);
+    }
+    $result = M("CourseOrder")->alias("o")->field("o.*,u.user_name")->join("left join ".table("user")." as u on u.user_id=o.user_id")->where($where)->order("o.add_time DESC");
+    if($listRows>0){
+      $result = $result->limit($firstRow,$listRows);
+    }
+    $result = $result->select();
     return $result;
   }
 

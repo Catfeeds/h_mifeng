@@ -17,6 +17,16 @@ function delCourse(id) {
     <div class="wrapBox mainAutoHeight">
       <!--列表-->
       <div class="body User">
+  	        <div class="item">
+  	          <div class="searchBar">
+					<form action="{:U('Course/order_list',array('id'=>$filter['course_id']))}">
+						兑换日期:
+						<input type="text" class="txt" name="strat_time" value="{$filter.strat_time}" onclick="WdatePicker();"/> - <input type="text" class="txt" name="end_time" value="{$filter.end_time}" onclick="WdatePicker();"/>
+						<input type="submit" class="submit btn_search" value="搜索" />
+						<input type="submit" name="excel" class="submit btn_search" value="导出" />
+					</form>
+  	        	</div>
+  	      	</div>
 			<form method="POST" action="{:U('Course/batch')}" name="listForm">
 				<table border="0" cellpadding="0" cellspacing="0" class="center">
 					<thead>

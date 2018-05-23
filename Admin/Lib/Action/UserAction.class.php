@@ -74,6 +74,59 @@ class UserAction extends CommonAction {
     //删除文章内容图片
     if ($M_User->where("user_id=".$id)->delete()) {
       parent::admin_log(addslashes($row['title'])."-ID($id)",'remove','User');
+      //删除干货
+      $Information_list = M('Information')->where("user_id=$id")->select();
+      M('Information')->where("user_id=$id")->delete();
+      foreach($Information_list as $value){
+        @unlink($value['thumb_img']);
+        @unlink($value['original_img']);
+        //删除评论
+        M("Comment")->where("information_id=".$value['id'])->delete();
+        //删除收藏
+        M("Collect")->where("information_id=".$value['id'])->delete();
+        //删除点赞
+        M("Praise")->where("information_id=".$value['id'])->delete();
+        $child_content = M("InformationContent")->where("information_id=".$value['id'])->select();
+        M("InformationContent")->where("information_id=".$value['id'])->delete();
+        foreach($child_content as $v){
+          @unlink($v['thumb_img']);
+          @unlink($v['original_img']);
+        }
+      }
+      //删除评论
+      M("Comment")->where("user_id=$id")->delete();
+      //删除岗位
+      $Recruitment_list = M('Recruitment')->where("user_id=$id")->select();
+      M('Recruitment')->where("user_id=$id")->delete();
+      M('Company')->where("user_id=$id")->delete();
+      foreach($Recruitment_list as $value){
+        M("ResumeCast")->where("recruitment_id=".$value['id'])->delete();
+      }
+      //删除简历
+      $Resume = M('Resume')->where("user_id=$id")->select();
+      M('Resume')->where("user_id=$id")->delete();
+      foreach($Resume as $value){
+        M("ResumeCast")->where("resume_id=".$value['id'])->delete();
+        $ResumeImg=M('ResumeImg')->where("resume_id=".$value['id'])->select();
+        foreach($ResumeImg as $v){
+          @unlink($v['original_img']);
+          @unlink($v['thumb_img']);
+        }
+        $ResumeImg=M('ResumeImg')->where("resume_id=".$value['id'])->delete();
+      }
+      //删除园区
+      $Kindergarten_list = M('Kindergarten')->where("user_id=$id")->select();
+      M('Kindergarten')->where("user_id=$id")->delete();
+      foreach($Kindergarten_list as $value){
+        M("KindergartenSignup")->where("kindergarten_id=".$value['id'])->delete();
+      }
+      //删除需求
+      $Kindergarten_list = M('KindergartenXuqiu')->where("user_id=$id")->select();
+      M('KindergartenXuqiu')->where("user_id=$id")->delete();
+      foreach($Kindergarten_list as $value){
+        M("KindergartenSignup")->where("kindergarten_xuqiu_id=".$value['id'])->delete();
+      }
+      
       $this->success("成功删除");
     } else {
       $this->error("删除失败，可能是不存在该ID的记录");
