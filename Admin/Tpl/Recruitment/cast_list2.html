@@ -18,7 +18,15 @@ function delRecruitment(id) {
       <!--列表-->
       <div class="body User">
         <div class="item">
-          
+          <div class="searchBar">
+  				<form action="{:U('Recruitment/cast_list2')}">
+  					名称 ：
+  					<input type="text" class="txt" name="keyword" value="{$filter.keyword}"/>
+  					<input type="hidden" name="id" value="{$filter.resume_id}">
+  					&nbsp;&nbsp;<input type="submit" class="submit btn_search" value="搜索" />
+  					<input type="submit" name="excel" class="submit btn_search" value="导出" />
+  				</form>
+          	</div>
       	</div>
 				<form method="POST" action="{:U('Recruitment/cast_batch')}" name="listForm">
 				<table border="0" cellpadding="0" cellspacing="0" class="center">

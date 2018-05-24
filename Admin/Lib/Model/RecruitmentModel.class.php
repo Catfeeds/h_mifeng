@@ -36,7 +36,11 @@ class RecruitmentModel extends Model {
         $where .= " AND find_in_set(".$filter['district'].",r.district)";
     }
 
-    $result = M("Recruitment")->alias("r")->field("r.*,u.user_name,c.company_name")->join("left join ".table("user")." as u on u.user_id=r.user_id")->join("left join ".table("company")." as c on c.user_id=r.user_id")->where($where)->limit($firstRow,$listRows)->order("r.add_time DESC")->select();
+    $result = M("Recruitment")->alias("r")->field("r.*,u.user_name,c.company_name,c.company_info")->join("left join ".table("user")." as u on u.user_id=r.user_id")->join("left join ".table("company")." as c on c.user_id=r.user_id")->where($where)->order("r.add_time DESC");
+    if($listRows>0){
+      $result = $result->limit($firstRow,$listRows);
+    }
+    $result = $result->select();
     foreach ($result as &$v) {
       $v['cast_count'] = M("ResumeCast")->where("recruitment_id=".$v['id'])->count();
       $v['province'] = explode(",",$v['province']);
@@ -48,6 +52,7 @@ class RecruitmentModel extends Model {
         $v['district_name'][] = D('Address')->region_name($v['district'][$k2]);
       }
       $v['sub_count'] = M("ResumeCast")->where(["type"=>1,"recruitment_id"=>$v['id']])->count();
+      $v['cat_name'] = $this->cat_name($v['cat_id']);
     }
     return $result;
   }
@@ -96,28 +101,132 @@ class RecruitmentModel extends Model {
     //简历总数
     $where = ' 1 ';
     if($filter['id']){
-      $where .= " AND type=1  AND rc.recruitment_id=".$filter['id'];
+      $where .= " AND type=1 AND rc.recruitment_id=".$filter['id'];
+      if($filter['keyword']){
+          $where .= " AND r.name LIKE '%".$filter['keyword']."%' ";
+      }
+      if($filter['province']){
+          $where .= " AND find_in_set(".$filter['province'].",r.province)";
+      }
+      if($filter['city']){
+          $where .= " AND find_in_set(".$filter['city'].",r.city)";
+      }
+      if($filter['district']){
+          $where .= " AND find_in_set(".$filter['district'].",r.district)";
+      }
+      $result = M("ResumeCast")->alias("rc")->field("rc.id,rc.add_time,rc.resume_id,rc.recruitment_id,r.name,r.working_age,r.profession,r.education,r.user_id")->join("left join ".table("resume")." as r on r.id=rc.resume_id")->where($where)->order("rc.add_time DESC")->select();
+      return count($result);
     }
     if($filter['resume_id']){
-      $where .= " AND type=2  AND rc.resume_id=".$filter['resume_id'];
+      $where .= " AND type=2 AND rc.resume_id=".$filter['resume_id'];
+      if($filter['keyword']){
+          $where .= " AND r.position LIKE '%".$filter['keyword']."%' ";
+      }
+      if($filter['province']){
+          $where .= " AND find_in_set(".$filter['province'].",r.province)";
+      }
+      if($filter['city']){
+          $where .= " AND find_in_set(".$filter['city'].",r.city)";
+      }
+      if($filter['district']){
+          $where .= " AND find_in_set(".$filter['district'].",r.district)";
+      }
+      $result = M("ResumeCast")->alias("rc")->field("rc.id,rc.add_time,rc.resume_id,rc.recruitment_id,r.position,r.salary,c.company_name,c.company_info")->join("left join ".table("recruitment")." as r on r.id=rc.recruitment_id")->join("left join ".table("company")." as c on c.user_id=rc.r_user_id")->where($where)->group('rc.id')->order("rc.add_time DESC")->select();
+      return count($result);
     }
-    $count = M("ResumeCast")->alias("rc")->where($where)->count();
-    return $count;
+
+    // $where = ' 1 ';
+    // if($filter['id']){
+    //   $where .= " AND type=1  AND rc.recruitment_id=".$filter['id'];
+    // }
+    // if($filter['resume_id']){
+    //   $where .= " AND type=2  AND rc.resume_id=".$filter['resume_id'];
+    // }
+    // if($filter['keyword']){
+    //     $where .= " AND r.position LIKE '%".$filter['keyword']."%' ";
+    // }
+    // if($filter['province']){
+    //     $where .= " AND find_in_set(".$filter['province'].",r.province)";
+    // }
+    // if($filter['city']){
+    //     $where .= " AND find_in_set(".$filter['city'].",r.city)";
+    // }
+    // if($filter['district']){
+    //     $where .= " AND find_in_set(".$filter['district'].",r.district)";
+    // }
+    // $count = M("ResumeCast")->alias("rc")->where($where)->count();
+    // return $count;
   }
   public function cast_lists($firstRow = 0, $listRows = 20 , $filter = array()){
     //简历投放列表
     $where = ' 1 ';
     if($filter['id']){
       $where .= " AND type=1 AND rc.recruitment_id=".$filter['id'];
-      $result = M("ResumeCast")->alias("rc")->field("rc.id,rc.add_time,rc.resume_id,rc.recruitment_id,r.name,r.working_age,r.profession,r.education,r.user_id")->join("left join ".table("resume")." as r on r.id=rc.resume_id")->where($where)->limit($firstRow,$listRows)->order("rc.add_time DESC")->select();
+      if($filter['keyword']){
+          $where .= " AND r.name LIKE '%".$filter['keyword']."%' ";
+      }
+      if($filter['province']){
+          $where .= " AND find_in_set(".$filter['province'].",r.province)";
+      }
+      if($filter['city']){
+          $where .= " AND find_in_set(".$filter['city'].",r.city)";
+      }
+      if($filter['district']){
+          $where .= " AND find_in_set(".$filter['district'].",r.district)";
+      }
+      $result = M("ResumeCast")->alias("rc")->field("rc.id,rc.add_time,rc.resume_id,rc.recruitment_id,r.*")->join("left join ".table("resume")." as r on r.id=rc.resume_id")->where($where)->order("rc.add_time DESC");
+      if($listRows>0){
+        $result = $result->limit($firstRow,$listRows);
+      }
+      $result = $result->select();
+      foreach ($result as &$v) {
+        $v['cast_count'] = M("ResumeCast")->where("recruitment_id=".$v['id'])->count();
+        $v['province'] = explode(",",$v['province']);
+        $v['city'] = explode(",",$v['city']);
+        $v['district'] = explode(",",$v['district']);
+        foreach($v['city'] as $k2=>$v2){
+          $v['province_name'][] = D('Address')->region_name($v['province'][$k2]);
+          $v['city_name'][] = D('Address')->region_name($v['city'][$k2]);
+          $v['district_name'][] = D('Address')->region_name($v['district'][$k2]);
+        }
+        $v['sub_count'] = M("ResumeCast")->where(["type"=>2,"resume_id"=>$v['id']])->count();
+      }
       return $result;
     }
     if($filter['resume_id']){
       $where .= " AND type=2 AND rc.resume_id=".$filter['resume_id'];
-      $result = M("ResumeCast")->alias("rc")->field("rc.id,rc.add_time,rc.resume_id,rc.recruitment_id,r.position,r.salary,c.company_name")->join("left join ".table("recruitment")." as r on r.id=rc.recruitment_id")->join("left join ".table("company")." as c on c.user_id=rc.r_user_id")->where($where)->limit($firstRow,$listRows)->group('rc.id')->order("rc.add_time DESC")->select();
+      if($filter['keyword']){
+          $where .= " AND r.position LIKE '%".$filter['keyword']."%' ";
+      }
+      if($filter['province']){
+          $where .= " AND find_in_set(".$filter['province'].",r.province)";
+      }
+      if($filter['city']){
+          $where .= " AND find_in_set(".$filter['city'].",r.city)";
+      }
+      if($filter['district']){
+          $where .= " AND find_in_set(".$filter['district'].",r.district)";
+      }
+      $result = M("ResumeCast")->alias("rc")->field("rc.id,rc.add_time,rc.resume_id,rc.recruitment_id,r.*,c.company_name,c.company_name,c.company_info")->join("left join ".table("recruitment")." as r on r.id=rc.recruitment_id")->join("left join ".table("company")." as c on c.user_id=rc.r_user_id")->where($where)->group('rc.id')->order("rc.add_time DESC");
+      if($listRows>0){
+        $result = $result->limit($firstRow,$listRows);
+      }
+      $result = $result->select();
+      foreach ($result as &$v) {
+        $v['cast_count'] = M("ResumeCast")->where("recruitment_id=".$v['id'])->count();
+        $v['province'] = explode(",",$v['province']);
+        $v['city'] = explode(",",$v['city']);
+        $v['district'] = explode(",",$v['district']);
+        foreach($v['city'] as $k2=>$v2){
+          $v['province_name'][] = D('Address')->region_name($v['province'][$k2]);
+          $v['city_name'][] = D('Address')->region_name($v['city'][$k2]);
+          $v['district_name'][] = D('Address')->region_name($v['district'][$k2]);
+        }
+        $v['sub_count'] = M("ResumeCast")->where(["type"=>1,"recruitment_id"=>$v['id']])->count();
+        $v['cat_name'] = $this->cat_name($v['cat_id']);
+      }
       return $result;
     }
-    
   }
   public function cast_info($id){
     //投递的简历详情
@@ -249,7 +358,11 @@ class RecruitmentModel extends Model {
     if($filter['city']){
         $where .= " AND find_in_set(".$filter['city'].",r.city)";
     }
-    $result = M("Resume")->alias("r")->field("r.*,u.user_name")->join("left join ".table("user")." as u on u.user_id=r.user_id")->where($where)->limit($firstRow,$listRows)->order("r.add_time DESC")->select();
+    $result = M("Resume")->alias("r")->field("r.*,u.user_name")->join("left join ".table("user")." as u on u.user_id=r.user_id")->where($where)->order("r.add_time DESC");
+    if($listRows>0){
+      $result = $result->limit($firstRow,$listRows);
+    }
+    $result = $result->select();
     foreach ($result as &$v) {
       $v['cast_count'] = M("ResumeCast")->where("recruitment_id=".$v['id'])->count();
       $v['province'] = explode(",",$v['province']);

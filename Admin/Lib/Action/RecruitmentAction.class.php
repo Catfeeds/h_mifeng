@@ -22,7 +22,62 @@ class RecruitmentAction extends CommonAction {
     import("ORG.Util.Page");       //载入分页类
     $page = new Page($count, 20);
     $showPage = $page->show();
-    
+    if($this->_get("excel")){
+      $ex_arr = array();
+      $ex_arr[] = [
+        '职位',
+        '地点',
+        '分类',
+        '薪资',
+        '联系人',
+        '联系电话',
+        '学历',
+        '工作年龄',
+        '发布时间',
+        '工作内容',
+        '职位描述',
+        '单位名称',
+        '单位介绍',
+        '招聘结束时间',
+        '招聘状态',
+        '阅读量',
+        '审核',
+        '简历投放数',
+      ];
+      $list = $M_Recruitment->lists(0,0,$filter);
+      foreach($list as $k=>$v){
+        $address = '';
+        foreach($v['province_name'] as $k2=>$v2){
+          if($k2>0){
+            $address .= ",";
+          }
+          $address .= $v['province_name'][$k2]." ".$v['city_name'][$k2]." ".$v['district_name'][$k2];
+        }
+        $status = $v['status']==1?"是":"否";
+        $is_open = $v['is_open']==1?"是":"否";
+        $ex_arr[] = [
+          $v['position'],
+          $address,
+          $v['cat_name'],
+          $v['salary'],
+          $v['name'],
+          $v['phone'],
+          $v['education'],
+          $v['working_age'],
+          date('Y-m-d H:i:s',$v['add_time']),
+          $v['work_content'],
+          $v['position_description'],
+          $v['company_name'],
+          $v['company_info'],
+          date('Y-m-d H:i:s',$v['end_time']),
+          $status,
+          $v['view_count'],
+          $is_open,
+          $v['sub_count'],
+        ];
+      }
+      Excel("岗位列表",$ex_arr);
+    }
     $this->assign("filter", $filter);
     $this->assign("page", $showPage);
     $this->assign("list", $M_Recruitment->lists($page->firstRow, $page->listRows,$filter));
@@ -163,12 +218,71 @@ class RecruitmentAction extends CommonAction {
     $id = $this->_get('id');
 
     $filter = array("id"=>$id);
+    $filter['keyword']    = empty($this->_request('keyword')) ? '' : trim($this->_request('keyword'));
+    $filter['province']    = empty($this->_request('province')) ? '' : trim($this->_request('province'));
+    $filter['city']    = empty($this->_request('city')) ? '' : trim($this->_request('city'));
+    $filter['district']    = empty($this->_request('district')) ? '' : trim($this->_request('district'));
+
     M("Recruitment")->where("id",$id)->save(["new_count"=>0]);
     $filter['record_count'] = $count = $M_Recruitment->cast_count($filter);
     import("ORG.Util.Page");       //载入分页类
     $page = new Page($count, 20);
     $showPage = $page->show();
-    
+    if($this->_get("excel")){
+      $ex_arr = array();
+      $ex_arr[] = [
+        '姓名',
+        '工作地点',
+        '年龄',
+        '学历',
+        '专业',
+        '期望职位',
+        '工作年龄',
+        '身高',
+        '婚姻状况',
+        '手机',
+        '邮箱',
+        '工作经验',
+        '教育信息',
+        '技能专长',
+        '自我评价',
+        '求职',
+        '审核',
+      ];
+      $list = $M_Recruitment->cast_lists(0,0,$filter);
+      $Recruitment = M("Recruitment")->where("id",$id)->find();
+      foreach($list as $k=>$v){
+        $address = '';
+        foreach($v['province_name'] as $k2=>$v2){
+          if($k2>0){
+            $address .= ",";
+          }
+          $address .= $v['province_name'][$k2]." ".$v['city_name'][$k2];
+        }
+        $is_verify = $v['is_verify']==1?"是":"否";
+        $is_open = $v['is_open']==1?"是":"否";
+        $ex_arr[] = [
+          $v['name'],
+          $address,
+          $v['age'],
+          $v['education'],
+          $v['profession'],
+          $v['position'],
+          $v['working_age'],
+          $v['height'],
+          $v['marriage'],
+          $v['phone'],
+          $v['email'],
+          $v['experience'],
+          $v['education_information'],
+          $v['talent'],
+          $v['self_evaluation'],
+          $is_open,
+          $is_verify,
+        ];
+      }
+      Excel($Recruitment['position'].'简历投放列表',$ex_arr);
+    }
     $this->assign("filter", $filter);
     $this->assign("page", $showPage);
     $this->assign("list", $M_Recruitment->cast_lists($page->firstRow, $page->listRows,$filter));
@@ -187,10 +301,70 @@ class RecruitmentAction extends CommonAction {
     $id = $this->_get('id');
     M("Resume")->where("id",$id)->save(["new_count"=>0]);
     $filter = array("resume_id"=>$id);
+    $filter['keyword']    = empty($this->_request('keyword')) ? '' : trim($this->_request('keyword'));
+    $filter['province']    = empty($this->_request('province')) ? '' : trim($this->_request('province'));
+    $filter['city']    = empty($this->_request('city')) ? '' : trim($this->_request('city'));
+    $filter['district']    = empty($this->_request('district')) ? '' : trim($this->_request('district'));
+
     $filter['record_count'] = $count = $M_Recruitment->cast_count($filter);
     import("ORG.Util.Page");       //载入分页类
     $page = new Page($count, 20);
     $showPage = $page->show();
+    if($this->_get("excel")){
+      $ex_arr = array();
+      $ex_arr[] = [
+        '职位',
+        '地点',
+        '分类',
+        '薪资',
+        '联系人',
+        '联系电话',
+        '学历',
+        '工作年龄',
+        '发布时间',
+        '工作内容',
+        '职位描述',
+        '单位名称',
+        '单位介绍',
+        '招聘结束时间',
+        '招聘状态',
+        '阅读量',
+        '审核',
+      ];
+      $list = $M_Recruitment->cast_lists(0,0,$filter);
+      foreach($list as $k=>$v){
+        $address = '';
+        foreach($v['province_name'] as $k2=>$v2){
+          if($k2>0){
+            $address .= ",";
+          }
+          $address .= $v['province_name'][$k2]." ".$v['city_name'][$k2]." ".$v['district_name'][$k2];
+        }
+        $status = $v['status']==1?"是":"否";
+        $is_open = $v['is_open']==1?"是":"否";
+        $ex_arr[] = [
+          $v['position'],
+          $address,
+          $v['cat_name'],
+          $v['salary'],
+          $v['name'],
+          $v['phone'],
+          $v['education'],
+          $v['working_age'],
+          date('Y-m-d H:i:s',$v['add_time']),
+          $v['work_content'],
+          $v['position_description'],
+          $v['company_name'],
+          $v['company_info'],
+          date('Y-m-d H:i:s',$v['end_time']),
+          $status,
+          $v['view_count'],
+          $is_open,
+        ];
+      }
+      $Resume = M("Resume")->where("id",$id)->find();
+      Excel($Resume['name']."岗位邀请列表",$ex_arr);
+    }
     $this->assign("filter", $filter);
     $this->assign("page", $showPage);
     $this->assign("list", $M_Recruitment->cast_lists($page->firstRow, $page->listRows,$filter));
@@ -442,7 +616,62 @@ class RecruitmentAction extends CommonAction {
       import("ORG.Util.Page");       //载入分页类
       $page = new Page($count, 20);
       $showPage = $page->show();
-      
+      if($this->_get("excel")){
+        $ex_arr = array();
+        $ex_arr[] = [
+          '姓名',
+          '工作地点',
+          '年龄',
+          '学历',
+          '专业',
+          '期望职位',
+          '工作年龄',
+          '身高',
+          '婚姻状况',
+          '手机',
+          '邮箱',
+          '工作经验',
+          '教育信息',
+          '技能专长',
+          '自我评价',
+          '求职',
+          '审核',
+          '岗位邀请数',
+        ];
+        $list = $M_Recruitment->resume_lists(0,0,$filter);
+        foreach($list as $k=>$v){
+          $address = '';
+          foreach($v['province_name'] as $k2=>$v2){
+            if($k2>0){
+              $address .= ",";
+            }
+            $address .= $v['province_name'][$k2]." ".$v['city_name'][$k2];
+          }
+          $is_verify = $v['is_verify']==1?"是":"否";
+          $is_open = $v['is_open']==1?"是":"否";
+          $ex_arr[] = [
+            $v['name'],
+            $address,
+            $v['age'],
+            $v['education'],
+            $v['profession'],
+            $v['position'],
+            $v['working_age'],
+            $v['height'],
+            $v['marriage'],
+            $v['phone'],
+            $v['email'],
+            $v['experience'],
+            $v['education_information'],
+            $v['talent'],
+            $v['self_evaluation'],
+            $is_open,
+            $is_verify,
+            $v['sub_count'],
+          ];
+        }
+        Excel('简历列表',$ex_arr);
+      }
       $this->assign("filter", $filter);
       $this->assign("page", $showPage);
       $this->assign("list", $M_Recruitment->resume_lists($page->firstRow, $page->listRows,$filter));

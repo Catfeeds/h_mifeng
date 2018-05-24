@@ -963,4 +963,60 @@ function getfilesize($file, $DataDir) {
         return round($size / $tb, 2) . " TB";
     }
 }
-?>
+
+/**
+ * 导出
+ * @param string $title [标题]
+ * @param array  $arr   [数据]
+ */
+function Excel($title="",$arr=array()){
+    $T = [
+        0=>"A",
+        1=>"B",
+        2=>"C",
+        3=>"D",
+        4=>"E",
+        5=>"F",
+        6=>"G",
+        7=>"H",
+        8=>"I",
+        9=>"J",
+        10=>"K",
+        11=>"L",
+        12=>"M",
+        13=>"N",
+        14=>"O",
+        15=>"P",
+        16=>"Q",
+        17=>"R",
+        18=>"S",
+        19=>"T",
+        20=>"U",
+        21=>"W",
+        22=>"X",
+        23=>"Y",
+        24=>"Z",
+    ];
+    Vendor('PHPExcel');
+    $objPHPExcel = new PHPExcel();
+    $obj = $objPHPExcel->setActiveSheetIndex();
+    foreach($arr as $k=>$v){
+        foreach($v as $k2=>$v2){
+            $obj->setCellValue($T[$k2].($k+1),$v2);
+        }
+    }
+    $filename = $title;
+    ob_end_clean();//清除缓冲区,避免乱码 
+    header('Content-Type: application/vnd.ms-excel');
+    header('Content-Disposition: attachment;filename="'.$filename.'.xls"');
+    header('Cache-Control: max-age=0');
+    // If you're serving to IE 9, then the following may be needed
+    header('Cache-Control: max-age=1');
+    // If you're serving to IE over SSL, then the following may be needed
+    header('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); // Date in the past
+    header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT'); // always modified
+    header('Cache-Control: cache, must-revalidate'); // HTTP/1.1
+    header('Pragma: public'); // HTTP/1.0
+    $objWriter = new PHPExcel_Writer_Excel5($objPHPExcel);
+    $objWriter->save('php://output');
+}
