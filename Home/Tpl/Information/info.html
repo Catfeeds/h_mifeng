@@ -39,8 +39,8 @@
       </div>
       <if condition="!empty($info['file_url'])">
         <div class="file_btn">
-          <a data-clipboard-target="#file_url" class="btn copy_file">复制链接</a><a href="{:U('download',['url'=>$info['file_url']])}" >立即下载</a>
-          <input type="text" readonly="true" value="http://{$_SERVER['HTTP_HOST']}/{$info.file_url}" id="file_url">
+          <a data-clipboard-target="#file_url" class="btn copy_file">复制链接</a><a class="download" href="{:U('Index/download')}?url={$info['file_url']}" >立即下载</a>
+          <input type="text" readonly="true" value="http://{$_SERVER['HTTP_HOST']}/{:U('Index/download')}?url={$info['file_url']}" id="file_url">
         </div>
       </if>
     </div>
@@ -59,6 +59,13 @@
       ,time: 2
     });
   });
+  $(".download").click(function(){
+    layer.open({
+      content: "下载已经触发，如果没反映请复制链接到电脑端下载"
+      ,skin: 'msg'
+      ,time: 2
+    });
+  })
   // $('.yh_box .yh_tit h6 a').on('click',function(){
   //   $(this).toggleClass('on')
   // })

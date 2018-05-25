@@ -86,7 +86,8 @@ class InformationAction extends CommonAction {
     }
     $data = $M_Information->create();
     $data['add_time']   = $this->_post('add_time')?strtotime($this->_post('add_time')):time();
-
+    
+    $data['file_url']   = $this->_post('file_url_text');
     //附件
     if($_FILES['file_url']['error']===0){
       $file_url = $_FILES['file_url'];
@@ -101,6 +102,7 @@ class InformationAction extends CommonAction {
       move_uploaded_file($file_url['tmp_name'],$filename);
       $data['file_url'] = $filename;
     }
+
     
     if($img){
       $date = date("Y-m-d");
