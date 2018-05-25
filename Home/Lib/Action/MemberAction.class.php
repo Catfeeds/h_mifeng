@@ -24,7 +24,10 @@ class MemberAction extends CommonAction {
       $this->assign("reel_count",D('Reel')->count(array('user_id'=>$user_info['user_id'])));
       //奖品数量
       $this->assign("mall_count",D('Mall')->order_count(array('user_id'=>$user_info['user_id'])));
-      
+      //今天是否签到
+      $time = strtotime(date("Y-m-d"));
+      $is_checkin = D('Integral')->integral_log(array("user_id"=>$user_info['user_id'],'type'=>1,'start_time'=>$time,'end_time'=>$time+86399));
+      $this->assign('is_checkin',$is_checkin);
 
       $this->display();
   }
@@ -202,6 +205,11 @@ class MemberAction extends CommonAction {
         M("User")->where("user_id=".$user_info['user_id'])->save(['checkin'=>1]);
       }
       D('Integral')->integral_zs($user_info['user_id'],1);
+    }
+    parent::check_login();
+    $user_info = $this->user_info;
+    if(IS_AJAX){
+      $this->ajaxReturn($user_info,"签到成功",200);
     }
     // $this->success('签到成功！！',U('Member/checkin'));
   }

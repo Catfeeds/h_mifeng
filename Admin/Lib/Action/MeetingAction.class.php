@@ -102,6 +102,33 @@ class MeetingAction extends CommonAction {
       $this->error("删除失败，可能是不存在该ID的记录");
     } 
   }
+  /**
+   * 批量操作
+   */
+  public function batch(){
+    $M_Meeting = M('Meeting');
+    $type = $this->_post('type');
+    $checkboxes = $this->_post('checkboxes');
+    if(isset($type)){
+      $in_ids='id '.db_create_in(join(',',$checkboxes));
+      if (!isset($checkboxes) || !is_array($checkboxes)){
+        $this->error('请选择编号！');exit;
+      }
+      switch ($type) {
+        case 'button_remove':
+          /* 批量删除 */
+          $Meeting = $M_Meeting->where($in_ids)->select();
+          $M_Meeting->where($in_ids)->delete();
+          foreach($Meeting as $v){
+            @unlink($v['original_img']);
+            @unlink($v['thumb_img']);
+          }
+          parent::admin_log("ID(".join(',',$checkboxes).")",'batch_remove','Meeting');
+          break;
+      }
+    }
+    $this->success('批量操作成功！');
+  }
   public function meeting_signup(){
     //报名列表
     $M_Meeting = D("Meeting");

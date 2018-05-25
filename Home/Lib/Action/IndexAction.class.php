@@ -77,6 +77,18 @@ class IndexAction extends CommonAction {
             }
         }
     }
+    //下载
+    public function download(){
+        $url = $this->_request('url');
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment; filename="'.basename($url).'"');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+        header('Content-Length: '.filesize($url));
+        readfile($url);
+    }
     //验证订单
     public function Queryorder($transaction_id){
         $input = new WxPayOrderQuery();

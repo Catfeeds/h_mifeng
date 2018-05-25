@@ -53,7 +53,11 @@ class ReelModel extends Model {
     if($filter['type']){
         $where .= " AND r.type = ".$filter['type'];
     }
-    $result = M("ReelList")->alias("r")->field("r.*,u.user_name,a.title")->join("left join ".table("user")." as u on u.user_id=r.user_id")->join("left join ".table("article")." as a on a.article_id=r.template")->where($where)->limit($firstRow,$listRows)->order("r.add_time DESC")->select();
+    $result = M("ReelList")->alias("r")->field("r.*,u.user_name,a.title")->join("left join ".table("user")." as u on u.user_id=r.user_id")->join("left join ".table("article")." as a on a.article_id=r.template")->where($where)->order("r.add_time DESC");
+    if($listRows>0){
+      $result = $result->limit($firstRow,$listRows);
+    }
+    $result = $result->select();
     return $result;
   }
   public function info2($id){

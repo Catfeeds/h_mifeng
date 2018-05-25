@@ -24,6 +24,13 @@
           </select>
         </div>
         <div class="input clearfix">
+          <span class="span">性别</span>
+          <select name="sex" datatype="*" errormsg="请填写性别" nullmsg="请填写性别">
+            <option value="1" <if condition="$info['marriage'] eq '1' "> selected="selected"</if>>男</option>
+            <option value="2" <if condition="$info['marriage'] eq '2' "> selected="selected"</if>>女</option>
+          </select>
+        </div>
+        <div class="input clearfix">
           <span class="span">手机<font class="red2">*</font></span>
           <input type="text" name="phone" placeholder="手机" value="{$info.phone}"  datatype="*,m" errormsg="请填写手机" nullmsg="请填写手机"/>
         </div>

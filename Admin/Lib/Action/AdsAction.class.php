@@ -24,7 +24,34 @@ class AdsAction extends CommonAction {
 		$this->assign("adsList",$adsList);
         $this->display();
     }
-	
+    /**
+     * 批量操作
+     * @return [type] [description]
+     */
+	public function batch(){
+	  $M_Ads = D("Ads");
+	  $type = $this->_post('type');
+	  $checkboxes = $this->_post('checkboxes');
+	  if(isset($type)){
+	    $in_ids='ads_id '.db_create_in(join(',',$checkboxes));
+	    if (!isset($checkboxes) || !is_array($checkboxes)){
+	      $this->error('请选择！');exit;
+	    }
+	    switch ($type) {
+	      case 'button_remove':
+	        /* 批量删除 */
+	        $Ads_list = M('Ads')->where($in_ids)->select();
+	        M('Ads')->where($in_ids)->delete();
+	        foreach($Ads_list as $value){
+	          @unlink($value['original_img']);
+	          @unlink($value['thumb_img']);
+	        }
+	        parent::admin_log("ID(".join(',',$checkboxes).")",'batch_remove','Ads');
+	        break;
+	    }
+	  }
+	  $this->success('批量操作成功！');
+	}
 
 	/**
       +----------------------------------------------------------

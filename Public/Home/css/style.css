@@ -27,13 +27,13 @@ nav ul li.ov span { color: #ff8314; }
 .banner .swiper-pagination-bullet-active { background: #eea92a; }
 
 /*login*/
-.Login { position: relative; width: 100%; height: 100%; padding: .65rem .3rem; background: url(../images/login_bg.jpg) no-repeat center; background-size: cover; box-sizing: border-box; }
+.Login { position: relative; width: 100%; height: 100%; padding: .3rem .3rem; background: url(../images/login_bg.jpg) no-repeat center; background-size: cover; box-sizing: border-box; }
 .Login .Lo_logo { width: 3.26rem; height: 2.99rem; margin: 0 auto; }
 .Login .Lo_logo img { width: 100%; }
-.Login .Lo_mian { margin-bottom:0.8rem; padding-top: .4rem; }
-.Login .Lo_mian input[type='text'] { width: 100%; padding: .3rem 0; margin-bottom: .6rem; border: none; border-bottom: 1px solid #eea82a; background: transparent; font-size: .36rem; color: #fff; }
+.Login .Lo_mian { margin-bottom:0.8rem; padding-top: .2rem; }
+.Login .Lo_mian input[type='text'] { width: 100%;  line-height:.8rem;height: .8rem; margin-bottom: .3rem; border: none; border-bottom: 1px solid #eea82a; background: transparent; font-size: .36rem; color: #fff; }
 .Login .Lo_mian input::-webkit-input-placeholder { color: #fff !important; }
-.Login .Lo_mian input[type='submit'] { display: block; width: 100%; height: .88rem; border-radius: .1rem; border: 1px solid #eea82a; background: #f1b445; font-size: .36rem; color: #fff; }
+.Login .Lo_mian input[type='submit'] { display: block; width: 100%; line-height:.8rem;height: .8rem; border-radius: .1rem; border: 1px solid #eea82a; background: #f1b445; font-size: .36rem; color: #fff; }
 .Login .Lo_wx { text-align: center; }
 .Login .Lo_wx b { display: inline-block; position: relative; padding: 0 .3rem; margin-bottom: .8rem; text-align: center; font-size: .26rem; color: #fff; }
 .Login .Lo_wx b:before { position: absolute; top: 50%; right: 100%; width: 1.2rem; height: 1px; content: ''; background: #fff; }

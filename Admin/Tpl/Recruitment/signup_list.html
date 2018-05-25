@@ -18,7 +18,19 @@ function delRecruitment(id) {
       <!--列表-->
       <div class="body User">
         <div class="item">
-          
+          <div class="searchBar">
+				<form action="{:U('Recruitment/signup_list')}">
+					名称 ：
+					<input type="text" class="txt" name="keyword" value="{$filter.keyword}"/>
+					<if condition="!empty($filter['id'])">
+						<input type="hidden" name="id" value="{$filter.id}">
+					<else/>
+						<input type="hidden" name="kindergarten_xuqiu_id" value="{$filter.kindergarten_xuqiu_id}">
+					</if>
+					&nbsp;&nbsp;<input type="submit" class="submit btn_search" value="搜索" />
+					<input type="submit" name="excel" class="submit btn_search" value="导出" />
+				</form>
+        	</div>
       	</div>
 				<form method="POST" action="{:U('Recruitment/signup_batch')}" name="listForm">
 				<table border="0" cellpadding="0" cellspacing="0" class="center">

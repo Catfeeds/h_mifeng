@@ -14,7 +14,29 @@ class ContactUsAction extends CommonAction {
     import("ORG.Util.Page");       //载入分页类
     $page = new Page($count, 20);
     $showPage = $page->show();
-    
+    if($this->_get("excel")){
+      $ex_arr = array();
+      $ex_arr[] = [
+        '标题',
+        '姓名',
+        '手机号码',
+        '添加时间',
+        '内容',
+        '回复内容',
+      ];
+      $list = $M_ContactUs->lists(0,0,$filter);
+      foreach($list as $k=>$v){
+        $ex_arr[] = [
+          $v['title'],
+          $v['name'],
+          $v['phone'],
+          date('Y-m-d H:i:s',$v['add_time']),
+          $v['content'],
+          $v['return_content'],
+        ];
+      }
+      Excel("留言列表",$ex_arr);
+    }
     $this->assign("filter", $filter);
     $this->assign("page", $showPage);
     $this->assign("list", $M_ContactUs->lists($page->firstRow, $page->listRows,$filter));

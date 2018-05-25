@@ -111,7 +111,57 @@ class ReelAction extends CommonAction {
     import("ORG.Util.Page");       //载入分页类
     $page = new Page($count, 20);
     $showPage = $page->show();
-    
+    if($this->_get("excel")){
+      $ex_arr = array();
+      $ex_arr[] = [
+        '模版',
+        '类型',
+        '所属会员',
+        '是否使用',
+        '有效期',
+        '添加时间',
+        '价值',
+        '收货手机号码',
+        '收货人',
+        '详细地址',
+        '快递公司',
+        '快递单号',
+        '兑现',
+      ];
+      $list = $M_Reel->lists2(0,0,$filter);
+      foreach($list as $k=>$v){
+        $status = $v['status']==1?"是":"否";
+        $is_use = $v['is_use']==1?"是":"否";
+        switch ($v['type']) {
+          case '1':
+            $type = '购物卡';
+            break;
+          case '2':
+            $type = '充值卡';
+            break;
+          case '3':
+            $type = '学堂积分卡';
+            break;
+        }
+        $address = $v['province'].$v['city'].$v['district'].$v['address'];
+        $ex_arr[] = [
+          $v['title'],
+          $type,
+          $v['user_name'],
+          $is_use,
+          date('Y-m-d H:i:s',$v['end_time']),
+          date('Y-m-d H:i:s',$v['add_time']),
+          $v['price'],
+          $v['mobile'],
+          $v['address_name'],
+          $address,
+          $v['delivery_firm'],
+          $v['delivery'],
+          $status,
+        ];
+      }
+      Excel("卡卷列表",$ex_arr);
+    }
     $this->assign("filter", $filter);
     $this->assign("page", $showPage);
     $this->assign("list", $M_Reel->lists2($page->firstRow, $page->listRows,$filter));

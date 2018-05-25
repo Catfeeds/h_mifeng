@@ -11,7 +11,8 @@
 .Class_xx .mp3 audio.fiex{position: fixed;left: 0;top: 0;}
 .Lo_mian input[type='password'],.Lo_mian input.phone{
     width: 100%;
-    padding: .3rem 0;
+    /*padding: .3rem 0;*/
+    line-height:.8rem;height: .8rem;
     margin-bottom: .6rem;
     border: none;
     border-bottom: 1px solid #eea82a;

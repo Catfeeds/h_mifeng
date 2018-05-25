@@ -16,7 +16,11 @@ class ContactUsModel extends Model {
     if($filter['keyword']){
         $where .= " AND c.phone LIKE '%".$filter['keyword']."%' ";
     }
-    $result = M("ContactUs")->alias("c")->where($where)->limit($firstRow,$listRows)->order("c.add_time DESC")->select();
+    $result = M("ContactUs")->alias("c")->where($where)->order("c.add_time DESC");
+    if($listRows>0){
+      $result = $result->limit($firstRow,$listRows);
+    }
+    $result = $result->select();
     return $result;
   }
 }

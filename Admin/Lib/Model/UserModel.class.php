@@ -24,7 +24,11 @@ class UserModel extends Model {
     if($filter['black']){
         $where .= " AND u.black=".$filter['black']." ";
     }
-    $result = M("User")->alias("u")->where($where)->limit($firstRow,$listRows)->order("reg_time DESC")->select();
+    $result = M("User")->alias("u")->where($where)->order("reg_time DESC");
+    if($listRows>0){
+      $result = $result->limit($firstRow,$listRows);
+    }
+    $result = $result->select();
     return $result;
   }
   

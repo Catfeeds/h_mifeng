@@ -143,16 +143,28 @@ class WebinfoAction extends CommonAction {
     }
 
     private function MyScandir($FilePath = './', $Order = 0) {
+        $DataDir = "databak/";
+        ini_set("display_errors", "On");
+        error_reporting(E_ALL | E_STRICT);
         $FilePath = opendir($FilePath);
+        $FileAndFolderAyy = array();
         while (false !== ($filename = readdir($FilePath))) {
-            $FileAndFolderAyy[] = $filename;
-        }
-        if(count($FileAndFolderAyy)>32){
-            @unlink($DataDir.$FileAndFolderAyy[2]);
-            $FilePath = opendir($FilePath);
-            while (false !== ($filename = readdir($FilePath))) {
+            if(strlen($filename)>10){
                 $FileAndFolderAyy[] = $filename;
             }
+        }
+        if(count($FileAndFolderAyy)>32){
+            $count = count($FileAndFolderAyy)-32;
+            foreach($FileAndFolderAyy as $k=>$v){
+                if($k<$count){
+                    @unlink($DataDir.$FileAndFolderAyy[$k]);
+                    unset($FileAndFolderAyy[$k]);
+                }
+            }
+            // $FilePath = opendir($FilePath);
+            // while (false !== ($filename = readdir($FilePath))) {
+            //     $FileAndFolderAyy[] = $filename;
+            // }
         }
         $Order == 0 ? sort($FileAndFolderAyy) : rsort($FileAndFolderAyy);
         return $FileAndFolderAyy;

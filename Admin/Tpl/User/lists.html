@@ -22,11 +22,12 @@ function delUser(id) {
 				<form action="{:U('User/lists')}">
 					会员 ：
 					<input type="text" class="txt" name="keyword" value="{$filter.keyword}"/>&nbsp;&nbsp;<input type="submit" class="submit btn_search" value="搜索" />
-					<a href="{:U('User/excel')}" >导出会员信息</a>
+					<!-- <a href="{:U('User/excel')}" >导出会员信息</a> -->
+					<input type="submit" name="excel" class="submit btn_search" value="导出" />
 				</form>
         	</div>
       	</div>
-				<form method="POST" action="{:U('User/batch')}" name="listForm">
+			<form method="POST" action="{:U('User/batch')}" name="listForm">
 				<table border="0" cellpadding="0" cellspacing="0" class="center">
 					<thead>
 						<tr>
@@ -57,20 +58,18 @@ function delUser(id) {
 				</table>
 				<div class="lineHeight" style="border-bottom:1px dashed #cccccc;"></div>
 				<div class="batchChange">
-					<!-- <div class="f_l">
+					<div class="f_l">
 						<select onchange="changeAction()" id="selAction" name="type">
 						<option value="">请选择...</option>
 						<option value="button_remove">批量删除</option>
-						<option value="button_hide">批量隐藏</option>
-						<option value="button_show">批量显示</option>
 						</select>
 						<input type="submit" class="button" name="btnSubmit" id="btnSubmit" value=" 确定 "/>
-					</div> -->
+					</div>
 					<div class="f_r">
 						<div class="pagination">{$page}</div>
 					</div>
 				</div>
-				</form>
+			</form>
 	    </div>
 	  </div>
 	</div>

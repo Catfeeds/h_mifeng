@@ -285,7 +285,11 @@ class RecruitmentModel extends Model {
     if($filter['district']){
         $where .= " AND find_in_set(".$filter['district'].",r.district)";
     }
-    $result = M("Kindergarten")->alias("r")->field("r.*,u.user_name,c.company_name")->join("left join ".table("user")." as u on u.user_id=r.user_id")->join("left join ".table("company")." as c on c.user_id=r.user_id")->where($where)->limit($firstRow,$listRows)->order("r.add_time DESC")->select();
+    $result = M("Kindergarten")->alias("r")->field("r.*,u.user_name,c.company_name")->join("left join ".table("user")." as u on u.user_id=r.user_id")->join("left join ".table("company")." as c on c.user_id=r.user_id")->where($where)->order("r.add_time DESC");
+    if($listRows>0){
+      $result = $result->limit($firstRow,$listRows);
+    }
+    $result = $result->select();
     foreach ($result as &$v) {
       $v['province_name'] = D('Address')->region_name($v['province']);
       $v['city_name'] = D('Address')->region_name($v['city']);
@@ -310,6 +314,9 @@ class RecruitmentModel extends Model {
     if($filter['id']){
       $where .= " AND rc.kindergarten_id=".$filter['id'];
     }
+    if($filter['keyword']){
+        $where .= " AND rc.name LIKE '%".$filter['keyword']."%' ";
+    }
     if($filter['kindergarten_xuqiu_id']){
       $where .= " AND rc.kindergarten_xuqiu_id=".$filter['kindergarten_xuqiu_id'];
     }
@@ -322,10 +329,17 @@ class RecruitmentModel extends Model {
     if($filter['id']){
       $where .= " AND rc.kindergarten_id=".$filter['id'];
     }
+    if($filter['keyword']){
+        $where .= " AND rc.name LIKE '%".$filter['keyword']."%' ";
+    }
     if($filter['kindergarten_xuqiu_id']){
       $where .= " AND rc.kindergarten_xuqiu_id=".$filter['kindergarten_xuqiu_id'];
     }
-    $result = M("KindergartenSignup")->alias("rc")->where($where)->limit($firstRow,$listRows)->order("rc.add_time DESC")->select();
+    $result = M("KindergartenSignup")->alias("rc")->where($where)->order("rc.add_time DESC");
+    if($listRows>0){
+      $result = $result->limit($firstRow,$listRows);
+    }
+    $result = $result->select();
     return $result;
   }
 
@@ -429,7 +443,11 @@ class RecruitmentModel extends Model {
     if($filter['district']){
         $where .= " AND find_in_set(".$filter['district'].",r.district)";
     }
-    $result = M("KindergartenXuqiu")->alias("r")->field("r.*,u.user_name,c.company_name")->join("left join ".table("user")." as u on u.user_id=r.user_id")->join("left join ".table("company")." as c on c.user_id=r.user_id")->where($where)->limit($firstRow,$listRows)->order("r.add_time DESC")->select();
+    $result = M("KindergartenXuqiu")->alias("r")->field("r.*,u.user_name,c.company_name")->join("left join ".table("user")." as u on u.user_id=r.user_id")->join("left join ".table("company")." as c on c.user_id=r.user_id")->where($where)->order("r.add_time DESC");
+    if($listRows>0){
+      $result = $result->limit($firstRow,$listRows);
+    }
+    $result = $result->select();
     foreach ($result as &$v) {
       $v['province_name'] = D('Address')->region_name($v['province']);
       $v['city_name'] = D('Address')->region_name($v['city']);

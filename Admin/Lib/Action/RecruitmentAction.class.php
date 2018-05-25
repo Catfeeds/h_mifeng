@@ -240,6 +240,7 @@ class RecruitmentAction extends CommonAction {
         '工作年龄',
         '身高',
         '婚姻状况',
+        '性别',
         '手机',
         '邮箱',
         '工作经验',
@@ -261,6 +262,7 @@ class RecruitmentAction extends CommonAction {
         }
         $is_verify = $v['is_verify']==1?"是":"否";
         $is_open = $v['is_open']==1?"是":"否";
+        $sex = $v['sex']==1?"男":"女";
         $ex_arr[] = [
           $v['name'],
           $address,
@@ -271,6 +273,7 @@ class RecruitmentAction extends CommonAction {
           $v['working_age'],
           $v['height'],
           $v['marriage'],
+          $sex,
           $v['phone'],
           $v['email'],
           $v['experience'],
@@ -435,7 +438,44 @@ class RecruitmentAction extends CommonAction {
       import("ORG.Util.Page");       //载入分页类
       $page = new Page($count, 20);
       $showPage = $page->show();
-      
+      if($this->_get("excel")){
+        $ex_arr = array();
+        $ex_arr[] = [
+          '园区名称',
+          '地点',
+          '详细地址',
+          '联系人',
+          '电话',
+          '发布时间',
+          '园区描述',
+          '有效时间',
+          '转让',
+          '阅读量',
+          '审核',
+          '意向数',
+        ];
+        $list = $M_Recruitment->lists2(0,0,$filter);
+        foreach($list as $k=>$v){
+          $address .= $v['province_name']." ".$v['city_name']." ".$v['district_name'];
+          $status = $v['status']==1?"是":"否";
+          $is_open = $v['is_open']==1?"是":"否";
+          $ex_arr[] = [
+            $v['title'],
+            $address,
+            $v['address'],
+            $v['name'],
+            $v['phone'],
+            date('Y-m-d H:i:s',$v['add_time']),
+            $v['text'],
+            date('Y-m-d H:i:s',$v['end_time']),
+            $status,
+            $v['view_count'],
+            $is_open,
+            $v['sub_count'],
+          ];
+        }
+        Excel("园区列表",$ex_arr);
+      }
       $this->assign("filter", $filter);
       $this->assign("page", $showPage);
       $this->assign("list", $M_Recruitment->lists2($page->firstRow, $page->listRows,$filter));
@@ -541,14 +581,56 @@ class RecruitmentAction extends CommonAction {
       
       if($id){
         $filter = array("id"=>$id);
-        $this->assign("kindergarten",$M_Recruitment->info2($id));
+        $filter['keyword'] = empty($this->_request('keyword')) ? '' : trim($this->_request('keyword'));
+        $kindergarten = $M_Recruitment->info2($id);
+        $this->assign("kindergarten",$kindergarten);
         M("Kindergarten")->where("id",$id)->save(["new_count"=>0]);
+        if($this->_get("excel")){
+          $ex_arr = array();
+          $ex_arr[] = [
+            '园区',
+            '联系人',
+            '电话',
+            '添加时间',
+          ];
+          $list = $M_Recruitment->signup_lists(0,0,$filter);
+          foreach($list as $k=>$v){
+            $ex_arr[] = [
+              $kindergarten['title'],
+              $v['name'],
+              $v['phone'],
+              date('Y-m-d H:i:s',$v['add_time']),
+            ];
+          }
+          Excel($kindergarten['title']."意向列表",$ex_arr);
+        }
       }
       $kindergarten_xuqiu_id = $this->_get('kindergarten_xuqiu_id');
       if($kindergarten_xuqiu_id){
         $filter = array("kindergarten_xuqiu_id"=>$kindergarten_xuqiu_id);
-        $this->assign("kindergarten_xuqiu",$M_Recruitment->info3($kindergarten_xuqiu_id));
+        $filter['keyword'] = empty($this->_request('keyword')) ? '' : trim($this->_request('keyword'));
+        $kindergarten_xuqiu = $M_Recruitment->info3($kindergarten_xuqiu_id);
+        $this->assign("kindergarten_xuqiu",$kindergarten_xuqiu);
         M("KindergartenXuqiu")->where("id",$kindergarten_xuqiu_id)->save(["new_count"=>0]);
+        if($this->_get("excel")){
+          $ex_arr = array();
+          $ex_arr[] = [
+            '需求',
+            '联系人',
+            '电话',
+            '添加时间',
+          ];
+          $list = $M_Recruitment->signup_lists(0,0,$filter);
+          foreach($list as $k=>$v){
+            $ex_arr[] = [
+              $kindergarten_xuqiu['title'],
+              $v['name'],
+              $v['phone'],
+              date('Y-m-d H:i:s',$v['add_time']),
+            ];
+          }
+          Excel($kindergarten_xuqiu['title']."意向列表",$ex_arr);
+        }
       }
       $filter['record_count'] = $count = $M_Recruitment->signup_count($filter);
       import("ORG.Util.Page");       //载入分页类
@@ -628,6 +710,7 @@ class RecruitmentAction extends CommonAction {
           '工作年龄',
           '身高',
           '婚姻状况',
+          '性别',
           '手机',
           '邮箱',
           '工作经验',
@@ -649,6 +732,7 @@ class RecruitmentAction extends CommonAction {
           }
           $is_verify = $v['is_verify']==1?"是":"否";
           $is_open = $v['is_open']==1?"是":"否";
+          $sex = $v['sex']==1?"男":"女";
           $ex_arr[] = [
             $v['name'],
             $address,
@@ -659,6 +743,7 @@ class RecruitmentAction extends CommonAction {
             $v['working_age'],
             $v['height'],
             $v['marriage'],
+            $sex,
             $v['phone'],
             $v['email'],
             $v['experience'],
@@ -850,7 +935,40 @@ class RecruitmentAction extends CommonAction {
       import("ORG.Util.Page");       //载入分页类
       $page = new Page($count, 20);
       $showPage = $page->show();
-      
+      if($this->_get("excel")){
+        $ex_arr = array();
+        $ex_arr[] = [
+          '需求名称',
+          '地点',
+          '联系人',
+          '电话',
+          '发布时间',
+          '需求描述',
+          '阅读量',
+          '审核',
+          '寻找',
+          '意向数',
+        ];
+        $list = $M_Recruitment->lists3(0,0,$filter);
+        foreach($list as $k=>$v){
+          $address .= $v['province_name']." ".$v['city_name']." ".$v['district_name'];
+          $status = $v['status']==1?"是":"否";
+          $is_open = $v['is_open']==1?"是":"否";
+          $ex_arr[] = [
+            $v['title'],
+            $address,
+            $v['name'],
+            $v['phone'],
+            date('Y-m-d H:i:s',$v['add_time']),
+            $v['text'],
+            $v['view_count'],
+            $is_open,
+            $status,
+            $v['sub_count'],
+          ];
+        }
+        Excel("园区需求列表",$ex_arr);
+      }
       $this->assign("filter", $filter);
       $this->assign("page", $showPage);
       $this->assign("list", $M_Recruitment->lists3($page->firstRow, $page->listRows,$filter));

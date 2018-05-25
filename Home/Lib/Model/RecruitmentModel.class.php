@@ -115,6 +115,10 @@ class RecruitmentModel extends Model {
       $where .= " AND rc.recruitment_id=".$filter['id'];
     }
     $result = M("ResumeCast")->alias("rc")->field("u.pic,rc.id,r.name,r.working_age,r.profession,r.education,r.user_id")->join("left join ".table("resume")." as r on r.user_id=rc.user_id")->join("left join ".table("user")." as u on u.user_id=rc.user_id")->where($where)->limit($firstRow,$listRows)->order("rc.add_time DESC")->select();
+    foreach($result as &$v){
+      $v['name'] = xinming($v['name']);
+      $v['name'] .= $v['sex']==1?"先生":"小姐";
+    }
     return $result;
   }
   public function resume_cast_list($firstRow = 0, $listRows = 20 , $filter = array()){
@@ -183,6 +187,10 @@ class RecruitmentModel extends Model {
         $where .= " AND r.position LIKE '%".$filter['keyword']."%'";
       }
       $result = M("Resume")->alias("r")->field("u.pic,r.id,r.name,r.position,r.working_age,r.is_open")->join("left join ".table("user")." as u on u.user_id=r.user_id")->where($where)->limit($firstRow,$listRows)->order("r.add_time DESC")->select();
+      foreach($result as &$v){
+        $v['name'] = xinming($v['name']);
+        $v['name'] .= $v['sex']==1?"先生":"小姐";
+      }
       return $result;
     }
     public function resume_info($filter = array()){

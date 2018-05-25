@@ -11,7 +11,12 @@
             <a>{$user_info.introduction}</a>
           </span>
           <span class="top_3">
-            <a href="{:U('Member/checkin')}">签到</a>
+            
+            <if condition="!empty($is_checkin)">
+              <a id="checkin" href="{:U('Member/checkin')}" data-is="2">已签到</a>
+            <else/>
+              <a id="checkin" href="{:U('Member/checkin')}" data-is="1">签到</a>
+            </if>
           </span>
         </div>
         <div class="per_bod">
@@ -36,7 +41,7 @@
         <em>卡券</em>
       </a>
       <a href="{:U('Member/integral_log')}">
-        <i>{$user_info.integral}</i>
+        <i class="integral">{$user_info.integral}</i>
         <em>积分</em>
       </a>
       <a href="{:U('Mall/order_list')}">
@@ -134,3 +139,31 @@
   <include file='Public:login'/>
 </body>
 <include file='Public:pageFooter'/>
+<script type="text/javascript">
+  $(function(){
+    $("#checkin").click(function(){
+      var _this = $(this);
+      if($(this).attr('data-is')==1){
+        $.ajax({
+           type: "POST",
+           url: "{:U('Member/checkin_save')}",
+           data: "information_id={$info['id']}",
+           success: function(msg){
+            layer.open({
+              content: msg.info
+              ,skin: 'msg'
+              ,time: 2
+            });
+            if(msg.status==200){
+              _this.attr('data-is',2);
+              _this.html("已签到");
+              $(".integral").html(msg.data.integral);
+              window.location.replace("{:U('Member/index')}");
+            }
+           }
+        });
+        return false;
+      }
+    })
+  })
+</script>
