@@ -90,7 +90,7 @@
 }
 
 .Release_1 .rele_1 .resc span.img{background-size: cover;}
-.Release_1 .rele_2 ul li div.fl span.img{background-size: contain;}
+.Release_1 .rele_2 ul li div.fl span.img{background-size: contain;border:none;}
 .Release_1 .rele_2 li{margin-bottom: 0.1rem;}
 .Release_2 .rele_3{text-align: center;}
 .Release_2 .rele_3 .prev{display: inline-block;
@@ -596,3 +596,6 @@
 
 .fenxian_fix{position: fixed;top: 0;left: 0;z-index: 1005;width: 100%;height: 100%;background: rgba(0, 0, 0, 0.5) url(../images/guide1.png) no-repeat right top/3rem;display: none;}
 .fenxian_fix .text{position: absolute;color:#fff;width: 100%;text-align: center;font-size: 0.4rem;top:1.8rem;left: 0;}
+
+
+.no_list{background: url(../images/no_list.png) no-repeat center/1rem;height:2rem;}

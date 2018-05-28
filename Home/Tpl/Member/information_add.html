@@ -1,27 +1,38 @@
 <include file='Public:pageHeader'/>
-<body data-psd-width="750">
+<body data-psd-width="750" style="background-color: #f4f4f4;">
   <form method="post" action="{:U('Member/information_save')}" id="submitForm" name="submitForm" enctype="multipart/form-data">
     <div class="Release">
       <div class="Release_1">
         <div class="rele_1">
           <div class="re_1">
             <div class="pr_box">
-              <input type="text" placeholder="标题(不超过50字)" name="title" datatype="*,*1-50" errormsg="标题不超过50字" nullmsg="请输入标题"/>
-              <span class="red">*</span>
+              <input type="text" placeholder="* 标题(必填，不超过50字)" name="title" datatype="*,*1-50" errormsg="标题不超过50字" nullmsg="请输入标题"/>
+              <!-- <span class="red">*</span> -->
+              <div class="input" id="cate">
+                <span><font class="red2">*</font>分类</span>
+                <p class="text"></p>
+                <!-- <input type="hidden" name="cat_name"/> -->
+                <input type="hidden" name="cat_id" id="cat_id" datatype="*" errormsg="请选择分类" nullmsg="请选择分类"/>
+              </div>
+              <div class="input" id='zy' style="display:none;">
+                <span><font class="red2">*</font>资源</span>
+                <h4 class="text">请上传资源</h4>
+                <input type="file" class="file2" name="file_url">
+              </div>
+            </div>
+
+            <div class="pr_box">
+              <textarea placeholder="* 正文(必填，不超过800字)" name="content" datatype="*,*1-800" errormsg="正文不超过800字" nullmsg="请输入正文"></textarea>
             </div>
             <div class="resc">
               <span>
                 <input type="file" name="file" class="file" datatype="*" errormsg="请添加封面图" nullmsg="请添加封面图"/>
               </span>
-              <i>添加封面图<font class="red2">*</font></i>
-            </div>
-            <div class="pr_box">
-              <textarea placeholder="正文(不超过800字)" name="content" datatype="*,*1-800" errormsg="正文不超过800字" nullmsg="请输入正文"></textarea>
-              <span class="red">*</span>
+              <i><font class="red2">*</font>添加封面图</i>
             </div>
           </div>
         </div>
-        <div class="rele_4">
+        <!-- <div class="rele_4">
           <ul class="clearfix">
             <li>
               <div class="input">
@@ -49,7 +60,7 @@
               </div>
             </li>
           </ul>
-        </div>
+        </div> -->
         <div class="rele_2">
           <ul class="clearfix">
             <li class="clearfix">
@@ -169,7 +180,40 @@
   <include file='Public:login'/>
 </body>
 <include file='Public:pageFooter'/>
+<link rel="stylesheet" type="text/css" href="__CSS__/mobileSelect.css">
+<script src="__JS__/mobileSelect.min.js" type="text/javascript"></script>
 <script>
+  var region_city = {:json_encode($cat_list,JSON_UNESCAPED_UNICODE)};
+  var mobileSelect2 = new MobileSelect({
+      trigger: '#cate',
+      title: '分类',
+      triggerDisplayData:false,
+      wheels:[{data:region_city},],
+      keyMap: {
+        id:'cat_id',
+        value: 'cat_name',
+        childs :'child'
+      }, 
+      transitionEnd:function(indexArr, data){
+          // console.log(data);
+      },
+      callback:function(indexArr, data){
+        $('#cate .text').html(data[0].cat_name);
+        $('#cate #cat_id').val(data[0].cat_id);
+        if(data[0].cat_id==4){
+          $("#zy").show();
+        }else{
+          $("#zy").hide();
+        }
+        // var d = new Date();
+        // d.setTime(d.getTime()+(30*24*60*60*1000));
+        // var expires = "expires="+d.toGMTString();
+        // document.cookie = "city="+data[1].region_id+";"+expires;
+        // // $.cookie('city',data[1].region_id,{expires:30});
+        // window.location.reload();
+        // window.location.href=window.location.pathname+"?city="+data[1].region_id;
+      }
+  });
   $("#submitForm").Validform({
     tipSweep:true,
     tiptype:function(msg,o){

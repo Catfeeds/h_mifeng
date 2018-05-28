@@ -381,21 +381,35 @@ nav ul li.ov span { color: #ff8314; }
 .MY_Release .re_2 h6 span i { font-size: .3rem; margin-right: .05rem; }
 .MY_Release .re_2 h6 a { float: right; font-size: .3rem; color: #ff6158; }
 
-.Release_1 { padding-bottom: .3rem; background: #fff; }
-.Release_1 .rele_1 { padding: .3rem; }
-.Release_1 .rele_1 input[type='text'] { display: block; width: 100%; height: .86rem; padding: 0 .2rem; margin-bottom: .3rem; border: 1px solid #ddd; background: #f4f4f4; box-sizing: border-box; }
-.Release_1 .rele_1 textarea { display: block; width: 100%; height: 3rem; padding: .2rem .25rem; border: 1px solid #ddd; background: #f4f4f4; box-sizing: border-box; font-size: .3rem; color: #666; }
+.Release_1 { padding-bottom: .3rem;/* background: #fff;*/ }
+.Release_1 .rele_1 { /* padding: .3rem; */ }
+.Release_1 .rele_1 .pr_box{margin-bottom: .3rem;}
+.Release_1 .rele_1 .input{border-top: 1px solid #ddd;padding: 0 .2rem;height: .86rem;line-height:.86rem;background-color: #fff;position: relative;color:#666;}
+.Release_1 .rele_1 .input .text{position: absolute;color:#666;width: 60%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;top: 0;right: .45rem;text-align: right;}
+.Release_1 .rele_1 .input .file2{position: absolute;left: 0;top: 0;width: 100%;height: 100%;opacity: 0;z-index: 9;pointer-events:auto;}
+.Release_1 .rele_1 .input:before{position: absolute;
+    top: 50%;
+    right: .1rem;
+    content: '\e614';
+    font-family: 'iconfont' !important;
+    font-size: .32rem;
+    color: #999;
+    font-weight: bold;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);}
+.Release_1 .rele_1 input[type='text'] { display: block; width: 100%; height: .86rem; padding: 0 .2rem;  /*border: 1px solid #ddd;*/ background: #fff; box-sizing: border-box;border:0; }
+.Release_1 .rele_1 textarea { display: block; width: 100%; height: 3rem; padding: .2rem .25rem; /*border: 1px solid #ddd;*/ border:none;background: #fff; box-sizing: border-box; font-size: .3rem; color: #666; margin-bottom: .3rem;}
 .Release_1 .rele_1 .resc { margin-bottom: .3rem; }
-.Release_1 .rele_1 .resc span { display: inline-block; position: relative; width: 1.16rem; height: 1.16rem; border: 1px solid #eee; background: #fff url(../images/icon_9.png) no-repeat center/0.56rem; box-sizing: border-box; vertical-align: top; }
+.Release_1 .rele_1 .resc span { display: block; position: relative; width: 1.5rem; height: 1.5rem; border: 1px solid #eee; background: #fff url(../images/icon_9.png) no-repeat center/0.9rem; box-sizing: border-box; vertical-align: top; margin:0 auto;border-radius: 0.1rem;}
 .Release_1 .rele_1 .resc span input { position: absolute; top: 0; left: 0; z-index: 2; width: 100%; height: 100%; opacity: 0; }
-.Release_1 .rele_1 .resc i { display: inline-block; vertical-align: top; margin-left: .3rem; font-size: .26rem; color: #999; line-height: 1.16rem; }
+.Release_1 .rele_1 .resc i { display: block; vertical-align: top; /* margin-left: .3rem; */ font-size: .26rem; color: #999; line-height: .7rem;text-align: center; }
 .Release_1 .rele_2 { padding: 0 .3rem; }
 .Release_1 .rele_2 ul li div.fl span { display: inline-block; position: relative; width: 1.16rem; height: 1.16rem; border: 1px solid #eee; background: #fff url(../images/icon_9.png) no-repeat center/0.56rem; box-sizing: border-box; vertical-align: top; }
 .Release_1 .rele_2 ul li div.fl span input { position: absolute; top: 0; left: 0; z-index: 2; width: 100%; height: 100%; opacity: 0; }
 .Release_1 .rele_2 ul li div.fl i { display: block; position: absolute; top: -.15rem; left: -.15rem; width: .4rem; height: .4rem;z-index: 99; background: url(../images/icon_8.png) no-repeat center/cover; }
 .Release_1 .rele_2 ul li div.fr { width: 5.5rem; height: 1.16rem; }
-.Release_1 .rele_2 ul li div.fr textarea { display: block; width: 100%; height: 100%; padding: .1rem .15rem; border: 1px solid #ddd; box-sizing: border-box; font-size: .3rem; color: #666; }
-.Release_1 .rele_2 .re_more { display: block; width: 1.2rem; height: .6rem; margin: .5rem auto; border: 1px solid #ddd; border-radius: .15rem; background: #fff url(../images/icon_9.png) no-repeat center/0.3rem; text-align: center; }
+.Release_1 .rele_2 ul li div.fr textarea { display: block; width: 100%; height: 100%; padding: .1rem .15rem; border:0; box-sizing: border-box; font-size: .3rem; color: #666; }
+.Release_1 .rele_2 .re_more { display: block; width: 1.2rem; height: .6rem; margin: .5rem auto; border: 1px solid #ddd; border-radius: .15rem; background: #fff url(../images/icon_9_3.png) no-repeat center/0.3rem; text-align: center; }
 .Release_1 .rele_3 { padding-top: 1rem; }
 .Release_1 .rele_3 span { display: block; width: 3.6rem; height: .7rem; margin: 0 auto; border-radius: .5rem; background: #fec34b; font-size: .34rem; color: #fff; text-align: center; line-height: .7rem; }
 .Release_1 .rele_3 input[type='submit'] { display: block; width: 3.6rem; height: .7rem; margin: 0 auto; border-radius: .5rem; background: #fec34b; font-size: .34rem; color: #fff; text-align: center; line-height: .7rem;border:0;}

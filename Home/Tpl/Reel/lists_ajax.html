@@ -1,3 +1,4 @@
+
 <foreach name="list" item="item">
 <li class="clearfix" style="background-color: <if condition="$item['end_time'] lt time() or $item['is_use'] eq 1">#ccc;<elseif condition="$item['type'] eq 1"/> #fdd284; <elseif condition="$item['type'] eq 2"/> #ef8874; <elseif condition="$item['is_use'] eq 0"/>#f57468;</if>">
   <a href="{:U("Reel/info",array('id'=>$item['id']))}">

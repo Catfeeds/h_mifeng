@@ -23,6 +23,7 @@
     <div class="yrgh_bd">
       <div class="yr_box">
       <ul class="ul_more <if condition="$parent_id==76"> ganhuo clearfix </if>">
+          <empty name="list"><li class="no_list"></li></empty>
           <include file='Article:lists_ajax'/>
         </ul>
         <if condition="count($list) egt $listRows">
